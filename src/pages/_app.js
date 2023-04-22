@@ -1,5 +1,6 @@
 import React from "react";
-import "@/styles/globals.css";
+import "../assets/styles/reset.css";
+import "../assets/styles/style.css";
 
 // eslint-disable-next-line react/prop-types
 export default function App({ Component, pageProps }) {
