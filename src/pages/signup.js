@@ -7,8 +7,12 @@ export default function SignIn() {
         <Background>
             <Container>
                 <h1>GeoConectar</h1>
-                <h2>Faça o seu login</h2>
+                <h2>Cadastre-se</h2>
                 <form>
+                    <h3>Nome completo</h3>
+                    <FormStyle>
+                        <input type="text" placeholder="Digite o seu nome"/>
+                    </FormStyle>
                     <h3>Email</h3>
                     <FormStyle>
                         <input type="email" placeholder="Digite o seu email"/>
@@ -17,11 +21,15 @@ export default function SignIn() {
                     <FormStyle>
                         <input type="password" placeholder="Digite a sua senha"/>
                     </FormStyle>
+                    <h3>Confirme sua senha</h3>
+                    <FormStyle>
+                        <input type="password" placeholder="Digite novamente a sua senha"/>
+                    </FormStyle>
                     <Button>
-                        <button type="submit">Entrar</button>
+                        <button type="submit">Cadastrar</button>
                     </Button>
                 </form>
-                <p>Não tem uma conta? <Verde>Cadastre-se agora</Verde></p>
+                <p>Já tem uma conta? <Verde>Faça o login</Verde></p>
             </Container>
         </Background>
     );
