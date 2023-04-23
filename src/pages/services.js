@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import React from "react";
 import HeaderLayout from "@/layouts/Header";
 import BottomLayout from "@/layouts/Bottom";
+import Link from "next/link"
 
 export default function Services() {
 
@@ -13,21 +14,21 @@ export default function Services() {
                     <h1>GeoConectar</h1>
                     <h3>Conecte-se com profissionais qualificados 
                     para o seu projeto</h3>
-                    <button>Solicite ou ofereça seu serviço</button>
+                    <Link href="/request-or-offer"><button>Solicite ou ofereça seu serviço</button></Link>
                 </ContainerTop>
                 <ContainerBottom>
                     <Category>
-                        <button>Serviços</button>
-                        <button>Profissionais</button>
-                        <button>Vagas</button>
+                        <Link href="/services"><button>Serviços</button></Link>
+                        <Link href="/professionals"><button>Profissionais</button></Link>
+                        <Link href="/vacancies"><button>Vagas</button></Link>
                     </Category>
                     <Service>
                         <h1>Preciso de um profissonal para melhorar meu perfil do linkedin</h1>
                         <h3>Publicado há 48 minutos</h3>
-                        <h2>Preciso de um profissonal para melhorar meu perfil do linkedin , tenho um perfil no linkedin e gostaria de fazer 
-melhoria no meu perfil melhorar minhas perfil em geral para que seja mais atrativo</h2>
+                        <h2>Preciso de um profissonal para melhorar meu perfil do linkedin, tenho um perfil no linkedin e gostaria de fazer 
+                        melhoria no meu perfil melhorar minhas perfil em geral para que seja mais atrativo</h2>
                         <div>
-                            <ConnectButton>Conecte-se</ConnectButton>
+                            <Link href="/services/details"><ConnectButton>Conecte-se</ConnectButton></Link>
                             <QuestionButton>Faça uma pergunta</QuestionButton>
                         </div>
                     </Service>
@@ -35,9 +36,9 @@ melhoria no meu perfil melhorar minhas perfil em geral para que seja mais atrati
                         <h1>Conciliação de planilha</h1>
                         <h3>Publicado há 22 minutos</h3>
                         <h2>Preciso de um profissonal para melhorar meu perfil do linkedin , tenho um perfil no linkedin e gostaria de fazer 
-melhoria no meu perfil melhorar minhas perfil em geral para que seja mais atrativo</h2>
+                        melhoria no meu perfil melhorar minhas perfil em geral para que seja mais atrativo</h2>
                         <div>
-                            <ConnectButton>Conecte-se</ConnectButton>
+                            <Link href="/services/details"><ConnectButton>Conecte-se</ConnectButton></Link>
                             <QuestionButton>Faça uma pergunta</QuestionButton>
                         </div>
                     </Service>
@@ -105,7 +106,6 @@ width: 62%;
 background-color: white;
 border-radius: 12px;
 border: 1px solid #CDCDCD;
-margin-bottom: 150px;
 `
 
 const Category = styled.div`
@@ -126,10 +126,6 @@ button {
 }
 
 button:hover {
-    color: #1E1E1E;
-}
-
-button:nth-child(1){
     color: #1E1E1E;
 }
 `
@@ -157,6 +153,7 @@ h3 {
 `
 
 const ConnectButton = styled.button`
+    text-decoration: none;
     width: 168px;
     height: 35px;
     background: #4E693C;

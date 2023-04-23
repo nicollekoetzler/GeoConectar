@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import React from "react";
 import { BsChatDots } from 'react-icons/bs';
 import { AiOutlineUser } from "react-icons/ai";
+import Link from "next/link"
 
 
 export default function HeaderLayout() {
@@ -9,9 +10,9 @@ export default function HeaderLayout() {
         <TopBar>
             <h1>GeoConectar</h1>
             <TopBarLinks>
-                <h3>Meus Serviços</h3>
-                <h3>Divulgue um serviço</h3>
-                <h3>Ofereça seu serviço</h3>
+                <Link href="/my-services"><h3>Meus Serviços</h3></Link>
+                <Link href="/request"><h3>Divulgue um serviço</h3></Link>
+                <Link href="/offer"><h3>Ofereça seu serviço</h3></Link>
             </TopBarLinks>
             <TopBarRightLinks>
                 <Trash/>
@@ -47,6 +48,7 @@ justify-content: center;
 width: 50%;
 
 h3 {
+    color: #1E1E1E;
     font-size: 18px;
     cursor: pointer;
     transition: 0.3s;
