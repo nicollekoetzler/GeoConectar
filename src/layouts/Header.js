@@ -17,7 +17,7 @@ export default function HeaderLayout() {
                 <Link href="/offer"><h3>Ofereça seu serviço</h3></Link>
             </TopBarLinks>
             <TopBarRightLinks>
-                <Trash/>
+                <Link href="/chat"><Chat/></Link>
                 <User/>
             </TopBarRightLinks>
         </TopBar>
@@ -80,7 +80,7 @@ const TopBarRightLinks = styled.div`
     width: 25%;
 `
 
-const Trash = styled(BsChatDots)`
+const Chat = styled(BsChatDots)`
     margin-right: 16px;
     font-size: 24px;
     color: #585858;
