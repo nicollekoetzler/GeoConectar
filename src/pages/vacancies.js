@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import React from "react";
 import HeaderLayout from "@/layouts/Header";
 import BottomLayout from "@/layouts/Bottom";
+import Link from "next/link"
 
 export default function Services() {
 
@@ -17,9 +18,9 @@ export default function Services() {
                 </ContainerTop>
                 <ContainerBottom>
                     <Category>
-                        <button>Serviços</button>
-                        <button>Profissionais</button>
-                        <button>Vagas</button>
+                        <Link href="/services"><button>Serviços</button></Link>
+                        <Link href="/professionals"><button>Profissionais</button></Link>
+                        <Link href="/vacancies"><button>Vagas</button></Link>
                     </Category>
                     <Service>
                         <h1>Auxiliar Administrativo Financeiro</h1>
@@ -99,7 +100,6 @@ width: 62%;
 background-color: white;
 border-radius: 12px;
 border: 1px solid #CDCDCD;
-margin-bottom: 150px;
 `
 
 const Category = styled.div`
@@ -120,10 +120,6 @@ button {
 }
 
 button:hover {
-    color: #1E1E1E;
-}
-
-button:nth-child(3){
     color: #1E1E1E;
 }
 `

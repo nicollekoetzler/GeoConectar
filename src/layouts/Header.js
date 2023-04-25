@@ -2,16 +2,19 @@ import styled from "@emotion/styled";
 import React from "react";
 import { BsChatDots } from 'react-icons/bs';
 import { AiOutlineUser } from "react-icons/ai";
+import Link from "next/link"
 
 
 export default function HeaderLayout() {
     return(
         <TopBar>
-            <h1>GeoConectar</h1>
+            <TopBarLeftLinks>
+                <Link href="/services"><button>GeoConectar</button></Link>
+            </TopBarLeftLinks>
             <TopBarLinks>
-                <h3>Meus Serviços</h3>
-                <h3>Divulgue um serviço</h3>
-                <h3>Ofereça seu serviço</h3>
+                <Link href="/my-services"><h3>Meus Serviços</h3></Link>
+                <Link href="/request"><h3>Divulgue um serviço</h3></Link>
+                <Link href="/offer"><h3>Ofereça seu serviço</h3></Link>
             </TopBarLinks>
             <TopBarRightLinks>
                 <Trash/>
@@ -30,14 +33,19 @@ align-items: center;
 justify-content: space-between;
 border-bottom: 1px solid #CDCDCD;
 padding: 0px 64px 0px 64px;
+`
 
-h1 {
+const TopBarLeftLinks = styled.div`
+    width: 25%;
+
+button {
     font-family: "Saira Semi Condensed";
     font-size: 32px;
     font-weight: 700;
     color: #4E693C;
-    width: 25%;
     cursor: pointer;
+    background-color: white;
+    border: none;
 }
 `
 
@@ -47,6 +55,7 @@ justify-content: center;
 width: 50%;
 
 h3 {
+    color: #1E1E1E;
     font-size: 18px;
     cursor: pointer;
     transition: 0.3s;
