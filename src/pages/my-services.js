@@ -2,6 +2,8 @@ import styled from "@emotion/styled";
 import React from "react";
 import HeaderLayout from "@/layouts/Header";
 import BottomLayout from "@/layouts/Bottom";
+import SideBanner from "@/layouts/SideBanner";
+import Link from "next/link"
 
 export default function Services() {
 
@@ -19,7 +21,7 @@ export default function Services() {
                             <h3>Preciso de um profissonal para melhorar meu perfil do linkedin, tenho um perfil no linkedin e gostaria de fazer 
                             melhoria no meu perfil melhorar minhas perfil em geral para que seja mais atrativo</h3>
                                 <div>
-                                    <Button>Ir para as mensagens</Button>
+                                    <Link href="/chat"><Button>Ir para as mensagens</Button></Link>
                                 </div>
                         </Service>
                         <Service>
@@ -31,11 +33,7 @@ export default function Services() {
                             <p>Serviço concluído</p>
                         </Service>
                     </MyServices>
-                    <Banner>
-                        <h5>GeoConectar</h5>
-                        <p>Que tal conectar-se com mais pessoas?</p>
-                        <BannerButton>Solicite ou ofereça seu serviço</BannerButton>
-                    </Banner>
+                    <SideBanner />
                 </Content>
                 <BottomLayout/>
             </Background>
@@ -106,37 +104,4 @@ border: solid 1px #4E693C;
 font-weight: 700;
 font-size: 14px;
 padding: 0px 32px 0px 32px;
-`
-
-const Banner = styled.div`
-width: 273px;
-height: fit-content;
-border-radius: 12px;
-background-color: #E7E4C9;
-padding: 32px;
-
-h5 {
-    font-family: "Saira Semi Condensed";
-    font-size: 22px;
-    font-weight: 700;
-    color: #4E693C;
-    margin-bottom: 24px;
-}
-
-p {
-    line-height: 122.69%;
-    margin: 24px 0px 24px 0;
-}
-`
-
-const BannerButton = styled.button`
-height: 52px;
-width: 100%;
-background-color: #A5B167;
-border-radius: 50px;
-border: none;
-cursor: pointer;
-color: white;
-font-size: 14px;
-font-weight: 700;
 `

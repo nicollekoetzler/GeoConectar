@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import React from "react";
 import HeaderLayout from "@/layouts/Header";
 import BottomLayout from "@/layouts/Bottom";
+import ContainerTop from "@/layouts/ContainerTop";
 import Link from "next/link"
 
 export default function Services() {
@@ -10,12 +11,7 @@ export default function Services() {
         <>
             <HeaderLayout />
             <Background>
-                <ContainerTop>
-                    <h1>GeoConectar</h1>
-                    <h3>Conecte-se com profissionais qualificados 
-                    para o seu projeto</h3>
-                    <Link href="/request-or-offer"><button>Solicite ou ofereça seu serviço</button></Link>
-                </ContainerTop>
+                <ContainerTop />
                 <ContainerBottom>
                     <Category>
                         <Link href="/services"><button>Serviços</button></Link>
@@ -29,7 +25,7 @@ export default function Services() {
                         melhoria no meu perfil melhorar minhas perfil em geral para que seja mais atrativo</h2>
                         <div>
                             <Link href="/services/details"><ConnectButton>Conecte-se</ConnectButton></Link>
-                            <QuestionButton>Faça uma pergunta</QuestionButton>
+                            <Link href="/chat"><QuestionButton>Faça uma pergunta</QuestionButton></Link>
                         </div>
                     </Service>
                     <Service>
@@ -39,7 +35,7 @@ export default function Services() {
                         melhoria no meu perfil melhorar minhas perfil em geral para que seja mais atrativo</h2>
                         <div>
                             <Link href="/services/details"><ConnectButton>Conecte-se</ConnectButton></Link>
-                            <QuestionButton>Faça uma pergunta</QuestionButton>
+                            <Link href="/chat"><QuestionButton>Faça uma pergunta</QuestionButton></Link>
                         </div>
                     </Service>
                     <Pages>
@@ -58,47 +54,6 @@ const Background = styled.div`
 display: flex;
 align-items: center;
 flex-direction: column;
-`
-
-const ContainerTop = styled.div`
-height: 245px;
-width: 62%;
-display: flex;
-align-items: center;
-justify-content: center;
-flex-direction: column;
-background-color: #E7E4C9;
-border-radius: 12px;
-margin: 64px 0px 32px 0px;
-padding: 32px;
-text-align: center;
-
-h1 {
-    font-family: "Saira Semi Condensed";
-    font-size: 32px;
-    font-weight: 700;
-    color: #4E693C;
-    margin-bottom: 16px;
-}
-
-h3 {
-    font-size: 24px;
-    width: 65%;
-    line-height: 128%;
-}
-
-button {
-    width: 326px;
-    height: 42px;
-    background: #A5B167;
-    border-radius: 50px;
-    border: none;
-    cursor: pointer;
-    color: white;
-    font-size: 16px;
-    font-weight: 700;
-    margin-top: 24px;
-}
 `
 
 const ContainerBottom = styled.div`
