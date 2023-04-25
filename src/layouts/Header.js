@@ -8,7 +8,9 @@ import Link from "next/link"
 export default function HeaderLayout() {
     return(
         <TopBar>
-            <h1>GeoConectar</h1>
+            <TopBarLeftLinks>
+                <Link href="/services"><button>GeoConectar</button></Link>
+            </TopBarLeftLinks>
             <TopBarLinks>
                 <Link href="/my-services"><h3>Meus Serviços</h3></Link>
                 <Link href="/request"><h3>Divulgue um serviço</h3></Link>
@@ -31,14 +33,19 @@ align-items: center;
 justify-content: space-between;
 border-bottom: 1px solid #CDCDCD;
 padding: 0px 64px 0px 64px;
+`
 
-h1 {
+const TopBarLeftLinks = styled.div`
+    width: 25%;
+
+button {
     font-family: "Saira Semi Condensed";
     font-size: 32px;
     font-weight: 700;
     color: #4E693C;
-    width: 25%;
     cursor: pointer;
+    background-color: white;
+    border: none;
 }
 `
 

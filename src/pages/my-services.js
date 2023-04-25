@@ -11,26 +11,26 @@ export default function Services() {
             <Background>
                 <h1>Meus serviços</h1>
                 <Content>
-                    <Service>
-                        <h2>Gestão de agenda, reuniões, treinamentos, acompanhamento 
-                        pós venda</h2>
-                        <h4>Publicado há 48 minutos</h4>
-                        <h3>Preciso de um profissonal para melhorar meu perfil do linkedin, tenho um perfil no linkedin e gostaria de fazer 
-                        melhoria no meu perfil melhorar minhas perfil em geral para que seja mais atrativo</h3>
-                            <div>
-                                <Button>Ir para as mensagens</Button>
-                            </div>
-                    </Service>
-                    <Service>
-                        <h2>Gestão de agenda, reuniões, treinamentos, acompanhamento 
-                        pós venda</h2>
-                        <h4>Publicado há 48 minutos</h4>
-                        <h3>Preciso de um profissonal para melhorar meu perfil do linkedin, tenho um perfil no linkedin e gostaria de fazer 
-                        melhoria no meu perfil melhorar minhas perfil em geral para que seja mais atrativo</h3>
-                            <div>
-                                <Button>Ir para as mensagens</Button>
-                            </div>
-                    </Service>
+                    <MyServices>
+                        <Service>
+                            <h2>Gestão de agenda, reuniões, treinamentos, acompanhamento 
+                            pós venda</h2>
+                            <h4>Publicado há 48 minutos</h4>
+                            <h3>Preciso de um profissonal para melhorar meu perfil do linkedin, tenho um perfil no linkedin e gostaria de fazer 
+                            melhoria no meu perfil melhorar minhas perfil em geral para que seja mais atrativo</h3>
+                                <div>
+                                    <Button>Ir para as mensagens</Button>
+                                </div>
+                        </Service>
+                        <Service>
+                            <h2>Gestão de agenda, reuniões, treinamentos, acompanhamento 
+                            pós venda</h2>
+                            <h4>Publicado há 48 minutos</h4>
+                            <h3>Preciso de um profissonal para melhorar meu perfil do linkedin, tenho um perfil no linkedin e gostaria de fazer 
+                            melhoria no meu perfil melhorar minhas perfil em geral para que seja mais atrativo</h3>
+                            <p>Serviço concluído</p>
+                        </Service>
+                    </MyServices>
                     <Banner>
                         <h5>GeoConectar</h5>
                         <p>Que tal conectar-se com mais pessoas?</p>
@@ -61,6 +61,10 @@ const Content = styled.div`
 display: flex;
 `
 
+const MyServices = styled.div`
+margin-right: 32px;
+`
+
 const Service = styled.div`
 width: 700px;
 background-color: white;
@@ -82,6 +86,12 @@ h4 {
     font-size: 14px;
     color: #4E693C;
     margin: 16px 0px 24px 0px;
+}
+
+p {
+    color: #4E693C;
+    font-weight: 700;
+    font-size: 16px;
 }
 `
 
