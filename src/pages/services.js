@@ -4,6 +4,7 @@ import HeaderLayout from "@/layouts/Header";
 import BottomLayout from "@/layouts/Bottom";
 import ContainerTop from "@/layouts/ContainerTop";
 import Categories from "@/layouts/Categories";
+
 import { getServices } from "@/services/servicesRequisitions";
 import Service from "@/components/Service";
 
@@ -14,6 +15,8 @@ export default function Services() {
     try {
       const servicesList = await getServices();
       setServices(servicesList.data);
+      console.log("ALOOOO")
+      console.log(servicesList.data)
     } catch (error) {
       console.log(error);
     }
