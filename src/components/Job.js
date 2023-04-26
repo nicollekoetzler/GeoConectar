@@ -1,14 +1,14 @@
 import styled from "@emotion/styled";
 import Link from "next/link";
 
-export default function Job() {
+export default function Job({ job }) {
 
   return (
     <Container>
-        <h1>Auxiliar Administrativo Financeiro</h1>
-        <h3>Furniture Store | Navegantes - SC</h3>
+        <h1>{job.title}</h1>
+        <h3>{job.company} | {job.city}</h3>
         <div>
-            <Link href="/jobs/details"><QuestionButton>Saiba mais</QuestionButton></Link>
+            <Link href={`/jobs/details/${job.id}`}><QuestionButton>Saiba mais</QuestionButton></Link>
         </div>
     </Container>
   );
