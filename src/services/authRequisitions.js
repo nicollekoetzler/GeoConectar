@@ -7,4 +7,11 @@ async function signup(newUser) {
   );
 }
 
-export { signup };
+async function signin(user) {
+  return await axios.post(
+    process.env.NEXT_PUBLIC_API_URL + process.env.NEXT_PUBLIC_SIGNIN_ROUTE,
+    user
+  );
+}
+
+export { signup, signin };
