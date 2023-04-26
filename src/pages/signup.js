@@ -1,8 +1,11 @@
 import { signup } from "@/services/authRequisitions";
 import styled from "@emotion/styled";
+import { useRouter } from "next/router";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function SignUp() {
+  const router = useRouter();
   const [newUser, setNewUser] = useState({
     name: "",
     email: "",
@@ -17,6 +20,7 @@ export default function SignUp() {
       if (newUser.password === newUser.confirmPassword) {
         delete newUser.confirmPassword;
         await signup(newUser);
+        router.push("/signin");
       }
     } catch (error) {
       console.log(error);
@@ -85,7 +89,7 @@ export default function SignUp() {
           </Button>
         </form>
         <p>
-          Já tem uma conta? <Green>Faça o login</Green>
+          Já tem uma conta? <Green href="/signin">Faça o login</Green>
         </p>
       </Container>
     </Background>
@@ -179,6 +183,6 @@ const FormStyle = styled.div`
   }
 `;
 
-const Green = styled.span`
+const Green = styled.a`
   color: #4e693c;
 `;
