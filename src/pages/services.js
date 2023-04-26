@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import HeaderLayout from "@/layouts/Header";
 import BottomLayout from "@/layouts/Bottom";
 import ContainerTop from "@/layouts/ContainerTop";
-import Link from "next/link";
+import Categories from "@/layouts/Categories";
 import { getServices } from "@/services/servicesRequisitions";
 import Service from "@/components/Service";
 
@@ -29,17 +29,7 @@ export default function Services() {
       <Background>
         <ContainerTop />
         <ContainerBottom>
-          <Category>
-            <Link href="/services">
-              <button>Serviços</button>
-            </Link>
-            <Link href="/professionals">
-              <button>Profissionais</button>
-            </Link>
-            <Link href="/jobs">
-              <button>Vagas</button>
-            </Link>
-          </Category>
+          <Categories />
           {services.length !== 0
             ? services.map((service, index) => (
                 <Service
