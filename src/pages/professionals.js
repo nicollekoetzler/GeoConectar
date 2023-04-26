@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
-import React from "react";
 import HeaderLayout from "@/layouts/Header";
 import BottomLayout from "@/layouts/Bottom";
 import ContainerTop from "@/layouts/ContainerTop";
+import Categories from "@/layouts/Categories";
 import Link from "next/link"
 
 export default function Services() {
@@ -13,11 +13,7 @@ export default function Services() {
             <Background>
                 <ContainerTop />
                 <ContainerBottom>
-                    <Category>
-                        <Link href="/services"><button>Serviços</button></Link>
-                        <Link href="/professionals"><button>Profissionais</button></Link>
-                        <Link href="/vacancies"><button>Vagas</button></Link>
-                    </Category>
+                    <Categories />
                     <Service>
                         <h1>Ofereço mentoria para Linkedin</h1>
                         <h3>João da Silva | Publicado há 48 minutos</h3>
@@ -28,19 +24,6 @@ melhoria no meu perfil melhorar minhas perfil em geral para que seja mais atrati
                             <Link href="/chat"><QuestionButton>Faça uma pergunta</QuestionButton></Link>
                         </div>
                     </Service>
-                    <Service>
-                        <h1>Ofereço mentoria para currículo</h1>
-                        <h3>João da Silva | Publicado há 22 minutos</h3>
-                        <h2>Preciso de um profissonal para melhorar meu perfil do linkedin , tenho um perfil no linkedin e gostaria de fazer 
-melhoria no meu perfil melhorar minhas perfil em geral para que seja mais atrativo</h2>
-                        <div>
-                            <Link href="/professionals/details"><ConnectButton>Conecte-se</ConnectButton></Link>
-                            <Link href="/chat"><QuestionButton>Faça uma pergunta</QuestionButton></Link>
-                        </div>
-                    </Service>
-                    <Pages>
-                        <p>Próxima página</p>
-                    </Pages>
                 </ContainerBottom>
                 <BottomLayout/>
             </Background>
