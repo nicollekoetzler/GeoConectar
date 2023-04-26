@@ -14,14 +14,14 @@ export default function Services() {
             <Background>
                 <h1>Qual é o seu objetivo na <Verde>GeoConectar</Verde>?</h1>
                 <Goals>
-                    <Request>
+                    <Link href="/request"><Request>
                         <Planet/>
-                        <Link href="/request"><h3>Divulgar serviço ou vaga</h3></Link>
-                    </Request>
-                    <Offer>
+                        <h3>Divulgar serviço ou vaga</h3>
+                    </Request></Link>
+                    <Link href="/offer"><Offer>
                         <Megaphone/>
-                        <Link href="/offer"><h3>Oferecer serviço</h3></Link>
-                    </Offer>
+                        <h3>Oferecer serviço</h3>
+                    </Offer></Link>
                 </Goals>
             </Background>
             <BottomLayout />
@@ -48,7 +48,7 @@ display: flex;
 margin-bottom: 50px;
 `
 
-const Request = styled.div`
+const Request = styled.button`
 width: 190px;
 height: 168px;
 background-color: #E7E4C9;
@@ -59,6 +59,7 @@ justify-content: center;
 flex-direction: column;
 margin: 0px 8px 0px 8px;
 cursor: pointer;
+border: none;
 
 h3 {
     width: 80%;
@@ -67,6 +68,7 @@ h3 {
     line-height: 21px;
     text-align: center;
     margin-top: 8px;
+    color: #1E1E1E;
 }
 `
 
@@ -75,7 +77,7 @@ const Planet = styled(BiWorld)`
     color: #4E693C;
 `
 
-const Offer = styled.div`
+const Offer = styled.button`
 width: 190px;
 height: 168px;
 background-color: #E7E4C9;
@@ -86,6 +88,8 @@ justify-content: center;
 flex-direction: column;
 margin: 0px 8px 0px 8px;
 cursor: pointer;
+border: none;
+color: #1E1E1E;
 
 h3 {
     font-weight: 700;
