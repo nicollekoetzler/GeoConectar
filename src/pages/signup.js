@@ -1,18 +1,41 @@
+import { signup } from "@/services/authRequisitions";
 import styled from "@emotion/styled";
-import React from "react";
+import { useState } from "react";
 
-export default function SignIn() {
+export default function SignUp() {
+  const [newUser, setNewUser] = useState({
+    name: "",
+    email: "",
+    cpf: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    try {
+      if (newUser.password === newUser.confirmPassword) {
+        delete newUser.confirmPassword;
+        await signup(newUser);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <Background>
       <Container>
         <h1>GeoConectar</h1>
         <h2>Cadastre-se</h2>
-        <form>
+        <form onSubmit={handleSubmit}>
           <h3>Nome completo</h3>
           <FormStyle>
             <input
               type="text"
               placeholder="Digite o seu nome"
+              value={newUser.name}
+              onChange={(e) => setNewUser({ ...newUser, name: e.target.value })}
             />
           </FormStyle>
           <h3>Email</h3>
@@ -20,6 +43,10 @@ export default function SignIn() {
             <input
               type="email"
               placeholder="Digite o seu email"
+              value={newUser.email}
+              onChange={(e) =>
+                setNewUser({ ...newUser, email: e.target.value })
+              }
             />
           </FormStyle>
           <h3>CPF</h3>
@@ -27,6 +54,8 @@ export default function SignIn() {
             <input
               type="text"
               placeholder="Digite seu CPF"
+              value={newUser.cpf}
+              onChange={(e) => setNewUser({ ...newUser, cpf: e.target.value })}
             />
           </FormStyle>
           <h3>Senha</h3>
@@ -34,6 +63,10 @@ export default function SignIn() {
             <input
               type="password"
               placeholder="Digite a sua senha"
+              value={newUser.password}
+              onChange={(e) =>
+                setNewUser({ ...newUser, password: e.target.value })
+              }
             />
           </FormStyle>
           <h3>Confirme sua senha</h3>
@@ -41,6 +74,10 @@ export default function SignIn() {
             <input
               type="password"
               placeholder="Digite novamente a sua senha"
+              value={newUser.confirmPassword}
+              onChange={(e) =>
+                setNewUser({ ...newUser, confirmPassword: e.target.value })
+              }
             />
           </FormStyle>
           <Button>
