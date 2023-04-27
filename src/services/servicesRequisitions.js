@@ -9,9 +9,9 @@ async function getServices() {
 async function getService(id) {
   return await axios.get(
     process.env.NEXT_PUBLIC_API_URL +
-      process.env.NEXT_PUBLIC_SERVICES_ROUTE +
+      process.env.NEXT_PUBLIC_SERVICES_DETAILS_ROUTE +
       id
   );
 }
 
-export { getServices };
+export { getServices, getService };
