@@ -1,7 +1,7 @@
 import { signin } from "@/services/authRequisitions";
 import styled from "@emotion/styled";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import { useState } from "react";
 
 export default function SignIn() {
   const router = useRouter();
@@ -15,6 +15,7 @@ export default function SignIn() {
     try {
       const result = await signin(user);
       const token = result.data.token;
+      localStorage.setItem("token", token);
       router.push("/my-services");
     } catch (error) {
       console.log(error);
