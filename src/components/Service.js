@@ -1,7 +1,11 @@
 import styled from "@emotion/styled";
 import Link from "next/link";
+import { createChat } from "@/services/chatRequisitions";
+import { useRouter } from "next/router";
 
 export default function Service({ service }) {
+  const router = useRouter();
+
   function getTime() {
     const now = new Date();
     const createdAt = new Date(service.createdAt);
@@ -39,6 +43,19 @@ export default function Service({ service }) {
     }
   }
 
+  async function initChat() {
+    try {
+      const body = { secondUserId: service.userId };
+
+      await createChat(body);
+
+      router.push("/chat");
+    } catch (error) {
+      if(error.response.status === 409) router.push("/chat");
+      console.log(error);
+    }
+  }
+
   return (
     <Container>
       <h1>{service.title}</h1>
@@ -48,9 +65,7 @@ export default function Service({ service }) {
         <Link href={`/services/details/${service.id}`}>
           <ConnectButton>Conecte-se</ConnectButton>
         </Link>
-        <Link href="/chat">
-          <QuestionButton>Faça uma pergunta</QuestionButton>
-        </Link>
+        <QuestionButton onClick={ initChat }>Faça uma pergunta</QuestionButton>
       </div>
     </Container>
   );
