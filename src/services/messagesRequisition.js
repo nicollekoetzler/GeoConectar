@@ -28,4 +28,23 @@ async function getLastMessage(chatId) {
     );
 }
 
-export { getMessages, getLastMessage };
+async function postNewMessage(message, chatId) {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${ localStorage.getItem("token") }`
+      }
+    };
+
+    const body = {
+        message
+    };
+  
+    return await axios.post(
+      process.env.NEXT_PUBLIC_API_URL 
+      + process.env.NEXT_PUBLIC_MESSAGES_ROUTE + chatId,
+      body,
+      config
+    );
+}
+
+export { getMessages, getLastMessage, postNewMessage };

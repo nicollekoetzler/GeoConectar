@@ -1,12 +1,14 @@
 import styled from "@emotion/styled";
 import { useChatContext } from "../../../contexts/chatContext";
 import { useState, useEffect } from "react";
-import { getMessages } from "@/services/messagesRequisition";
+import { getMessages, postNewMessage } from "@/services/messagesRequisition";
 import MessagesList from "./MessagesList";
 
 export default function ConversationText() {
     const { chatData } = useChatContext();
     const [ messages, setMessages ] = useState([]);
+    const [ isLoading, setIsLoading ] = useState(false);
+    const [ message, setMessage ] = useState("");
 
     async function listMessages() {
         try {
@@ -14,6 +16,20 @@ export default function ConversationText() {
             setMessages(response.data);
         } catch (error) {
             console.log(error);
+        }
+    }
+
+    async function sendMessage() {
+        setIsLoading(true);
+
+        try {
+            await postNewMessage(message, chatData.chatId);
+            setIsLoading(false);
+            setMessage("");
+            setMessages([...messages, { message, userId: chatData.userId }]);
+        } catch(err) {
+            console.log(err);
+            setIsLoading(false);
         }
     }
 
@@ -28,8 +44,14 @@ export default function ConversationText() {
             </Top>
             <MessagesList userId={ chatData.userId } messages={ messages } />
             <Bottom>
-                    <input type="text" placeholder="Escreva aqui"/>
-                    <button>Enviar</button>
+                    <input
+                        type="text"
+                        value={ message }
+                        onChange={ (e) => setMessage(e.target.value) }
+                        disabled={ isLoading }
+                        placeholder="Escreva aqui"
+                    />
+                    <button onClick={ sendMessage } disabled={ isLoading } >Enviar</button>
             </Bottom>
         </>
     );
