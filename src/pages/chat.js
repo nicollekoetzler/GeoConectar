@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 import BottomLayout from "@/layouts/Bottom";
 import HeaderLayout from "@/layouts/Header";
-import MessagesSidebar from "@/components/MessagesSidebar";
-import ChatText from "@/components/ChatText";
+import MessagesSidebar from "@/components/chat/MessagesSidebar";
+import ConversationContainer from "@/components/chat/ConversationContainer";
 
 export default function Services() {
 
@@ -12,7 +12,7 @@ export default function Services() {
             <Background>
                 <ChatContainer>
                     <MessagesSidebar />
-                    <ChatText />
+                    <ConversationContainer />
                 </ChatContainer>
             </Background>
             <BottomLayout />

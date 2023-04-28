@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getChats } from "@/services/chatRequisitions";
 import styled from "@emotion/styled";
-import Message from "./Message";
+import MessageBox from "./MessageBox";
 
 export default function MessagesSidebar() {
     const [ chats, setChats ] = useState([]);
@@ -30,7 +30,7 @@ export default function MessagesSidebar() {
                 ?
                 chats.map(chat => {
                     return (
-                        <Message
+                        <MessageBox
                             userId={ chat.userId }
                             addressedName={ chat.addressedName }
                             chatId={ chat.id } 

@@ -1,10 +1,29 @@
 import styled from "@emotion/styled";
+import { useChatContext } from "../../../contexts/chatContext";
+import { useState, useEffect } from "react";
+import { getMessages } from "@/services/messagesRequisition";
 
-export default function ChatText() {
+export default function ConversationText() {
+    const { chatData } = useChatContext();
+    const [ messages, setMessages ] = useState();
+
+    async function listMessages() {
+        try {
+            const response = await getMessages(chatData?.chatId);
+            setMessages(response.data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    useEffect(() => {
+        listMessages();
+    }, [chatData]);
+
     return (
-        <Right>
+        <>
             <Top>
-                <h3>João Medeiros <Gray>| Ofereço ajuda para Linkedin</Gray></h3>
+                <h3>{ chatData?.addressed }</h3>
             </Top>
             <SelectedMessage>
                 <h4>29 de Março de 2022</h4>
@@ -26,7 +45,7 @@ export default function ChatText() {
                     <input type="text" placeholder="Escreva aqui"/>
                     <button>Enviar</button>
             </Bottom>
-        </Right>
+        </>
     );
 }
 
@@ -38,12 +57,7 @@ const Top = styled.div`
     align-items: center;
     padding-left: 32px;
     font-weight: 500;
-`
-
-const Right = styled.div`
-    width: 70%;
-    height: 100%;
-`
+`;
 
 const SelectedMessage = styled.div`
     width: 100%;
@@ -54,12 +68,12 @@ const SelectedMessage = styled.div`
     padding: 0px 80px 32px 80px;
     overflow-y: scroll;
 
-h4 {
-    font-size: 12px;
-    font-weight: 500;
-    color: gray;
-    margin-top: 24px;
-}
+    h4 {
+        font-size: 12px;
+        font-weight: 500;
+        color: gray;
+        margin-top: 24px;
+    }
 `
 
 const IncomingMessage = styled.div`
@@ -78,7 +92,7 @@ const SendingMessage = styled.div`
     width: fit-content;
     max-width: 90%;
     margin-top: 16px;
-    border-radius: 20px 20px 0px 20px;
+    border-radius: ${() => "20px 20px 0px 20px"};
     padding: 16px;
     background-color: #4E693C;
     line-height: 128%;

@@ -2,8 +2,10 @@ import { getLastMessage } from "@/services/messagesRequisition";
 import { formatDate } from "@/services/dateFormater";
 import styled from "@emotion/styled";
 import { useEffect, useState } from "react";
+import { useChatContext } from "../../../contexts/chatContext";
 
-export default function Message({ userId, addressedName, chatId }) {
+export default function MessageBox({ userId, addressedName, chatId }) {
+    const { setChatData } = useChatContext();
     const [ messageData, setMessageData ] = useState(null);
 
     async function getMessage() {
@@ -15,6 +17,16 @@ export default function Message({ userId, addressedName, chatId }) {
         }
     }
 
+    function selectChat() {
+        const chatData = {
+            userId,
+            addressedName,
+            chatId
+        }
+
+        setChatData(chatData)
+    }
+
     useEffect(() => {
         getMessage();
         setInterval(() => {
@@ -24,7 +36,7 @@ export default function Message({ userId, addressedName, chatId }) {
 
     return (
         <>
-            <SingleMessage>
+            <SingleMessage onClick={ selectChat }>
                 <div>
                     <h4>{ addressedName }</h4>
                     <h5>{ formatDate(messageData?.createdAt ) }</h5>
