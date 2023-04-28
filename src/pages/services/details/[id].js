@@ -18,6 +18,7 @@ export default function Services() {
     try {
       const serviceDetails = await getService(id);
       setService(serviceDetails.data);
+      console.log(serviceDetails.data)
     } catch (error) {
       console.log(error);
     }

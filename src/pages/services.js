@@ -15,6 +15,7 @@ export default function Services() {
     try {
       const servicesList = await getServices();
       setServices(servicesList.data);
+      console.log(servicesList.data)
     } catch (error) {
       console.log(error);
     }
@@ -50,6 +51,8 @@ const Background = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  min-height: 100vh;
+  width: 100vw;
 `;
 
 const ContainerBottom = styled.div`
