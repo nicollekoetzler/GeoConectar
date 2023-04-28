@@ -14,7 +14,7 @@ export default function ServiceDetail({ service }) {
             <h2>
               {service.title}
             </h2>
-            <h5>Publicado em {getDay()}</h5>
+            <h5>{service.user?.name} | Publicado em {getDay()}</h5>
             <h3>Descrição do projeto:</h3>
             <h4>
               {service.description}

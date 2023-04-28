@@ -21,4 +21,5 @@ const Bottom = styled.div`
     align-items: center;
     justify-content: center;
     margin-top: 100px;
+    align-self: flex-end;
 `
