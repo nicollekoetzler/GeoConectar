@@ -1,11 +1,11 @@
 import styled from "@emotion/styled";
 import HeaderLayout from "@/layouts/Header";
 import BottomLayout from "@/layouts/Bottom";
-import Options from "@/layouts/Options";
 import SideBanner from "@/layouts/SideBanner";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import ServiceDetail from "@/components/ServiceDetail";
+import ServicesOptions from "@/components/ServicesOptions";
 
 import { getService } from "@/services/servicesRequisitions";
 
@@ -35,7 +35,7 @@ export default function Services() {
         <Content>
           <ServiceDetail service={service} />
           <div>
-            <Options />
+            <ServicesOptions service={service} />
             <SideBanner />
           </div>
         </Content>
