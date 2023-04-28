@@ -1,12 +1,50 @@
 import styled from "@emotion/styled";
 import Link from "next/link";
 
-export default function Professional() {
+export default function Professional({ professional }) {
+
+  function getTime() {
+    const now = new Date();
+    const createdAt = new Date(professional.createdAt);
+
+    const months = now.getMonth() - createdAt.getMonth();
+    if (months > 0) {
+      if (months === 1) {
+        return `${months} mês`;
+      }
+      return `${months} meses`;
+    }
+
+    const days = now.getDate() - createdAt.getDate();
+    if (days > 0) {
+      if (days === 1) {
+        return `${days} dia`;
+      }
+      return `${days} dias`;
+    }
+
+    const hours = now.getHours() - createdAt.getHours();
+    if (hours > 0) {
+      if (hours === 1) {
+        return `${hours} hora`;
+      }
+      return `${hours} horas`;
+    }
+
+    const minutes = now.getMinutes() - createdAt.getMinutes();
+    if (minutes > 0) {
+      if (minutes === 1) {
+        return `${minutes} minuto`;
+      }
+      return `${minutes} minutos`;
+    }
+  }
+
   return(
     <Service>
-      <h1>Ofereço mentoria para Linkedin</h1>
-      <h3>João da Silva | Publicado há 48 minutos</h3>
-      <h2>Preciso de um profissonal para melhorar meu perfil do linkedin</h2>
+      <h1>{ professional.title }</h1>
+      <h3>Publicado há {getTime()}</h3>
+      <h2>{ professional.description }</h2>
       <div>
           <Link href="/professionals/details"><ConnectButton>Conecte-se</ConnectButton></Link>
           <Link href="/chat"><QuestionButton>Faça uma pergunta</QuestionButton></Link>
