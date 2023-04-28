@@ -1,4 +1,4 @@
-function getMonthName(month) {
+function getAbbrevMonthName(month) {
     const monthNames = [
         "jan.", "fev.", "mar.", "abr.", "mai.", "jun.",
         "jul.", "ago.", "set.", "out.", "nov.", "dez."
@@ -7,12 +7,27 @@ function getMonthName(month) {
     return monthNames[month];
 }
 
-function formatDate(date) {
+function getMonthName(month) {
+    const monthNames = [
+        "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+        "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+    ];
+
+    return monthNames[month];
+}
+
+function formatDate(date, type) {
     if(!date) return;
 
     const formatedDate = new Date(date);
+    
+    let monthName;
 
-    const monthName = getMonthName(formatedDate.getMonth());
+    if(type === "full-month") {
+        monthName = getMonthName(formatedDate.getMonth())
+    } else if(type === "abbrev-month") {
+        monthName = getAbbrevMonthName(formatedDate.getMonth())
+    }
 
     return `${ formatedDate.getDate() } de ${ monthName } de ${ formatedDate.getFullYear() }`;
 }

@@ -7,9 +7,7 @@ export default function ConversationContainer() {
 
     return (
         <Right>
-            {
-                chatData !== null ? <ConversationText /> : <></>
-            }
+            { chatData !== null ?  <ConversationText /> : <></> }
         </Right>
     );
 }
@@ -17,4 +15,4 @@ export default function ConversationContainer() {
 const Right = styled.div`
     width: 70%;
     height: 100%;
-`
+`;

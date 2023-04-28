@@ -31,7 +31,7 @@ export default function MessageBox({ userId, addressedName, chatId }) {
         getMessage();
         setInterval(() => {
             getMessage();
-        }, 10000)
+        }, 3000);
     }, []);
 
     return (
@@ -39,7 +39,7 @@ export default function MessageBox({ userId, addressedName, chatId }) {
             <SingleMessage onClick={ selectChat }>
                 <div>
                     <h4>{ addressedName }</h4>
-                    <h5>{ formatDate(messageData?.createdAt ) }</h5>
+                    <h5>{ formatDate(messageData?.createdAt, "abbrev-month") }</h5>
                 </div>
                 <p>{ messageData?.message }</p>
             </SingleMessage>

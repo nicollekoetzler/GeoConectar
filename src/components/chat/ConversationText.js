@@ -2,10 +2,11 @@ import styled from "@emotion/styled";
 import { useChatContext } from "../../../contexts/chatContext";
 import { useState, useEffect } from "react";
 import { getMessages } from "@/services/messagesRequisition";
+import MessagesList from "./MessagesList";
 
 export default function ConversationText() {
     const { chatData } = useChatContext();
-    const [ messages, setMessages ] = useState();
+    const [ messages, setMessages ] = useState([]);
 
     async function listMessages() {
         try {
@@ -23,24 +24,9 @@ export default function ConversationText() {
     return (
         <>
             <Top>
-                <h3>{ chatData?.addressed }</h3>
+                <h3>{ chatData?.addressedName }</h3>
             </Top>
-            <SelectedMessage>
-                <h4>29 de Março de 2022</h4>
-                <IncomingMessage>
-                    <p>Eai oii, tudo bem e você? pior que é fora de mão, meu pai quem vai estar dirigindo, ele vai sair ali do jardim botânico daí iria até a rodoviária</p>
-                </IncomingMessage>
-                <SendingMessage>
-                    <p>Eai oii, tudo bem e você? pior que é fora de mão, meu pai que</p>
-                </SendingMessage>
-                <IncomingMessage>
-                    <p>Eai oii, tudo bem e você? pior que é fora de mão, meu pai quem vai estar dirigindo, ele vai sair ali do jardim botânico daí iria até a rodoviária</p>
-                </IncomingMessage>
-                <h4>5 de Abril de 2022</h4>
-                <SendingMessage>
-                    <p>Eai oii, tudo bem e você?</p>
-                </SendingMessage>
-            </SelectedMessage>
+            <MessagesList userId={ chatData.userId } messages={ messages } />
             <Bottom>
                     <input type="text" placeholder="Escreva aqui"/>
                     <button>Enviar</button>
@@ -58,46 +44,6 @@ const Top = styled.div`
     padding-left: 32px;
     font-weight: 500;
 `;
-
-const SelectedMessage = styled.div`
-    width: 100%;
-    height: 320px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0px 80px 32px 80px;
-    overflow-y: scroll;
-
-    h4 {
-        font-size: 12px;
-        font-weight: 500;
-        color: gray;
-        margin-top: 24px;
-    }
-`
-
-const IncomingMessage = styled.div`
-    height: fit-content;
-    width: fit-content;
-    max-width: 90%;
-    margin-top: 16px;
-    border-radius: 0px 20px 20px 20px;
-    padding: 16px;
-    background-color: #EDF0DE;
-    line-height: 128%;
-`
-
-const SendingMessage = styled.div`
-    height: fit-content;
-    width: fit-content;
-    max-width: 90%;
-    margin-top: 16px;
-    border-radius: ${() => "20px 20px 0px 20px"};
-    padding: 16px;
-    background-color: #4E693C;
-    line-height: 128%;
-    color: white;
-`
 
 const Bottom = styled.div`
     width: 100%;
