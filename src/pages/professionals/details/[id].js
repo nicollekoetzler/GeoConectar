@@ -5,7 +5,7 @@ import BottomLayout from "@/layouts/Bottom";
 import Options from "@/layouts/Options";
 import SideBanner from "@/layouts/SideBanner";
 
-export default function Services() {
+export default function Professionals() {
 
     return (
         <>
