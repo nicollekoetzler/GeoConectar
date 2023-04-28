@@ -15,6 +15,7 @@ export default function MessagesList({ messages, userId }) {
     const listRef = useRef(null);
     const [ jsxMessagesList, setJsxMessagesList ] = useState([]);
 
+
     function shouldAddDate(lastMessageDate, element) {
         return lastMessageDate !== element.createdAt;
     }
@@ -51,11 +52,6 @@ export default function MessagesList({ messages, userId }) {
     useEffect(() => {
         setJsxMessagesList(listMessages());
     }, [messages]);
-
-    useEffect(() => {          
-        listRef?.current?.lastElementChild?.scrollIntoView({ behavior: "smooth" });
-    }, [jsxMessagesList]);
-
 
     return (
         <SelectedMessage ref={ listRef }>

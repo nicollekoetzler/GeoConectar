@@ -35,6 +35,9 @@ export default function ConversationText() {
 
     useEffect(() => {
         listMessages();
+        const interval = setInterval(listMessages, 3000);
+
+        return () => clearInterval(interval);
     }, [chatData]);
 
     return (
