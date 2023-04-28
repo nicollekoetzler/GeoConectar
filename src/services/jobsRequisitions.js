@@ -9,9 +9,9 @@ async function getJobs() {
 async function getJob(id) {
   return await axios.get(
     process.env.NEXT_PUBLIC_API_URL +
-      process.env.NEXT_PUBLIC_JOBS_ROUTE +
+      process.env.NEXT_PUBLIC_JOBS_DETAILS_ROUTE +
       id
   );
 }
 
-export { getJobs };
+export { getJobs, getJob };

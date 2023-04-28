@@ -82,17 +82,3 @@ const Category = styled.div`
     color: #1e1e1e;
   }
 `;
-
-const Pages = styled.div`
-  height: 76px;
-  border-top: 1px solid #cdcdcd;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  font-weight: 700;
-
-  p {
-    cursor: pointer;
-  }
-`;
