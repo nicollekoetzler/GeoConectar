@@ -4,8 +4,27 @@ import BottomLayout from "@/layouts/Bottom";
 import ContainerTop from "@/layouts/ContainerTop";
 import Categories from "@/layouts/Categories";
 import Professional from "@/components/Professional";
+import { useEffect, useState } from "react";
+
+import { getProfessionals } from "@/services/professionalsRequisitions";
 
 export default function Services() {
+    const [professionals, setProfessionals] = useState([]);
+
+    async function getAllServices() {
+      try {
+        const professionalsList = await getProfessionals();
+        setProfessionals(professionalsList.data);
+        console.log("ALOOO");
+        console.log(professionalsList.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  
+    useEffect(() => {
+      getAllServices();
+    }, []);
 
     return (
         <>
@@ -14,7 +33,14 @@ export default function Services() {
                 <ContainerTop />
                 <ContainerBottom>
                     <Categories />
-                    <Professional />
+                    {professionals.length !== 0
+                        ? professionals.map((professional, index) => (
+                            <Professional
+                            professional={professional}
+                            key={index}
+                            />
+                        ))
+                    : ""}
                 </ContainerBottom>
                 <BottomLayout/>
             </Background>
