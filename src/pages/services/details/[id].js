@@ -5,9 +5,9 @@ import Options from "@/layouts/Options";
 import SideBanner from "@/layouts/SideBanner";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import ServiceDetail from "@/components/ServiceDetail";
 
 import { getService } from "@/services/servicesRequisitions";
-import ServiceDetail from "@/components/ServiceDetail";
 
 export default function Services() {
   const router = useRouter();
@@ -18,8 +18,6 @@ export default function Services() {
     try {
       const serviceDetails = await getService(id);
       setService(serviceDetails.data);
-      console.log("ALOOOOOO");
-      console.log(serviceDetails);
     } catch (error) {
       console.log(error);
     }
