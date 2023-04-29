@@ -11,9 +11,10 @@ export default function ProfessionalDetail({ professional }){
 
   return(
     <Info>
+        <p><Verde>{professional.user?.name}</Verde> está oferecendo:</p>
         <h2>{professional.title}</h2>
         <h5>Publicado em {getDay()}</h5>
-        <h3>Descrição do projeto:</h3>
+        <h3>Descrição do serviço:</h3>
         <h4>{professional.description}</h4>
     </Info>
   )
@@ -30,6 +31,11 @@ padding: 32px;
 margin-bottom: 16px;
 margin-right: 32px;
 
+p {
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
 h2 {
     font-size: 22px;
 }
@@ -41,12 +47,18 @@ h3{
 }
 
 h4 {
+    font-size: 14px;
     line-height: 128%;
 }
 
 h5 {
-    font-size: 14px;
+    font-size: 12px;
     color: #727272;
     margin: 16px 0px 24px 0px;
 }
+`
+
+const Verde = styled.span `
+  color: #4E693C;
+  font-weight: 500;
 `

@@ -1,17 +1,35 @@
+import { createMyService } from "@/services/myServicesRequisitions";
 import styled from "@emotion/styled";
-import Link from "next/link"
+import { useRouter } from "next/router";
 
 export default function ServicesOptions({ service }) {
-    return(
-        <OptionsBanner>
-            <p>Gostou do serviço?</p>
-            <Link href="confirmation"><ConnectButton>Conecte-se</ConnectButton></Link>
-            <p>Ficou com alguma dúvida?</p>
-            <ChatButton>Converse com o cliente</ChatButton>
-            <div></div>
-            <h4>{service.user?.name}</h4>
-        </OptionsBanner>
-    )
+  const router = useRouter();
+  async function connectServices() {
+    try {
+      const body = { 
+        serviceId: service.id,
+        professionalId: null,
+        jobId: null
+      }
+      await createMyService(body);
+      router.push(`/services/confirmation/${service.id}`);
+      console.log("ALOOOOO")
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  console.log
+  return(
+      <OptionsBanner>
+          <p>Gostou do serviço?</p>
+          <ConnectButton onClick={connectServices}>Conecte-se</ConnectButton>
+          <p>Ficou com alguma dúvida?</p>
+          <ChatButton>Converse com o cliente</ChatButton>
+          <div></div>
+          <h4>{service.user?.name}</h4>
+      </OptionsBanner>
+  )
 }
 
 const OptionsBanner = styled.div`

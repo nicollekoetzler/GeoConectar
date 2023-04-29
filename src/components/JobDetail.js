@@ -13,7 +13,7 @@ export default function JobDetail({ job }) {
     return(
         <Info>
             <h2>{ job.title }</h2>
-            <h5>Publicado em { getDate() }</h5>
+            <h5>{job.company} | Publicado em { getDate() }</h5>
             <h3>Descrição do projeto:</h3>
             <h4>{ job.description }</h4>
         </Info>

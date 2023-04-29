@@ -43,10 +43,10 @@ export default function Professional({ professional }) {
   return(
     <Service>
       <h1>{ professional.title }</h1>
-      <h3>Publicado há {getTime()}</h3>
+      <h3>{ professional.user?.name } | Publicado há {getTime()}</h3>
       <h2>{ professional.description }</h2>
       <div>
-          <Link href="/professionals/details"><ConnectButton>Conecte-se</ConnectButton></Link>
+          <Link href={`/professionals/details/${professional.id}`}><ConnectButton>Conecte-se</ConnectButton></Link>
           <Link href="/chat"><QuestionButton>Faça uma pergunta</QuestionButton></Link>
       </div>
     </Service>

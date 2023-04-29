@@ -16,8 +16,6 @@ export default function Services() {
         try {
             const jobsList = await getJobs();
             setJobs(jobsList.data);
-            console.log("ALOOOO")
-            console.log(jobsList.data)
         } catch (error) {
         console.log(error);
         }
