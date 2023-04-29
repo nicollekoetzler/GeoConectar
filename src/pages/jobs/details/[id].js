@@ -49,12 +49,16 @@ export default function Jobs() {
 
 
 const Background = styled.div`
-display: flex;
-align-items: center;
-flex-direction: column;
-`
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+`;
 
 const Content = styled.div`
-display: flex;
-margin-top: 64px;
-`
+    display: flex;
+    margin-top: 64px;
+
+    @media screen and (max-width: 600px) {
+        flex-direction: column;
+    }
+`;

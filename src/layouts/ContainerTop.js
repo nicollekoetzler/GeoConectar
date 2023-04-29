@@ -56,6 +56,11 @@ const Container = styled.div`
     @media screen and (max-width: 600px) {
         width: 90%;
         height: auto;
+        padding: 50px 30px;
+
+        h1, h3 {
+            width: 100%;
+        }
 
         button {
             width: 100%;

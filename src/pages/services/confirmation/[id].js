@@ -37,7 +37,7 @@ export default function Services() {
 }
 
 const Background = styled.div`
-display: flex;
-align-items: center;
-flex-direction: column;
-`
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+`;
