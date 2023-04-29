@@ -22,11 +22,12 @@ export default function Services() {
         try {
             if(serviceType === "service") {
                 await postService(title, description);
+                router.push("/services");
             } else {
                 await postJob(title, description, company, city);
+                router.push("/jobs");
             }
 
-            router.push("/my-services");
             setInputsDefaultValue();
             setIsLoading(false);
 
