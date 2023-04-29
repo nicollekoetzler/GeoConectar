@@ -15,8 +15,6 @@ export default function Services() {
       try {
         const professionalsList = await getProfessionals();
         setProfessionals(professionalsList.data);
-        console.log("ALOOO");
-        console.log(professionalsList.data);
       } catch (error) {
         console.log(error);
       }

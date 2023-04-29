@@ -1,11 +1,9 @@
 import styled from "@emotion/styled";
 import HeaderLayout from "@/layouts/Header";
 import BottomLayout from "@/layouts/Bottom";
-import SideBanner from "@/layouts/SideBanner";
+import ServiceConfirmation from "@/components/ServiceConfirmation";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import ServiceDetail from "@/components/ServiceDetail";
-import ServicesOptions from "@/components/ServiceOptions";
 
 import { getService } from "@/services/servicesRequisitions";
 
@@ -27,30 +25,19 @@ export default function Services() {
     getServiceDetails();
   }, [id]);
 
-  return (
-    <>
-      <HeaderLayout />
-      <Background>
-        <Content>
-          <ServiceDetail service={service} />
-          <div>
-            <ServicesOptions service={service} />
-            <SideBanner />
-          </div>
-        </Content>
-        <BottomLayout />
-      </Background>
-    </>
-  );
+    return (
+        <>
+            <HeaderLayout />
+            <Background>
+                <ServiceConfirmation service={service}/>
+                <BottomLayout/>
+            </Background>
+        </>
+    );
 }
 
 const Background = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-`
-
-const Content = styled.div`
-  display: flex;
-  margin-top: 64px;
+display: flex;
+align-items: center;
+flex-direction: column;
 `
