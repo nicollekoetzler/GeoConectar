@@ -70,6 +70,7 @@ const MyServices = styled.div`
 margin-right: 32px;
 
 p {
-    font-size: 16px;
+    font-size: 18px;
+    color: gray;
 }
 `
