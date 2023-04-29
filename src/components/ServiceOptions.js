@@ -13,7 +13,6 @@ export default function ServicesOptions({ service }) {
       }
       await createMyService(body);
       router.push(`/services/confirmation/${service.id}`);
-      console.log("ALOOOOO")
     } catch (error) {
       console.log(error);
     }

@@ -2,15 +2,15 @@ import styled from "@emotion/styled";
 import React from "react";
 import HeaderLayout from "@/layouts/Header";
 import BottomLayout from "@/layouts/Bottom";
-import Options from "@/layouts/Options";
 import SideBanner from "@/layouts/SideBanner";
 import ProfessionalDetail from "@/components/ProfessionalDetail";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 import { getProfessional } from "@/services/professionalsRequisitions";
+import ProfessionalOptions from "@/components/ProfessionalOptions";
 
-export default function Professionals() {
+export default function Professional() {
     const router = useRouter();
     const { id } = router.query;
     const [professional, setProfessional] = useState({});
@@ -35,7 +35,7 @@ export default function Professionals() {
                 <Content>
                     <ProfessionalDetail professional={professional}/>
                     <div>
-                        <Options />
+                        <ProfessionalOptions professional={professional}/>
                         <SideBanner />
                     </div>
                 </Content>

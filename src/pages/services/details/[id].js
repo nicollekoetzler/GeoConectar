@@ -5,7 +5,7 @@ import SideBanner from "@/layouts/SideBanner";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import ServiceDetail from "@/components/ServiceDetail";
-import ServicesOptions from "@/components/ServicesOptions";
+import ServicesOptions from "@/components/ServiceOptions";
 
 import { getService } from "@/services/servicesRequisitions";
 

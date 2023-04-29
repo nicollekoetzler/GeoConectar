@@ -1,13 +1,13 @@
 import styled from "@emotion/styled";
 
-export default function ServiceConfirmation({service}){
+export default function ProfessionalConfirmation({ professional }){
   return (
     <ContainerTop>
         <h1>Parabéns!</h1>
-        <h3>Você acabou de se conectar com <Bold>{service.user?.name}</Bold> no serviço 
-        <Bold> “{service.title}”</Bold>.</h3>
+        <h3>Você acabou de se conectar com <Bold>{professional.user?.name}</Bold> no serviço 
+        <Bold> “{professional.title}”</Bold>.</h3>
         <h4>O andamento poderá ser monitorado na aba <Bold>“Meus serviços”</Bold>.</h4>
-        <button>Converse com {service.user?.name}</button>
+        <button>Converse com {professional.user?.name}</button>
     </ContainerTop>
   )
 }
