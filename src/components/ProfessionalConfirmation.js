@@ -1,13 +1,30 @@
 import styled from "@emotion/styled";
+import { useRouter } from "next/router";
+import { createChat } from "@/services/chatRequisitions";
 
 export default function ProfessionalConfirmation({ professional }){
+    const router = useRouter();
+
+    async function initChat() {
+        try {
+            const body = { secondUserId: professional.userId };
+
+            await createChat(body);
+
+            router.push("/chat");
+        } catch (error) {
+            if(error.response.status === 409) router.push("/chat");
+            console.log(error);
+        }
+    }
+
   return (
     <ContainerTop>
         <h1>Parabéns!</h1>
         <h3>Você acabou de se conectar com <Bold>{professional.user?.name}</Bold> no serviço 
         <Bold> “{professional.title}”</Bold>.</h3>
         <h4>O andamento poderá ser monitorado na aba <Bold>“Meus serviços”</Bold>.</h4>
-        <button>Converse com {professional.user?.name}</button>
+        <button onClick={ initChat }>Converse com {professional.user?.name}</button>
     </ContainerTop>
   )
 }

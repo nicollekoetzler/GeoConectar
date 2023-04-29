@@ -1,35 +1,51 @@
 import styled from "@emotion/styled";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { createChat } from "@/services/chatRequisitions";
 
 export default function MyService({myService}){
+    const router = useRouter();
 
-function getTitle(){
-  if(myService.service !== null){
-    return myService.service.description
-  } else if (myService.professional !== null){
-    return myService.professional.description
-  } else {
-    return myService.job.description
-  }
-}
+    async function initChat() {
+        try {
+            const body = { secondUserId: myService.userId };
 
-function getDay() {
-  const createdAt = new Date(myService.createdAt);
-  const meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
-  const nomeMesCreatedAt = meses[createdAt.getMonth()];
-  const diaCreatedAt = createdAt.getDate();
-  return `${diaCreatedAt} de ${nomeMesCreatedAt}`
-}
+            await createChat(body);
 
-function getDescription(){
-  if(myService.service !== null){
-    return myService.service.description
-  } else if (myService.professional !== null){
-    return myService.professional.description
-  } else {
-    return myService.job.description
-  }
-}
+            router.push("/chat");
+        } catch (error) {
+            if(error.response.status === 409) router.push("/chat");
+            console.log(error);
+        }
+    }
+
+    function getTitle(){
+        if(myService.service !== null){
+            return myService.service.description
+        } else if (myService.professional !== null){
+            return myService.professional.description
+        } else {
+            return myService.job.description
+        }
+    }
+
+    function getDay() {
+        const createdAt = new Date(myService.createdAt);
+        const meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+        const nomeMesCreatedAt = meses[createdAt.getMonth()];
+        const diaCreatedAt = createdAt.getDate();
+        return `${diaCreatedAt} de ${nomeMesCreatedAt}`
+    }
+
+    function getDescription(){
+        if(myService.service !== null){
+            return myService.service.description
+        } else if (myService.professional !== null){
+            return myService.professional.description
+        } else {
+            return myService.job.description
+        }
+    }
 
   return(
     <Service>
@@ -37,7 +53,7 @@ function getDescription(){
         <h4>Conectado em {getDay()}</h4>
         <h3>{getDescription()}</h3>
           <div>
-              <Link href="/chat"><Button>Ir para as mensagens</Button></Link>
+              <Button onClick={ initChat }>Ir para as mensagens</Button>
           </div>
     </Service>
   )

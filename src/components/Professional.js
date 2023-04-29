@@ -1,7 +1,23 @@
 import styled from "@emotion/styled";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { createChat } from "@/services/chatRequisitions";
 
 export default function Professional({ professional }) {
+    const router = useRouter();
+
+    async function initChat() {
+        try {
+            const body = { secondUserId: professional.userId };
+
+            await createChat(body);
+
+            router.push("/chat");
+        } catch (error) {
+            if(error.response.status === 409) router.push("/chat");
+            console.log(error);
+        }
+    }
 
   function getTime() {
     const now = new Date();
@@ -55,7 +71,7 @@ export default function Professional({ professional }) {
       <h2>{ professional.description }</h2>
       <div>
           <Link href={`/professionals/details/${professional.id}`}><ConnectButton>Conecte-se</ConnectButton></Link>
-          <Link href="/chat"><QuestionButton>Faça uma pergunta</QuestionButton></Link>
+          <QuestionButton onClick={ initChat }>Faça uma pergunta</QuestionButton>
       </div>
     </Service>
   )
