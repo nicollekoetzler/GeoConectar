@@ -53,4 +53,8 @@ const Background = styled.div`
 const Content = styled.div`
   display: flex;
   margin-top: 64px;
+
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+  }
 `

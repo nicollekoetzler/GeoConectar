@@ -51,16 +51,21 @@ export default function Services() {
 
 
 const Background = styled.div`
-display: flex;
-align-items: center;
-flex-direction: column;
-min-height: 100vh;
-width: 100vw;
-`
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100vw;
+`;
 
 const ContainerBottom = styled.div`
-width: 62%;
-background-color: white;
-border-radius: 12px;
-border: 1px solid #CDCDCD;
-`
+    width: 62%;
+    background-color: white;
+    border-radius: 12px;
+    border: 1px solid #CDCDCD;
+
+    @media screen and (max-width: 600px) {
+            width: 98%;
+            height: auto;
+    }
+`;

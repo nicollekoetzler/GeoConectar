@@ -53,4 +53,8 @@ const Info = styled.div`
     color: #727272;
     margin: 16px 0px 24px 0px;
   }
+
+  @media screen and (max-width: 600px) {
+    width: 100%;;
+  }
 `

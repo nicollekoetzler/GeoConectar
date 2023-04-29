@@ -78,4 +78,31 @@ const SingleMessage = styled.div`
         align-items: center;
         justify-content: space-between;
     }
+
+    @media screen and (max-width: 600px) {
+        width: 98%;
+        height: auto;
+        margin: 0;
+        padding: 10px 4px;
+
+        h4 {
+            font-size: 14px
+        }
+
+        h5 {
+            font-size: 12px;
+            color: gray;
+        }
+
+        p {
+            display: none;
+            font-size: 12px;
+            text-align: justify;
+        }
+
+        div {
+            flex-direction: column;
+            margin-bottom: 8px;
+        }
+    }
 `;

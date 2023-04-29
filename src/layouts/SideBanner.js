@@ -18,28 +18,42 @@ border-radius: 12px;
 background-color: #E7E4C9;
 padding: 32px;
 
-h5 {
-    font-family: "Saira Semi Condensed";
-    font-size: 22px;
-    font-weight: 700;
-    color: #4E693C;
-    margin-bottom: 24px;
-}
+    h5 {
+        font-family: "Saira Semi Condensed";
+        font-size: 22px;
+        font-weight: 700;
+        color: #4E693C;
+        margin-bottom: 24px;
+    }
 
-p {
-    line-height: 122.69%;
-    margin: 24px 0px 24px 0;
-}
+    p {
+        line-height: 122.69%;
+        margin: 24px 0px 24px 0;
+    }
+
+    @media screen and (max-width: 600px) {
+        width: 98%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 `
 
 const BannerButton = styled.button`
-height: 52px;
-width: 100%;
-background-color: #A5B167;
-border-radius: 50px;
-border: none;
-cursor: pointer;
-color: white;
-font-size: 14px;
-font-weight: 700;
-`
+    height: 52px;
+    width: 100%;
+    background-color: #A5B167;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+
+    @media screen and (max-width: 600px) {
+        width: 98%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+`;
