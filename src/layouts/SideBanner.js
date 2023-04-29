@@ -17,7 +17,6 @@ height: fit-content;
 border-radius: 12px;
 background-color: #E7E4C9;
 padding: 32px;
-margin-top: 16px;
 
 h5 {
     font-family: "Saira Semi Condensed";

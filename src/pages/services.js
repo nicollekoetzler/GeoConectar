@@ -4,9 +4,9 @@ import HeaderLayout from "@/layouts/Header";
 import BottomLayout from "@/layouts/Bottom";
 import ContainerTop from "@/layouts/ContainerTop";
 import Categories from "@/layouts/Categories";
+import Service from "@/components/Service";
 
 import { getServices } from "@/services/servicesRequisitions";
-import Service from "@/components/Service";
 
 export default function Services() {
   const [services, setServices] = useState([]);
