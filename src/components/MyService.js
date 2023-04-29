@@ -21,11 +21,11 @@ export default function MyService({myService}){
 
     function getTitle(){
         if(myService.service !== null){
-            return myService.service.description
+            return myService.service.title
         } else if (myService.professional !== null){
-            return myService.professional.description
+            return myService.professional.title
         } else {
-            return myService.job.description
+            return myService.job.title
         }
     }
 
@@ -61,44 +61,48 @@ export default function MyService({myService}){
 
 
 const Service = styled.div`
-width: 700px;
-background-color: white;
-border-radius: 12px;
-border: 1px solid #CDCDCD;
-padding: 32px;
-margin-bottom: 16px;
+    width: 700px;
+    background-color: white;
+    border-radius: 12px;
+    border: 1px solid #CDCDCD;
+    padding: 32px;
+    margin-bottom: 16px;
 
-h2 {
-    font-size: 22px;
-}
+    h2 {
+        font-size: 22px;
+    }
 
-h3 {
-    padding: 0px 24px 24px 0px;
-    line-height: 128%;
-}
+    h3 {
+        padding: 0px 24px 24px 0px;
+        line-height: 128%;
+    }
 
-h4 {
-    font-size: 12px;
-    color: #4E693C;
-    margin: 16px 0px 24px 0px;
-}
+    h4 {
+        font-size: 12px;
+        color: #4E693C;
+        margin: 16px 0px 24px 0px;
+    }
 
-p {
-    color: #4E693C;
-    font-weight: 700;
-    font-size: 16px;
-}
-`
+    p {
+        color: #4E693C;
+        font-weight: 700;
+        font-size: 16px;
+    }
+
+    @media screen and (max-width: 600px) {
+        width: 100%;
+    }
+`;
 
 const Button = styled.button`
-height: 35px;
-background: white;
-border-radius: 50px;
-border: none;
-cursor: pointer;
-color: #4E693C;
-border: solid 1px #4E693C;
-font-weight: 700;
-font-size: 14px;
-padding: 0px 32px 0px 32px;
-`
+    height: 35px;
+    background: white;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    color: #4E693C;
+    border: solid 1px #4E693C;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 0px 32px 0px 32px;
+`;

@@ -65,32 +65,32 @@ export default function Services() {
 
 
 const Background = styled.div`
-display: flex;
-align-items: center;
-flex-direction: column;
-min-height: 100vh;
-width: 100vw;
-
-h1 {
-    font-weight: 700;
-    font-size: 24px;
-    margin: 64px 0px 32px 0px;
-}
-
-form {
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-direction: column;
-}
+    min-height: 100vh;
+    width: 100vw;
 
-h3 {
-    align-self: flex-start;
-    font-size: 16px;
-    font-weight: 500;
-    margin-bottom: 8px;
-}
-`
+    h1 {
+        font-weight: 700;
+        font-size: 24px;
+        margin: 64px 0px 32px 0px;
+    }
+
+    form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    h3 {
+        align-self: flex-start;
+        font-size: 16px;
+        font-weight: 500;
+        margin-bottom: 8px;
+    }
+`;
 
 const TitleStyle = styled.div`
 input {

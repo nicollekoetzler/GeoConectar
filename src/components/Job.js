@@ -15,21 +15,21 @@ export default function Job({ job }) {
 }
 
 const Container = styled.div`
-border-top: 1px solid #CDCDCD;
-padding: 32px 0px 32px 0px;
+    border-top: 1px solid #CDCDCD;
+    padding: 32px 0px 32px 0px;
 
-h1 {
-    font-weight: 700;
-    font-size: 22px;
-    color: #4E693C;
-    padding-left: 24px;
-}
+    h1 {
+        font-weight: 700;
+        font-size: 22px;
+        color: #4E693C;
+        padding-left: 24px;
+    }
 
-h3 {
-    font-size: 14px;
-    padding-left: 24px;
-    margin: 16px 0px 24px 0px;
-}
+    h3 {
+        font-size: 14px;
+        padding-left: 24px;
+        margin: 16px 0px 24px 0px;
+    }
 `
 
 const QuestionButton = styled.button`

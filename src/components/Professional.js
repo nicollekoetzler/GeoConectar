@@ -78,25 +78,40 @@ export default function Professional({ professional }) {
 }
 
 const Service = styled.div`
-border-top: 1px solid #CDCDCD;
-padding: 32px 0px 32px 0px;
+    border-top: 1px solid #CDCDCD;
+    padding: 32px 0px 32px 0px;
 
-h1 {
-    font-size: 22px;
-    padding-left: 24px;
-}
+    h1 {
+        font-size: 22px;
+        padding-left: 24px;
+    }
 
-h2 {
-    padding: 0px 24px 24px 24px;
-    line-height: 128%;
-}
+    h2 {
+        padding: 0px 24px 24px 24px;
+        line-height: 128%;
+    }
 
-h3 {
-    font-size: 14px;
-    color: #4E693C;
-    padding-left: 24px;
-    margin: 16px 0px 24px 0px;
-}
+    h3 {
+        font-size: 14px;
+        color: #4E693C;
+        padding-left: 24px;
+        margin: 16px 0px 24px 0px;
+    }
+
+    @media screen and (max-width: 600px) {
+        div {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 0 20px;
+        }
+
+        div > button,
+        div > a > button{
+            margin: 6px 0px;
+        }
+    }
 `
 
 const ConnectButton = styled.button`

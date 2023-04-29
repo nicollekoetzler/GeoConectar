@@ -48,7 +48,7 @@ const Background = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-`
+`;
 
 const Content = styled.div`
   display: flex;
@@ -57,4 +57,4 @@ const Content = styled.div`
   @media screen and (max-width: 600px) {
     flex-direction: column;
   }
-`
+`;
