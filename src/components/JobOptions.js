@@ -35,6 +35,7 @@ height: fit-content;
 border-radius: 12px;
 background-color: #E7E4C9;
 padding: 32px;
+margin-bottom: 16px;
 
 p {
     line-height: 122.69%;
