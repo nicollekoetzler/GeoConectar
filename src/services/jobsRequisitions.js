@@ -14,4 +14,21 @@ async function getJob(id) {
   );
 }
 
-export { getJobs, getJob };
+async function postJob(title, description, company, city) {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${ localStorage.getItem("token") }`
+        }
+    };
+
+    const body = { title, description, company, city };
+
+    return await axios.post(
+        process.env.NEXT_PUBLIC_API_URL +
+        process.env.NEXT_PUBLIC_JOBS_ROUTE,
+        body,
+        config
+    );
+}
+
+export { getJobs, getJob, postJob };
