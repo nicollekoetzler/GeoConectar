@@ -14,7 +14,7 @@ export default function JobDetail({ job }) {
         <Info>
             <h2>{ job.title }</h2>
             <h5>{job.company} | Publicado em { getDate() }</h5>
-            <h3>Descrição do projeto:</h3>
+            <h3>Descrição da vaga:</h3>
             <h4>{ job.description }</h4>
         </Info>
     )
@@ -45,7 +45,7 @@ h4 {
 }
 
 h5 {
-    font-size: 14px;
+    font-size: 12px;
     color: #727272;
     margin: 16px 0px 24px 0px;
 }

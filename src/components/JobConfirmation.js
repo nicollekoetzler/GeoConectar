@@ -1,33 +1,15 @@
 import styled from "@emotion/styled";
-import React from "react";
-import HeaderLayout from "@/layouts/Header";
-import BottomLayout from "@/layouts/Bottom";
 
-export default function Services() {
-
-    return (
-        <>
-            <HeaderLayout />
-            <Background>
-                <ContainerTop>
-                    <h1>Parabéns!</h1>
-                    <h3>Você acabou de aplicar para a vaga <Bold>“Operador De Loja Revezador”</Bold>.</h3>
-                    <h4>O andamento poderá ser monitorado na aba <Bold>“Meus serviços”</Bold>.</h4>
-                    <button>Converse com João</button>
-                </ContainerTop>
-                <BottomLayout/>
-            </Background>
-        </>
-    );
+export default function JobConfirmation({ job }){
+  return(
+    <ContainerTop>
+        <h1>Parabéns!</h1>
+        <h3>Você acabou de aplicar para a vaga <Bold>“{job.title}”</Bold> de <Bold>{job.company}</Bold>.</h3>
+        <h4>O andamento poderá ser monitorado na aba <Bold>“Meus serviços”</Bold>.</h4>
+        <button>Ir para o chat</button>
+    </ContainerTop>
+  )
 }
-
-
-
-const Background = styled.div`
-display: flex;
-align-items: center;
-flex-direction: column;
-`
 
 const ContainerTop = styled.div`
 height: 245px;
@@ -63,7 +45,6 @@ h4 {
 }
 
 button {
-    width: 280px;
     height: 42px;
     background: #A5B167;
     border-radius: 50px;
@@ -73,6 +54,7 @@ button {
     font-size: 16px;
     font-weight: 700;
     margin-top: 24px;
+    padding: 0px 32px 0px 32px;
 }
 `
 

@@ -1,15 +1,11 @@
 import styled from "@emotion/styled";
-import React from "react";
 import HeaderLayout from "@/layouts/Header";
 import BottomLayout from "@/layouts/Bottom";
-import SideBanner from "@/layouts/SideBanner";
-import JobDetail from "@/components/JobDetail";
-import { useEffect, useState } from "react";
+import JobConfirmation from "@/components/JobConfirmation";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 import { getJob } from "@/services/jobsRequisitions";
-import JobOptions from "@/components/JobOptions";
-
 
 export default function Jobs() {
     const router = useRouter();
@@ -20,6 +16,7 @@ export default function Jobs() {
       try {
         const jobDetails = await getJob(id);
         setJob(jobDetails.data);
+        console.log(jobDetails.data)
       } catch (error) {
         console.log(error);
       }
@@ -33,13 +30,7 @@ export default function Jobs() {
         <>
             <HeaderLayout />
             <Background>
-                <Content>
-                    <JobDetail job={job}/>
-                    <div>
-                        <JobOptions job={job}/>
-                        <SideBanner />
-                    </div>
-                </Content>
+                <JobConfirmation job={job}/>
                 <BottomLayout/>
             </Background>
         </>
@@ -54,7 +45,3 @@ align-items: center;
 flex-direction: column;
 `
 
-const Content = styled.div`
-display: flex;
-margin-top: 64px;
-`
