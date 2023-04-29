@@ -113,6 +113,25 @@ const Container = styled.div`
     margin-top: 8px;
     cursor: pointer;
   }
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    margin: 0 16px;
+    padding: 24px 16px;
+
+    form {
+        margin: 0 10px; 
+    }
+
+    h1 {
+        font-size: 36px;
+    }
+
+    h2 {
+        text-align: center;
+        font-size: 20px;
+    }
+  }
 `;
 
 const Button = styled.div`
@@ -126,6 +145,14 @@ const Button = styled.div`
     color: white;
     font-size: 16px;
     font-weight: 700;
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+
+    button {
+        width: 100%;
+    }
   }
 `;
 
@@ -146,6 +173,14 @@ const FormStyle = styled.div`
 
   input:focus {
     outline: 1px solid #a5b167;
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+
+    input {
+        width: 100%;
+    }
   }
 `;
 

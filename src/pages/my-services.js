@@ -49,27 +49,41 @@ export default function Services() {
 
 
 const Background = styled.div`
-display: flex;
-align-items: center;
-flex-direction: column;
-min-height: 100vh;
-width: 100vw;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100vw;
 
-h1 {
-    font-weight: 700;
-    font-size: 24px;
-    margin: 64px 0px 32px 0px;
-}
-`
+    h1 {
+        font-weight: 700;
+        font-size: 24px;
+        margin: 64px 0px 32px 0px;
+    }
+
+    @media screen and (max-width: 600px) {
+        h1 {
+            margin: 20px auto;
+        }
+    }
+`;
 
 const Content = styled.div`
-display: flex;
-`
+    display: flex;
+
+    @media screen and (max-width: 600px) {
+        flex-direction: column;
+        align-items: center;
+    }
+`;
 
 const MyServices = styled.div`
-margin-right: 32px;
+    margin-right: 32px;
 
-p {
-    font-size: 16px;
-}
-`
+    @media screen and (max-width: 600px) {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+`;

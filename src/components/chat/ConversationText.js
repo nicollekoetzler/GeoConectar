@@ -102,9 +102,17 @@ const Bottom = styled.div`
         font-weight: 700;
         margin-left: 16px;
     }
-`
 
-const Gray = styled.span`
-    color: gray;
-    font-weight: 400;
-`
+    @media screen and (max-width: 600px) {
+        input {
+            width: 100%;
+            margin-left: 4px;
+        }
+
+        button {
+            height: auto;
+            padding: 14px 10px;
+            margin: 0 4px;
+        }
+    }
+`;

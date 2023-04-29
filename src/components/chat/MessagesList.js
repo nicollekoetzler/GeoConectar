@@ -83,4 +83,8 @@ const SelectedMessage = styled.div`
         align-self: center;
         margin: auto 0;
     }
+
+    @media screen and (max-width: 600px) {
+        padding: 0 10px 10px 10px;
+    }
 `;

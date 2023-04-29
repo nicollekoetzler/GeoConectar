@@ -19,4 +19,8 @@ const Message = styled.div`
     background-color: ${({addressed}) => addressed ? "#EDF0DE" : "#4E693C"};
     line-height: 128%;
     color: ${({addressed}) => addressed ? "black" : "white" };
+
+    @media screen and (max-width: 600px) {
+        font-size: 14px;
+    }
 `;
