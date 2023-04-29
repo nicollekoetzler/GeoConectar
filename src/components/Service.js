@@ -41,6 +41,14 @@ export default function Service({ service }) {
       }
       return `${minutes} minutos`;
     }
+
+    const seconds = now.getSeconds() - createdAt.getSeconds();
+    if (seconds > 0) {
+      if (seconds === 1) {
+        return `${seconds} segundo`;
+      }
+      return `${seconds} segundos`;
+    }
   }
 
   async function initChat() {
@@ -91,6 +99,21 @@ const Container = styled.div`
     padding-left: 24px;
     margin: 16px 0px 24px 0px;
   }
+
+    @media screen and (max-width: 600px) {
+        div {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 0 20px;
+        }
+
+        div > button,
+        div > a > button{
+            margin: 6px 0px;
+        }
+    }
 `;
 
 const ConnectButton = styled.button`

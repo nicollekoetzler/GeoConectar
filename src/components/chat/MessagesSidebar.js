@@ -54,6 +54,11 @@ const Top = styled.div`
     align-items: center;
     padding-left: 32px;
     font-weight: 500;
+
+    @media screen and (max-width: 600px) {
+        padding: 0;
+        justify-content: center;
+    }
 `;
 
 const Left = styled.div`
@@ -66,4 +71,10 @@ const AllMessages = styled.div`
     height: 388px;
     padding-top: 8px;
     overflow-y: scroll;
+
+    @media screen and (max-width: 600px) {
+        display: flex;
+        flex-direction: column;
+        padding: 6px;
+    }
 `;

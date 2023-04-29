@@ -60,6 +60,11 @@ const ContainerBottom = styled.div`
   background-color: white;
   border-radius: 12px;
   border: 1px solid #cdcdcd;
+
+    @media screen and (max-width: 600px) {
+        width: 98%;
+        height: auto;
+    }
 `;
 
 const Category = styled.div`
