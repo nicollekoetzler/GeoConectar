@@ -1,12 +1,29 @@
 import styled from "@emotion/styled";
+import { createChat } from "@/services/chatRequisitions";
+import { useRouter } from "next/router";
 
 export default function JobConfirmation({ job }){
+    const router = useRouter();
+
+    async function initChat() {
+        try {
+            const body = { secondUserId: job.userId };
+
+            await createChat(body);
+
+            router.push("/chat");
+        } catch (error) {
+            if(error.response.status === 409) router.push("/chat");
+            console.log(error);
+        }
+    }
+
   return(
     <ContainerTop>
         <h1>Parabéns!</h1>
         <h3>Você acabou de aplicar para a vaga <Bold>“{job.title}”</Bold> de <Bold>{job.company}</Bold>.</h3>
         <h4>O andamento poderá ser monitorado na aba <Bold>“Meus serviços”</Bold>.</h4>
-        <button>Ir para o chat</button>
+        <button onClick={ initChat } >Ir para o chat</button>
     </ContainerTop>
   )
 }

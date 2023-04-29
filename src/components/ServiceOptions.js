@@ -1,9 +1,24 @@
+import { createChat } from "@/services/chatRequisitions";
 import { createMyService } from "@/services/myServicesRequisitions";
 import styled from "@emotion/styled";
 import { useRouter } from "next/router";
 
 export default function ServicesOptions({ service }) {
-  const router = useRouter();
+    const router = useRouter();
+
+    async function initChat() {
+        try {
+            const body = { secondUserId: service.userId };
+
+            await createChat(body);
+
+            router.push("/chat");
+        } catch (error) {
+            if(error.response.status === 409) router.push("/chat");
+            console.log(error);
+        }
+    }
+
   async function connectServices() {
     try {
       const body = { 
@@ -24,7 +39,7 @@ export default function ServicesOptions({ service }) {
           <p>Gostou do serviço?</p>
           <ConnectButton onClick={connectServices}>Conecte-se</ConnectButton>
           <p>Ficou com alguma dúvida?</p>
-          <ChatButton>Converse com o cliente</ChatButton>
+          <ChatButton onClick={ createChat }>Converse com o cliente</ChatButton>
           <div></div>
           <h4>{service.user?.name}</h4>
       </OptionsBanner>

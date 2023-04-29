@@ -1,3 +1,4 @@
+import { createChat } from "@/services/chatRequisitions";
 import { createMyService } from "@/services/myServicesRequisitions";
 import styled from "@emotion/styled";
 import { useRouter } from "next/router";
@@ -18,13 +19,26 @@ export default function JobOptions({ job }) {
     }
   }
 
+    async function initChat() {
+        try {
+            const body = { secondUserId: job.userId };
+
+            await createChat(body);
+
+            router.push("/chat");
+        } catch (error) {
+            if(error.response.status === 409) router.push("/chat");
+            console.log(error);
+        }
+    }
+
 
   return(
       <OptionsBanner>
           <p>Gostou da vaga?</p>
           <ConnectButton onClick={connectServices}>Conecte-se</ConnectButton>
           <p>Ficou com alguma dúvida?</p>
-          <ChatButton>Converse com o cliente</ChatButton>
+          <ChatButton onClick={ initChat }>Converse com o cliente</ChatButton>
       </OptionsBanner>
   )
 }
