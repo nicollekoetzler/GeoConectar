@@ -1,3 +1,4 @@
+import { createChat } from "@/services/chatRequisitions";
 import { createMyService } from "@/services/myServicesRequisitions";
 import styled from "@emotion/styled";
 import { useRouter } from "next/router";
@@ -18,43 +19,60 @@ export default function JobOptions({ job }) {
     }
   }
 
+    async function initChat() {
+        try {
+            const body = { secondUserId: job.userId };
+
+            await createChat(body);
+
+            router.push("/chat");
+        } catch (error) {
+            if(error.response.status === 409) router.push("/chat");
+            console.log(error);
+        }
+    }
+
 
   return(
       <OptionsBanner>
           <p>Gostou da vaga?</p>
           <ConnectButton onClick={connectServices}>Conecte-se</ConnectButton>
           <p>Ficou com alguma dúvida?</p>
-          <ChatButton>Converse com o cliente</ChatButton>
+          <ChatButton onClick={ initChat }>Converse com o cliente</ChatButton>
       </OptionsBanner>
   )
 }
 
 const OptionsBanner = styled.div`
-width: 273px;
-height: fit-content;
-border-radius: 12px;
-background-color: #E7E4C9;
-padding: 32px;
-margin-bottom: 16px;
+    width: 273px;
+    height: fit-content;
+    border-radius: 12px;
+    background-color: #E7E4C9;
+    padding: 32px;
+    margin-bottom: 16px;
 
-p {
-    line-height: 122.69%;
-    margin: 0px 0px 16px 0;
-    font-size: 14px;
-}
+    p {
+        line-height: 122.69%;
+        margin: 0px 0px 16px 0;
+        font-size: 14px;
+    }
 
-div {
-  margin: 16px 0px 16px 0px;
-  height: 1px;
-  width: 100%;
-  background-color: #D2CEAB;
-}
+    div {
+    margin: 16px 0px 16px 0px;
+    height: 1px;
+    width: 100%;
+    background-color: #D2CEAB;
+    }
 
-h4 {
-  font-size: 12px;
-  font-weight: 500;
-  color: #4E693C;
-}
+    h4 {
+    font-size: 12px;
+    font-weight: 500;
+    color: #4E693C;
+    }
+
+    @media screen and (max-width: 600px) {
+        width: 100%;;
+    }
 `
 
 const ConnectButton = styled.button`

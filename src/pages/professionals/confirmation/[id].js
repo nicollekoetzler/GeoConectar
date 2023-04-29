@@ -39,7 +39,7 @@ export default function Professionals() {
 
 
 const Background = styled.div`
-display: flex;
-align-items: center;
-flex-direction: column;
-`
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+`;

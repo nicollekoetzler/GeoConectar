@@ -36,6 +36,10 @@ padding: 32px;
         display: flex;
         flex-direction: column;
         align-items: center;
+
+        p {
+            text-align: center;
+        }
     }
 `
 
@@ -52,8 +56,10 @@ const BannerButton = styled.button`
 
     @media screen and (max-width: 600px) {
         width: 98%;
+        padding: 10px 20px;
         display: flex;
         flex-direction: column;
         align-items: center;
+        text-align: center;
     }
 `;

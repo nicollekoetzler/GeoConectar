@@ -22,11 +22,12 @@ export default function Services() {
         try {
             if(serviceType === "service") {
                 await postService(title, description);
+                router.push("/services");
             } else {
                 await postJob(title, description, company, city);
+                router.push("/jobs");
             }
 
-            router.push("/my-services");
             setInputsDefaultValue();
             setIsLoading(false);
 
@@ -122,72 +123,99 @@ export default function Services() {
 
 
 const Background = styled.div`
-display: flex;
-align-items: center;
-flex-direction: column;
-min-height: 100vh;
-width: 100vw;
-
-h1 {
-    font-weight: 700;
-    font-size: 24px;
-    margin: 64px 0px 32px 0px;
-}
-
-form {
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-direction: column;
-}
+    min-height: 100vh;
+    width: 100vw;
 
-h3 {
-    align-self: flex-start;
-    font-size: 16px;
-    font-weight: 500;
-    margin-bottom: 8px;
-}
-`
+    h1 {
+        font-weight: 700;
+        font-size: 24px;
+        margin: 64px 0px 32px 0px;
+    }
+
+    form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    h3 {
+        align-self: flex-start;
+        font-size: 16px;
+        font-weight: 500;
+        margin-bottom: 8px;
+    }
+
+    @media screen and (max-width: 600px) {
+        form {
+            width: 90%;
+        }
+    }
+`;
 
 const FormStyle = styled.div`
-input {
-    width: 522px;
-    height: 46px;
-    background-color: white;
-    border: none;
-    font-weight: 400;
-    font-size: 14px;
-    padding-left: 20px;
-    border: 1px solid #CDCDCD;
-    border-radius: 12px;
-    transition: 0.5s;
-    margin-bottom: 24px;
-    outline: 1px solid white;
-}
-`
+    input {
+        width: 522px;
+        height: 46px;
+        background-color: white;
+        border: none;
+        font-weight: 400;
+        font-size: 14px;
+        padding-left: 20px;
+        border: 1px solid #CDCDCD;
+        border-radius: 12px;
+        transition: 0.5s;
+        margin-bottom: 24px;
+        outline: 1px solid white;
+    }
+
+    @media screen and (max-width: 600px) {
+        width: 100%;
+
+        input {
+            width: 100%;
+        }
+    }
+`;
 
 const DescriptionForm = styled.div`
-input {
-    width: 522px;
-    height: 110px;
-    background-color: white;
-    border: none;
-    font-weight: 400;
-    font-size: 14px;
-    padding-left: 20px;
-    padding-bottom: 65px;
-    border: 1px solid #CDCDCD;
-    border-radius: 12px;
-    transition: 0.5s;
-    margin-bottom: 24px;
-    outline: 1px solid white;
-}
-`
+    input {
+        width: 522px;
+        height: 110px;
+        background-color: white;
+        border: none;
+        font-weight: 400;
+        font-size: 14px;
+        padding-left: 20px;
+        padding-bottom: 65px;
+        border: 1px solid #CDCDCD;
+        border-radius: 12px;
+        transition: 0.5s;
+        margin-bottom: 24px;
+        outline: 1px solid white;
+    }
+
+    @media screen and (max-width: 600px) {
+        width: 100%;
+
+        input {
+            width: 100%;
+        }
+    }
+`;
+
 const Goals = styled.div`
-width: 522px;
-display: flex;
-margin: 8px 0px 24px 0px;
-`
+    width: 522px;
+    display: flex;
+    margin: 8px 0px 24px 0px;
+
+    @media screen and (max-width: 600px) {
+        width: 100%;
+    }
+`;
 
 const Request = styled.div`
     width: 216px;
@@ -213,7 +241,13 @@ const Request = styled.div`
         text-align: center;
         align-self: center;
     }
-`
+
+    @media screen and (max-width: 600px) {
+        display: flex;
+        justify-content: center;
+        align-items: center
+    }
+`;
 
 const Offer = styled.div`
     width: 216px;
@@ -238,19 +272,33 @@ const Offer = styled.div`
         text-align: center;
         align-self: center;
     }
-`
+
+    @media screen and (max-width: 600px) {
+        display: flex;
+        justify-content: center;
+        align-items: center
+    }
+`;
 
 const Button = styled.div`
-button {
-    width: 522px;
-    height: 42px;
-    background-color: #4E693C;
-    border-radius: 50px;
-    border: none;
-    cursor: pointer;
-    color: white;
-    font-size: 16px;
-    font-weight: 700;
-    margin-top: 8px;
-}
-`
+    button {
+        width: 522px;
+        height: 42px;
+        background-color: #4E693C;
+        border-radius: 50px;
+        border: none;
+        cursor: pointer;
+        color: white;
+        font-size: 16px;
+        font-weight: 700;
+        margin-top: 8px;
+    }
+
+    @media screen and (max-width: 600px) {
+        width: 100%;
+        
+        button {
+            width: 100%;
+        }
+    }
+`;

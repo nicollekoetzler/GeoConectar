@@ -22,4 +22,8 @@ const Bottom = styled.div`
     justify-content: center;
     margin-top: 100px;
     align-self: flex-end;
-`
+
+    @media screen and (max-width: 600px) {
+        margin-top: 30px;
+    }
+`;

@@ -22,43 +22,47 @@ export default function ProfessionalDetail({ professional }){
 
 
 const Info = styled.div`
-width: 700px;
-height: fit-content;
-background-color: white;
-border-radius: 12px;
-border: 1px solid #CDCDCD;
-padding: 32px;
-margin-bottom: 16px;
-margin-right: 32px;
-
-p {
-  font-size: 14px;
-  margin-bottom: 16px;
-}
-
-h2 {
-    font-size: 22px;
-}
-
-h3{
-    font-size: 16px;
+    width: 700px;
+    height: fit-content;
+    background-color: white;
+    border-radius: 12px;
+    border: 1px solid #CDCDCD;
+    padding: 32px;
     margin-bottom: 16px;
-    color: #4E693C;
-}
+    margin-right: 32px;
 
-h4 {
+    p {
     font-size: 14px;
-    line-height: 128%;
-}
+    margin-bottom: 16px;
+    }
 
-h5 {
-    font-size: 12px;
-    color: #727272;
-    margin: 16px 0px 24px 0px;
-}
-`
+    h2 {
+        font-size: 22px;
+    }
+
+    h3{
+        font-size: 16px;
+        margin-bottom: 16px;
+        color: #4E693C;
+    }
+
+    h4 {
+        font-size: 14px;
+        line-height: 128%;
+    }
+
+    h5 {
+        font-size: 12px;
+        color: #727272;
+        margin: 16px 0px 24px 0px;
+    }
+
+    @media screen and (max-width: 600px) {
+        width: 100%;;
+    }
+`;
 
 const Verde = styled.span `
   color: #4E693C;
   font-weight: 500;
-`
+`;
