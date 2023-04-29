@@ -4,10 +4,10 @@ export default function ServiceConfirmation({service}){
   return (
     <ContainerTop>
         <h1>Parabéns!</h1>
-        <h3>Você acabou de se conectar com <Bold>João Medeiros</Bold> no serviço 
-        <Bold> “Conciliação de planilha”</Bold>.</h3>
+        <h3>Você acabou de se conectar com <Bold>{service.user?.name}</Bold> no serviço 
+        <Bold> “{service.title}”</Bold>.</h3>
         <h4>O andamento poderá ser monitorado na aba <Bold>“Meus serviços”</Bold>.</h4>
-        <button>Converse com João</button>
+        <button>Converse com {service.user?.name}</button>
     </ContainerTop>
   )
 }
@@ -46,7 +46,7 @@ h4 {
 }
 
 button {
-    width: 280px;
+    min-width: 280px;
     height: 42px;
     background: #A5B167;
     border-radius: 50px;
