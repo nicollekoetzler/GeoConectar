@@ -16,7 +16,6 @@ export default function Professionals() {
     try {
       const professionalDetails = await getProfessional(id);
       setProfessional(professionalDetails.data);
-      console.log(professionalDetails.data)
     } catch (error) {
       console.log(error);
     }
