@@ -16,7 +16,7 @@ export default function SignIn() {
       const result = await signin(user);
       const token = result.data.token;
       localStorage.setItem("token", token);
-      router.push("/my-services");
+      router.push("/services");
     } catch (error) {
       console.log(error);
     }

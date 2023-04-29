@@ -80,6 +80,11 @@ const Content = styled.div`
 const MyServices = styled.div`
     margin-right: 32px;
 
+    p {
+        color: gray;
+        font-size: 16px;
+    }
+
     @media screen and (max-width: 600px) {
         margin: 0;
         display: flex;

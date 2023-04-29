@@ -38,6 +38,14 @@ export default function Professional({ professional }) {
       }
       return `${minutes} minutos`;
     }
+
+    const seconds = now.getSeconds() - createdAt.getSeconds();
+    if (seconds > 0) {
+      if (seconds === 1) {
+        return `${seconds} segundo`;
+      }
+      return `${seconds} segundos`;
+    }
   }
 
   return(
