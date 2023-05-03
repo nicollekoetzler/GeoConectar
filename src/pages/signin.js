@@ -1,3 +1,4 @@
+import ErrorMessage from "@/components/ErrorMessage";
 import { signin } from "@/services/authRequisitions";
 import styled from "@emotion/styled";
 import { useRouter } from "next/router";
@@ -9,16 +10,24 @@ export default function SignIn() {
     email: "",
     password: "",
   });
+  const [error, setError] = useState([]);
 
   async function handleSubmit(e) {
-    e.preventDefault();
+      e.preventDefault();
+      setError([]);
+
     try {
       const result = await signin(user);
       const token = result.data.token;
       localStorage.setItem("token", token);
       router.push("/services");
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      const INVALID_CREDENTIALS = "Email ou senha incorretos";
+
+      if(err.response.status === 401) {
+        setError([INVALID_CREDENTIALS]);
+      }
+      console.log(err);
     }
   }
 
@@ -28,6 +37,7 @@ export default function SignIn() {
         <h1>GeoConectar</h1>
         <h2>Faça o seu login</h2>
         <form onSubmit={handleSubmit}>
+          { error.length > 0 ? <ErrorMessage messages={ error } /> : <></> }
           <h3>Email</h3>
           <FormStyle>
             <input

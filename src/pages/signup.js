@@ -1,8 +1,8 @@
+import ErrorMessage from "@/components/ErrorMessage";
 import { signup } from "@/services/authRequisitions";
 import styled from "@emotion/styled";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 export default function SignUp() {
   const router = useRouter();
@@ -13,18 +13,83 @@ export default function SignUp() {
     password: "",
     confirmPassword: "",
   });
+  const [ error, setError ] = useState([]);
 
   async function handleSubmit(e) {
     e.preventDefault();
+    let submitErrors = [];
+
+    
+    if (newUser.password !== newUser.confirmPassword) {
+        const DIFFERENT_PASSWORDS_MESSAGE = "As senhas não são iguais";
+        setNewUser({ ...newUser, confirmPassword: ""});
+        submitErrors = [...submitErrors, DIFFERENT_PASSWORDS_MESSAGE];
+    }
+    if(newUser.cpf.length !== 11) {
+        const CPF_LENGTH_MESSAGE = "O CPF deve conter 11 inteiros";
+        submitErrors = [...submitErrors, CPF_LENGTH_MESSAGE];
+    }
+    if(newUser.name.length < 3) {
+        const NAME_LENGTH_MESSAGE = "O nome deve conter no mínimo 3 caracteres";
+        submitErrors = [...submitErrors, NAME_LENGTH_MESSAGE];
+    }
+    if(newUser.password.length < 6) {
+        const PASSWORD_LENGTH_MESSAGE = "A senha deve conter no mínimo 6 caracteres";
+        submitErrors = [...submitErrors, PASSWORD_LENGTH_MESSAGE];
+    }
+
+    if(submitErrors.length > 0) {
+        setError(submitErrors);
+        return;
+    }
+    
     try {
-      if (newUser.password === newUser.confirmPassword) {
         delete newUser.confirmPassword;
         await signup(newUser);
+        
         router.push("/signin");
+    } catch (err) {
+        const CONFLICT_MESSAGE = "Email ou CPF já cadastrados";
+        
+        if(err.response.status === 409) {
+            setError([ CONFLICT_MESSAGE ]);
       }
-    } catch (error) {
-      console.log(error);
+      
+      console.log(err);
     }
+  }
+  
+  function removeErrorMessage(...errorMessages) {
+      let errors = error;
+      
+      for(const errorMessage of errorMessages) {
+        const indexInvalidMessage = errors.indexOf(errorMessage);
+        
+        if(indexInvalidMessage !== -1) {
+            errors = errors.splice(indexInvalidMessage, 1);
+        }
+    }
+
+    setError(errors);
+  }
+
+  function removeAllErrorMessage() {
+    console.log("baaijafgj")
+    setError([]);
+  }
+
+  function handleCpfChange(e) {
+    const cpf = e.target.value;
+    const INVALID_CPF_MESSAGE = "O CPF deve ser composto apenas por números";
+    removeErrorMessage(INVALID_CPF_MESSAGE);
+
+    if(cpf.length > 11) return;
+    else if(isNaN(Number(cpf))) {
+        setError([ ...error, INVALID_CPF_MESSAGE ]);
+        return;
+    }
+
+    setNewUser({ ...newUser, cpf });
   }
 
   return (
@@ -33,6 +98,7 @@ export default function SignUp() {
         <h1>GeoConectar</h1>
         <h2>Cadastre-se</h2>
         <form onSubmit={handleSubmit}>
+          { error.length > 0 ? <ErrorMessage messages={ error } /> : <></> }
           <h3>Nome completo</h3>
           <FormStyle>
             <input
@@ -40,6 +106,7 @@ export default function SignUp() {
               placeholder="Digite o seu nome"
               value={newUser.name}
               onChange={(e) => setNewUser({ ...newUser, name: e.target.value })}
+              required
             />
           </FormStyle>
           <h3>Email</h3>
@@ -51,6 +118,7 @@ export default function SignUp() {
               onChange={(e) =>
                 setNewUser({ ...newUser, email: e.target.value })
               }
+              required
             />
           </FormStyle>
           <h3>CPF</h3>
@@ -59,7 +127,8 @@ export default function SignUp() {
               type="text"
               placeholder="Digite seu CPF"
               value={newUser.cpf}
-              onChange={(e) => setNewUser({ ...newUser, cpf: e.target.value })}
+              onChange={ handleCpfChange }
+              required
             />
           </FormStyle>
           <h3>Senha</h3>
@@ -71,6 +140,7 @@ export default function SignUp() {
               onChange={(e) =>
                 setNewUser({ ...newUser, password: e.target.value })
               }
+              required
             />
           </FormStyle>
           <h3>Confirme sua senha</h3>
@@ -82,6 +152,7 @@ export default function SignUp() {
               onChange={(e) =>
                 setNewUser({ ...newUser, confirmPassword: e.target.value })
               }
+              required
             />
           </FormStyle>
           <Button>
