@@ -41,6 +41,7 @@ const ContainerTop = styled.div`
     margin: 64px 0px 32px 0px;
     padding: 32px;
     text-align: center;
+    font-family: "Roboto";
 
     h1 {
         font-size: 24px;

@@ -35,6 +35,7 @@ const Container = styled.div`
     }
 
     h3 {
+        font-family: "Roboto";
         font-size: 24px;
         width: 65%;
         line-height: 128%;

@@ -80,6 +80,7 @@ export default function Professional({ professional }) {
 const Service = styled.div`
     border-top: 1px solid #CDCDCD;
     padding: 32px 0px 32px 0px;
+    font-family: "Roboto";
 
     h1 {
         font-size: 22px;

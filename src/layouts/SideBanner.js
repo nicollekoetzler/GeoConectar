@@ -17,6 +17,7 @@ height: fit-content;
 border-radius: 12px;
 background-color: #E7E4C9;
 padding: 32px;
+font-family: "Roboto";
 
     h5 {
         font-family: "Saira Semi Condensed";

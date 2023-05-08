@@ -17,6 +17,7 @@ export default function Job({ job }) {
 const Container = styled.div`
     border-top: 1px solid #CDCDCD;
     padding: 32px 0px 32px 0px;
+    font-family: "Roboto";
 
     h1 {
         font-weight: 700;
