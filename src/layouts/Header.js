@@ -1,11 +1,14 @@
 import styled from "@emotion/styled";
-import React from "react";
+import { useState } from "react";
 import { BsChatDots } from 'react-icons/bs';
 import { AiOutlineUser } from "react-icons/ai";
 import Link from "next/link"
+import Logout from "@/components/Logout";
 
 
 export default function HeaderLayout() {
+    const [logout , setLogout] = useState(false);
+
     return(
         <TopBar>
             <TopBarLeftLinks>
@@ -18,8 +21,9 @@ export default function HeaderLayout() {
             </TopBarLinks>
             <TopBarRightLinks>
                 <Link href="/chat"><Chat/></Link>
-                <User/>
+                <User onClick={() => {setLogout(!logout)}} logout={logout}/>
             </TopBarRightLinks>
+            {logout ? <Logout setLogout={setLogout}/> : ''}
         </TopBar>
     )
 }
