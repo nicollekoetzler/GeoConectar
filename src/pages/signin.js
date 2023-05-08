@@ -79,6 +79,7 @@ const Background = styled.div`
   align-items: center;
   justify-content: center;
   background-color: #F9F9F9;
+  font-family: "Roboto";
 `;
 
 const Container = styled.div`
