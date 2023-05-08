@@ -29,6 +29,7 @@ const Info = styled.div`
     padding: 32px;
     margin-bottom: 16px;
     margin-right: 32px;
+    font-family: "Roboto";
 
     h2 {
         font-size: 22px;

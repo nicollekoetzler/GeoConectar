@@ -52,6 +52,7 @@ const OptionsBanner = styled.div`
     background-color: #E7E4C9;
     padding: 32px;
     margin-bottom: 16px;
+    font-family: "Roboto";
 
     p {
         line-height: 122.69%;
