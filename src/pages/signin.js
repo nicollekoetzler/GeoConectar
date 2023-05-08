@@ -68,7 +68,7 @@ const Background = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #e8e5cb;
+  background-color: #F9F9F9;
 `;
 
 const Container = styled.div`
