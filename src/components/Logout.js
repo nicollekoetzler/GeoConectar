@@ -39,10 +39,10 @@ const LogoutComponents = styled.div`
     border-radius: 0px 0px 0px 20px;
 
     p {
-        color: #585858;
+        color: #4E693C;
         font-family: "Roboto";
         font-size: 14px;
-        font-weight: 500;
+        font-weight: 700;
 
         &:hover {
             cursor: pointer;
