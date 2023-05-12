@@ -128,6 +128,7 @@ const Background = styled.div`
     flex-direction: column;
     min-height: 100vh;
     width: 100vw;
+    font-family: "Roboto";
 
     h1 {
         font-weight: 700;

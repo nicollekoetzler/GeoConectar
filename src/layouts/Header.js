@@ -16,8 +16,7 @@ export default function HeaderLayout() {
             </TopBarLeftLinks>
             <TopBarLinks>
                 <Link href="/my-services"><h3>Meus Serviços</h3></Link>
-                <Link href="/request"><h3>Divulgue um serviço</h3></Link>
-                <Link href="/offer"><h3>Anuncie um produto</h3></Link>
+                <Link href="/request-or-offer"><h3>Criar serviço</h3></Link>
             </TopBarLinks>
             <TopBarRightLinks>
                 <Link href="/chat"><Chat/></Link>

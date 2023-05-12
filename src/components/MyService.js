@@ -20,12 +20,14 @@ export default function MyService({myService}){
     }
 
     function getTitle(){
-        if(myService.service !== null){
-            return myService.service.title
+        if(myService.title !== undefined){
+            return myService.title
         } else if (myService.professional !== null){
-            return myService.professional.title
+            return myService.professional?.title
+        } else if (myService.service !== null){
+            return myService.service?.title
         } else {
-            return myService.job.title
+            return myService.job?.title
         }
     }
 
@@ -38,12 +40,14 @@ export default function MyService({myService}){
     }
 
     function getDescription(){
-        if(myService.service !== null){
-            return myService.service.description
+        if(myService.description !== undefined){
+            return myService.description
         } else if (myService.professional !== null){
-            return myService.professional.description
+            return myService.professional?.description
+        } else if (myService.service !== null){
+            return myService.service?.description
         } else {
-            return myService.job.description
+            return myService.job?.description
         }
     }
 

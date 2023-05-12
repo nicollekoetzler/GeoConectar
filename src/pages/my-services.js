@@ -14,6 +14,7 @@ export default function Services() {
       try {
         const myServicesList = await getMyServices();
         setMyServices(myServicesList.data);
+        console.log(myServicesList.data)
       } catch (error) {
         console.log(error);
       }

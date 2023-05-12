@@ -25,6 +25,7 @@ const Background = styled.div`
 display: flex;
 align-items: center;
 justify-content: center;
+font-family: "Roboto";
 `
 
 const ChatContainer = styled.div`
