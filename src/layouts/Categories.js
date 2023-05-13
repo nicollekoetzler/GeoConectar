@@ -1,12 +1,14 @@
 import styled from "@emotion/styled";
-import Link from "next/link"
+import Link from "next/link";
+import { useRouter } from "next/router";;
 
 export default function Categories() {
+    const router = useRouter();
     return(
         <Category>
-            <Link href="/services"><button>Serviços</button></Link>
-            <Link href="/professionals"><button>Profissionais</button></Link>
-            <Link href="/jobs"><button>Vagas</button></Link>
+            <Link href="/services"><button className={router.pathname === '/services' ? 'active' : ''}>Serviços</button></Link>
+            <Link href="/professionals"><button className={router.pathname === '/professionals' ? 'active' : ''}>Profissionais</button></Link>
+            <Link href="/jobs"><button className={router.pathname === '/jobs' ? 'active' : ''}>Vagas</button></Link>
         </Category>
     )
 }
@@ -30,5 +32,9 @@ button {
 
 button:hover {
     color: #1E1E1E;
+}
+
+.active {
+    color: #1e1e1e;
 }
 `
