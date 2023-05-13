@@ -2,9 +2,12 @@ import { createChat } from "@/services/chatRequisitions";
 import { createMyService } from "@/services/myServicesRequisitions";
 import styled from "@emotion/styled";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 export default function JobOptions({ job }) {
   const router = useRouter();
+  const [userError, setError] = useState(false);
+
   async function connectServices() {
     try {
       const body = { 
@@ -15,6 +18,9 @@ export default function JobOptions({ job }) {
       await createMyService(body);
       router.push(`/jobs/confirmation/${job.id}`);
     } catch (error) {
+      if(error.response.status === 500) {
+        setError(true)
+      }
       console.log(error);
     }
   }
@@ -34,12 +40,19 @@ export default function JobOptions({ job }) {
 
 
   return(
+    <>
+      {userError ? 
+        (<Alert>
+          <h3>Você não pode se conectar consigo mesmo!</h3>
+          <button onClick={() => setError(!userError)}>Ok</button>
+      </Alert>) : ("")}
       <OptionsBanner>
           <p>Gostou da vaga?</p>
           <ConnectButton onClick={connectServices}>Conecte-se</ConnectButton>
           <p>Ficou com alguma dúvida?</p>
           <ChatButton onClick={ initChat }>Converse com o cliente</ChatButton>
       </OptionsBanner>
+    </>
   )
 }
 
@@ -99,3 +112,31 @@ cursor: pointer;
 color: #4E693C;
 font-weight: 700;
 `
+
+const Alert = styled.div`
+    width: 273px;
+    height: fit-content;
+    font-family: "Roboto";
+    background-color: #4E693C;
+    border-radius: 12px;
+    color: white;
+    font-weight: 500;
+    text-align: center;
+    font-size: 16px;
+    line-height: 128%;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 16px;
+
+button {
+    height: 26px;
+    border-radius: 50px;
+    border: none;
+    border: 1px solid #4E693C;
+    background-color: #E7E4C9;
+    cursor: pointer;
+    margin-top: 8px;
+}
+`;
