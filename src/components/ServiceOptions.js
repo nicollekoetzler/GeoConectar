@@ -46,7 +46,7 @@ export default function ServicesOptions({ service }) {
             (<Alert>
                 <h3>Você não pode se conectar consigo mesmo!</h3>
                 <button onClick={() => setError(!userError)}>Ok</button>
-            </Alert>) : ("")}
+        </Alert>) : ("")}
         <OptionsBanner>
             <p>Gostou do serviço?</p>
             <ConnectButton onClick={connectServices}>Conecte-se</ConnectButton>
