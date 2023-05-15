@@ -73,7 +73,7 @@ export default function Services() {
                     </FormStyle>
                     <h3>Descrição</h3>
                     <DescriptionForm>
-                        <input
+                        <textarea
                             type="text"
                             placeholder="Descrição do seu serviço"
                             value={ description }
@@ -183,26 +183,28 @@ const FormStyle = styled.div`
 `;
 
 const DescriptionForm = styled.div`
-    input {
+    textarea {
         width: 522px;
         height: 110px;
         background-color: white;
         border: none;
+        font-family: "Roboto";
         font-weight: 400;
         font-size: 14px;
-        padding-left: 20px;
-        padding-bottom: 65px;
+        padding: 14px 20px;
         border: 1px solid #CDCDCD;
         border-radius: 12px;
         transition: 0.5s;
         margin-bottom: 24px;
         outline: 1px solid white;
+        overflow-wrap: break-word;
+        resize: none;
     }
 
     @media screen and (max-width: 600px) {
         width: 100%;
 
-        input {
+        textarea {
             width: 100%;
         }
     }

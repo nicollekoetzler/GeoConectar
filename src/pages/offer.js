@@ -44,7 +44,7 @@ export default function Services() {
                     </TitleStyle>
                     <h3>Descrição</h3>
                     <DescriptionForm>
-                        <input
+                        <textarea
                             type="text"
                             placeholder="Descrição do seu serviço"
                             value={ description }
@@ -91,53 +91,84 @@ const Background = styled.div`
         font-weight: 500;
         margin-bottom: 8px;
     }
+
+    @media screen and (max-width: 600px) {
+        form {
+            width: 90%;
+        }
+    }
 `;
 
 const TitleStyle = styled.div`
-input {
-    width: 522px;
-    height: 46px;
-    background-color: white;
-    border: none;
-    font-weight: 400;
-    font-size: 14px;
-    padding-left: 20px;
-    border: 1px solid #CDCDCD;
-    border-radius: 12px;
-    transition: 0.5s;
-    margin-bottom: 24px;
-    outline: 1px solid white;
-}
-`
+  input {
+      width: 522px;
+      height: 46px;
+      background-color: white;
+      border: none;
+      font-weight: 400;
+      font-size: 14px;
+      padding-left: 20px;
+      border: 1px solid #CDCDCD;
+      border-radius: 12px;
+      transition: 0.5s;
+      margin-bottom: 24px;
+      outline: 1px solid white;
+  }
+
+  @media screen and (max-width: 600px) {
+        width: 100%;
+
+        input {
+            width: 100%;
+        }
+    }
+`;
 
 const DescriptionForm = styled.div`
-input {
-    width: 522px;
-    height: 110px;
-    background-color: white;
-    border: none;
-    font-weight: 400;
-    font-size: 14px;
-    padding-left: 20px;
-    padding-bottom: 65px;
-    border: 1px solid #CDCDCD;
-    border-radius: 12px;
-    transition: 0.5s;
-    margin-bottom: 24px;
-    outline: 1px solid white;
-}
-`
+  textarea {
+      width: 522px;
+      height: 110px;
+      overflow-wrap: break-word;
+      background-color: white;
+      border: none;
+      font-family: "Roboto";
+      font-weight: 400;
+      font-size: 14px;
+      padding: 14px 20px;
+      border: 1px solid #CDCDCD;
+      border-radius: 12px;
+      transition: 0.5s;
+      margin-bottom: 24px;
+      outline: 1px solid white;
+  }
+
+  @media screen and (max-width: 600px) {
+        width: 100%;
+
+        textarea {
+            width: 100%;
+        }
+  }
+`;
 
 const Button = styled.div`
-button {
-    width: 522px;
-    height: 42px;
-    background-color: #4E693C;
-    border-radius: 50px;
-    border: none;
-    cursor: pointer;
-    color: white;
-    font-size: 16px;
-    font-weight: 700;
-}
-`
+  button {
+      width: 522px;
+      height: 42px;
+      background-color: #4E693C;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      color: white;
+      font-size: 16px;
+      font-weight: 700;
+  }
+
+  @media screen and (max-width: 600px) {
+      width: 100%;
+      
+      button {
+          width: 100%;
+      }
+  }
+`;

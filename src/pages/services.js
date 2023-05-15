@@ -15,7 +15,6 @@ export default function Services() {
     try {
       const servicesList = await getServices();
       setServices(servicesList.data);
-      console.log(servicesList.data)
     } catch (error) {
       console.log(error);
     }
@@ -36,7 +35,7 @@ export default function Services() {
             ? services.map((service, index) => (
                 <Service
                   service={service}
-                  key={index}
+                  key={service.id}
                 />
               ))
           : ""}
