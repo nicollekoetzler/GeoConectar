@@ -119,6 +119,13 @@ const Container = styled.div`
     margin: 16px 0px 24px 0px;
   }
 
+  h1, h2, h3 {
+    max-width: 96%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    text-overflow: ellipsis;
+  }
+
     @media screen and (max-width: 600px) {
         div {
             display: flex;

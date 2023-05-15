@@ -4,16 +4,28 @@ import HeaderLayout from "@/layouts/Header";
 import BottomLayout from "@/layouts/Bottom";
 import { postProfessional } from "@/services/professionalsRequisitions";
 import { useRouter } from "next/router";
+import { Alert } from "@mui/material";
+import { showPopupErrorMessage } from "@/services/showPopupErrorMessage";
 
 export default function Services() {
     const router = useRouter();
     const [ isLoading, setIsLoading ] = useState(false);
     const [ title, setTitle ] = useState("");
     const [ description, setDescription ] = useState("");
+    const [ error, setError ] = useState("");
 
     async function handleSubmit(e) {
         e.preventDefault();
         setIsLoading(true);
+
+        if(description.trim().length < 20) {
+          showPopupErrorMessage(
+            "a descrição deve conter no mínimo 20 caracteres",
+            setError
+          );
+          setIsLoading(false);
+          return;
+        }
 
         try {
             await postProfessional(title, description);
@@ -40,16 +52,24 @@ export default function Services() {
                             value={ title }
                             onChange={ (e) => { setTitle(e.target.value) } }
                             disabled={ isLoading }
+                            required
                         />
                     </TitleStyle>
                     <h3>Descrição</h3>
                     <DescriptionForm>
+                        {
+                          !!error &&
+                          <Alert style={{ margin: "0 6px 16px 6px" }} variant="outlined" severity="error">
+                            { error }
+                          </Alert>
+                        }
                         <textarea
                             type="text"
                             placeholder="Descrição do seu serviço"
                             value={ description }
                             onChange={ (e) => { setDescription(e.target.value) } }
                             disabled={ isLoading }
+                            required
                         />
                     </DescriptionForm>
                     <Button>
@@ -140,6 +160,7 @@ const DescriptionForm = styled.div`
       transition: 0.5s;
       margin-bottom: 24px;
       outline: 1px solid white;
+      resize: none;
   }
 
   @media screen and (max-width: 600px) {
