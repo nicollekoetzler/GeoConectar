@@ -7,6 +7,7 @@ import { useState } from "react";
 export default function JobOptions({ job }) {
   const router = useRouter();
   const [userError, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   async function connectServices() {
     try {
@@ -18,8 +19,9 @@ export default function JobOptions({ job }) {
       await createMyService(body);
       router.push(`/jobs/confirmation/${job.id}`);
     } catch (error) {
-      if(error.response.status === 500) {
+      if(error.response.status === 403) {
         setError(true)
+        setErrorMessage("Você não pode se conectar consigo mesmo!");
       }
       console.log(error);
     }
@@ -34,6 +36,12 @@ export default function JobOptions({ job }) {
             router.push("/chat");
         } catch (error) {
             if(error.response.status === 409) router.push("/chat");
+            if(error.response.status === 403) {
+              {
+                setError(true)
+                setErrorMessage("Você não pode inicar um chat consigo mesmo!");
+              }
+            }
             console.log(error);
         }
     }
@@ -43,7 +51,7 @@ export default function JobOptions({ job }) {
     <>
       {userError ? 
         (<Alert>
-          <h3>Você não pode se conectar consigo mesmo!</h3>
+          <h3>{ errorMessage }</h3>
           <button onClick={() => setError(!userError)}>Ok</button>
       </Alert>) : ("")}
       <OptionsBanner>

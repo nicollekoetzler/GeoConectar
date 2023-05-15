@@ -33,7 +33,7 @@ export default function ServicesOptions({ service }) {
       router.push(`/services/confirmation/${service.id}`);
     } catch (error) {
     
-        if(error.response.status === 500) {
+        if(error.response.status === 403) {
             setError(true)
         }
         console.log(error);

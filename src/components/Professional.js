@@ -2,9 +2,13 @@ import styled from "@emotion/styled";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { createChat } from "@/services/chatRequisitions";
+import { useState } from "react";
+import Alert from '@mui/material/Alert';
+import { showPopupErrorMessage } from "@/services/showPopupErrorMessage";
 
 export default function Professional({ professional }) {
     const router = useRouter();
+    const [ error, setError ] = useState('');
 
     async function initChat() {
         try {
@@ -15,6 +19,12 @@ export default function Professional({ professional }) {
             router.push("/chat");
         } catch (error) {
             if(error.response.status === 409) router.push("/chat");
+            if(error.response.status === 403) {
+              showPopupErrorMessage(
+                "você não pode iniciar um chat consigo mesmo",
+                setError
+              );
+            }
             console.log(error);
         }
     }
@@ -66,6 +76,13 @@ export default function Professional({ professional }) {
 
   return(
     <Service>
+      {
+        !!error
+        &&
+        <Alert style={{ margin: "0 6px 16px 6px" }} variant="outlined" severity="error">
+          { error }
+        </Alert>
+      }
       <h1>{ professional.title }</h1>
       <h3>{ professional.user?.name } | Publicado há {getTime()}</h3>
       <h2>{ professional.description }</h2>
