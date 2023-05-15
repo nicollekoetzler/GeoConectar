@@ -47,6 +47,7 @@ export default function SignIn() {
               onChange={(e) => {
                 setUser({ ...user, email: e.target.value });
               }}
+              required
             />
           </FormStyle>
           <h3>Senha</h3>
@@ -58,6 +59,7 @@ export default function SignIn() {
               onChange={(e) => {
                 setUser({ ...user, password: e.target.value });
               }}
+              required
             />
           </FormStyle>
           <Button>

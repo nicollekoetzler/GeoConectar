@@ -5,6 +5,8 @@ import BottomLayout from "@/layouts/Bottom";
 import { postService } from "@/services/servicesRequisitions";
 import { postJob } from "@/services/jobsRequisitions";
 import { useRouter } from "next/router";
+import { Alert } from "@mui/material";
+import { showPopupErrorMessage } from "@/services/showPopupErrorMessage";
 
 export default function Services() {
     const router = useRouter();
@@ -14,10 +16,20 @@ export default function Services() {
     const [ serviceType, setServiceType ] = useState("service");
     const [ company, setCompany ] = useState("");
     const [ city, setCity ] = useState("");
+    const [ error, setError ] = useState("");
 
     async function handleSubmit(e) {
         e.preventDefault();
         setIsLoading(true)
+
+        if(description.trim().length < 20) {
+          showPopupErrorMessage(
+            "a descrição deve conter no mínimo 20 caracteres",
+            setError
+          );
+          setIsLoading(false);
+          return;
+        }
 
         try {
             if(serviceType === "service") {
@@ -35,6 +47,20 @@ export default function Services() {
             console.log(err);
             setIsLoading(false);
         }
+    }
+
+    const verifyInputLength = (value, isDescription) => {
+      if(isDescription) return value.length > 500
+      return value.length > 255;
+    }
+  
+    const handleChange = (e, setFunction) => {
+      const newValue = e.target.value;
+      const isDescription = e.target.placeholder === "Descrição do seu serviço";
+
+      if(verifyInputLength(newValue, isDescription)) return;
+
+      setFunction(newValue)
     }
 
     function selectTypeService(e) {
@@ -67,18 +93,26 @@ export default function Services() {
                             type="text"
                             placeholder="Título do seu serviço"
                             value={ title }
-                            onChange={ (e) => setTitle(e.target.value) }
+                            onChange={ (e) => handleChange(e, setTitle) }
                             disabled={ isLoading }
+                            required
                         />
                     </FormStyle>
                     <h3>Descrição</h3>
                     <DescriptionForm>
+                        { 
+                          !!error &&
+                          <Alert style={{ margin: "0 6px 16px 6px" }} variant="outlined" severity="error">
+                            { error }
+                          </Alert>
+                        }
                         <textarea
                             type="text"
                             placeholder="Descrição do seu serviço"
                             value={ description }
-                            onChange={ (e) => setDescription(e.target.value) }
+                            onChange={ (e) => handleChange(e, setDescription) }
                             disabled={ isLoading }
+                            required
                         />
                     </DescriptionForm>
                     <h3>Selecione o tipo do seu serviço:</h3>
@@ -96,8 +130,9 @@ export default function Services() {
                             type="text"
                             placeholder="Nome da empresa"
                             value={ company }
-                            onChange={ (e) => setCompany(e.target.value) }
+                            onChange={ (e) => handleChange(e, setCompany) }
                             disabled={ serviceType !== "job" || isLoading }
+                            required={ serviceType === "job" }
                         />
                     </FormStyle>
                     <h3>Nome da cidade</h3>
@@ -106,8 +141,9 @@ export default function Services() {
                             type="text"
                             placeholder="Nome da cidade"
                             value={ city }
-                            onChange={ (e) => setCity(e.target.value) }
+                            onChange={ (e) => handleChange(e, setCity) }
                             disabled={ serviceType !== "job" || isLoading }
+                            required={ serviceType === "job" }
                         />
                     </FormStyle>
                     <Button>

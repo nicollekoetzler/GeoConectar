@@ -59,6 +59,8 @@ const Content = styled.div`
     margin-top: 64px;
 
     @media screen and (max-width: 600px) {
+        width: 100%;
         flex-direction: column;
+        align-items: center;
     }
 `;

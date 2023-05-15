@@ -51,7 +51,13 @@ const Info = styled.div`
         margin: 16px 0px 24px 0px;
     }
 
+    h2, h3, h4, h5 {
+      max-width: 100%;
+      overflow-wrap: break-word;
+    }
+
     @media screen and (max-width: 600px) {
-        width: 100%;;
+      width: 98%;
+      margin-right: 0;
     }
 `;
