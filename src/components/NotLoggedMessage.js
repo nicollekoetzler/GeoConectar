@@ -8,8 +8,9 @@ export default function NotLoggedMessage() {
 
   function showNotLoggedMessge() {
     const token = localStorage.getItem("token");
+    const currentRoute = router.pathname;
 
-    if(!token && router.pathname !== "/signin" && router.pathname !== "/signup") {
+    if(!token && currentRoute !== "/signin" && currentRoute !== "/signup" && currentRoute !== "/") {
       setVisible(true);
     }
   }
