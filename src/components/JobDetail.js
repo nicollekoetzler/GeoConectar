@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export default function JobDetail({ job }) {
     function getDate(){
-        const createdAt = new Date(job.createAt);
+        const createdAt = new Date(job.createdAt);
         const meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
         const nomeMesCreatedAt = meses[createdAt.getMonth()];
         const diaCreatedAt = createdAt.getDate();
