@@ -7,6 +7,7 @@ import { useState } from "react";
 export default function ProfessionalOptions({ professional }) {
     const router = useRouter();
     const [userError, setError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
 
     async function initChat() {
         try {
@@ -17,6 +18,10 @@ export default function ProfessionalOptions({ professional }) {
             router.push("/chat");
         } catch (error) {
             if(error.response.status === 409) router.push("/chat");
+            if(error.response.status === 403) {
+                setError(true);
+                setErrorMessage("Você não pode inicar um chat consigo mesmo!");
+            }
             console.log(error);
         }
     }
@@ -33,7 +38,8 @@ export default function ProfessionalOptions({ professional }) {
     } catch (error) {
 
       if(error.response.status === 403) {
-        setError(true)
+        setError(true);
+        setErrorMessage("Você não pode se conectar consigo mesmo!");
       }
       console.log(error);
     }
@@ -43,7 +49,7 @@ export default function ProfessionalOptions({ professional }) {
     <>
       {userError ? 
         (<Alert>
-            <h3>Você não pode se conectar consigo mesmo!</h3>
+            <h3>{ errorMessage }</h3>
             <button onClick={() => setError(!userError)}>Ok</button>
         </Alert>) : ("")}
         <OptionsBanner>

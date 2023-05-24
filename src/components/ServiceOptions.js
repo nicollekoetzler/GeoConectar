@@ -7,6 +7,7 @@ import { useState } from "react";
 export default function ServicesOptions({ service }) {
     const router = useRouter();
     const [userError, setError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
 
     async function initChat() {
         try {
@@ -17,6 +18,10 @@ export default function ServicesOptions({ service }) {
             router.push("/chat");
         } catch (error) {
             if(error.response.status === 409) router.push("/chat");
+            if(error.response.status === 403) {
+                setError(true);
+                setErrorMessage("Você não pode inicar um chat consigo mesmo!");
+            }
             console.log(error);
         }
     }
@@ -34,7 +39,8 @@ export default function ServicesOptions({ service }) {
     } catch (error) {
     
         if(error.response.status === 403) {
-            setError(true)
+          setError(true);
+          setErrorMessage("Você não pode se conectar consigo mesmo!");
         }
         console.log(error);
     }
@@ -43,10 +49,10 @@ export default function ServicesOptions({ service }) {
   return(
       <>
         {userError ? 
-            (<Alert>
-                <h3>Você não pode se conectar consigo mesmo!</h3>
-                <button onClick={() => setError(!userError)}>Ok</button>
-        </Alert>) : ("")}
+          (<Alert>
+              <h3>{ errorMessage }</h3>
+              <button onClick={() => setError(!userError)}>Ok</button>
+          </Alert>) : ("")}
         <OptionsBanner>
             <p>Gostou do serviço?</p>
             <ConnectButton onClick={connectServices}>Conecte-se</ConnectButton>
