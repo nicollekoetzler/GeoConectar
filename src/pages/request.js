@@ -32,13 +32,8 @@ export default function Services() {
         }
 
         try {
-            if(serviceType === "service") {
-                await postService(title, description);
-                router.push("/services");
-            } else {
-                await postJob(title, description, company, city);
-                router.push("/jobs");
-            }
+            await postService(title, description);
+            router.push("/services");
 
             setInputsDefaultValue();
             setIsLoading(false);
@@ -63,20 +58,9 @@ export default function Services() {
       setFunction(newValue)
     }
 
-    function selectTypeService(e) {
-        const selectedType = e.currentTarget.querySelector("h3").innerText;
-        
-        if(selectedType === "Vaga") {
-            setServiceType("job");
-        } else {
-            setServiceType("service");
-        }
-    }
-
     function setInputsDefaultValue() {
         setTitle("");
         setDescription("");
-        setServiceType("service");
         setCompany("");
         setCity("");
     }
@@ -115,37 +99,6 @@ export default function Services() {
                             required
                         />
                     </DescriptionForm>
-                    <h3>Selecione o tipo do seu serviço:</h3>
-                    <Goals>
-                        <Request type={ serviceType } onClick={ (e) => selectTypeService(e) }>
-                            <h3>Serviço freelancer</h3>
-                        </Request>
-                        <Offer type={ serviceType } onClick={ (e) => selectTypeService(e) }>
-                            <h3>Vaga</h3>
-                        </Offer>
-                    </Goals>
-                    <h3>Nome da empresa</h3>
-                    <FormStyle>
-                        <input
-                            type="text"
-                            placeholder="Nome da empresa"
-                            value={ company }
-                            onChange={ (e) => handleChange(e, setCompany) }
-                            disabled={ serviceType !== "job" || isLoading }
-                            required={ serviceType === "job" }
-                        />
-                    </FormStyle>
-                    <h3>Nome da cidade</h3>
-                    <FormStyle>
-                        <input
-                            type="text"
-                            placeholder="Nome da cidade"
-                            value={ city }
-                            onChange={ (e) => handleChange(e, setCity) }
-                            disabled={ serviceType !== "job" || isLoading }
-                            required={ serviceType === "job" }
-                        />
-                    </FormStyle>
                     <Button>
                         <button type="submit">Enviar</button>
                     </Button>

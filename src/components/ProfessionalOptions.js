@@ -50,7 +50,7 @@ export default function ProfessionalOptions({ professional }) {
             <p>Gostou do serviço?</p>
             <ConnectButton onClick={connectServices}>Conecte-se</ConnectButton>
             <p>Ficou com alguma dúvida?</p>
-            <ChatButton onClick={ initChat }>Converse com o cliente</ChatButton>
+            <ChatButton onClick={ initChat }>Converse com o profissional</ChatButton>
         </OptionsBanner>
     </>
   )

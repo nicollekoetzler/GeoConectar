@@ -20,7 +20,7 @@ export default function Services() {
                         <h3>Sou um contratante</h3>
                         <h4>Quero divulgar um serviço</h4>
                     </Request></Link>
-                    <Link href="/request"><Job>
+                    <Link href="/request-job"><Job>
                         <Planet/>
                         <h3>Sou uma empresa</h3>
                         <h4>Quero divulgar uma vaga</h4>

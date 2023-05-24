@@ -56,9 +56,9 @@ export default function JobOptions({ job }) {
       </Alert>) : ("")}
       <OptionsBanner>
           <p>Gostou da vaga?</p>
-          <ConnectButton onClick={connectServices}>Converse com o anunciante</ConnectButton>
+          <ConnectButton onClick={connectServices}>Conecte-se</ConnectButton>
           <p>Ficou com alguma dúvida?</p>
-          <ChatButton onClick={ initChat }>Converse com o cliente</ChatButton>
+          <ChatButton onClick={ initChat }>Converse com o anunciante</ChatButton>
       </OptionsBanner>
     </>
   )

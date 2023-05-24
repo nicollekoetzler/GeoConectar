@@ -33,6 +33,7 @@ export default function NotLoggedMessage() {
 }
 
 const NotLoggedView = styled.div`
+  font-family: "Roboto";
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -49,11 +50,15 @@ const NotLoggedContainer = styled.div`
   border-radius: 10px;
   background-color: #FFFFFF;
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   h4 {
     font-size: 20px;
     font-weight: 800;
-    margin-bottom: 40px;
+    margin-bottom: 32px;
   }
 `;
 

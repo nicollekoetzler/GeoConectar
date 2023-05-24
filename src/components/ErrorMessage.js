@@ -11,9 +11,11 @@ export default function ErrorMessage({ messages }) {
 }
 
 const ErrorBox = styled.div`
-    margin: 0 0 20px 0;
+    margin: 0 0 24px 0;
 
     p {
+        margin: 0px;
+        font-family: "Roboto";
         color: red;
         text-align: center;
         font-weight: bolder;
