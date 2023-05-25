@@ -35,7 +35,7 @@ export default function Services() {
                         ? professionals.map((professional, index) => (
                             <Professional
                             professional={professional}
-                            key={index}
+                            key={professional.id}
                             />
                         ))
                     : ""}
@@ -49,12 +49,13 @@ export default function Services() {
 
 
 const Background = styled.div`
-display: flex;
-align-items: center;
-flex-direction: column;
-min-height: 100vh;
-width: 100vw;
-`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 90vh;
+  width: 100vw;
+`;
 
 const ContainerBottom = styled.div`
     width: 62%;

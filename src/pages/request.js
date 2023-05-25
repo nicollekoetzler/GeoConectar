@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import HeaderLayout from "@/layouts/Header";
 import BottomLayout from "@/layouts/Bottom";
 import { postService } from "@/services/servicesRequisitions";
-import { postJob } from "@/services/jobsRequisitions";
 import { useRouter } from "next/router";
 import { Alert } from "@mui/material";
 import { showPopupErrorMessage } from "@/services/showPopupErrorMessage";
@@ -13,9 +12,6 @@ export default function Services() {
     const [ isLoading, setIsLoading ] = useState(false);
     const [ title, setTitle ] = useState("");
     const [ description, setDescription ] = useState("");
-    const [ serviceType, setServiceType ] = useState("service");
-    const [ company, setCompany ] = useState("");
-    const [ city, setCity ] = useState("");
     const [ error, setError ] = useState("");
 
     async function handleSubmit(e) {
@@ -115,7 +111,7 @@ const Background = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 70vh;
     width: 100vw;
     font-family: "Roboto";
 

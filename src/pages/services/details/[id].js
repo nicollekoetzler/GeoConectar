@@ -48,6 +48,8 @@ const Background = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  justify-content: space-between;
+  min-height: 90vh;
 `;
 
 const Content = styled.div`
