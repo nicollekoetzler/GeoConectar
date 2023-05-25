@@ -37,7 +37,7 @@ export default function Services() {
                         ? jobs.map((job, index) => (
                             <Job
                                 job={job}
-                                key={index}
+                                key={job.id}
                             />
                         ))
                     : ""}
@@ -53,8 +53,9 @@ export default function Services() {
 const Background = styled.div`
     display: flex;
     align-items: center;
+    justify-content: space-between;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 90vh;
     width: 100vw;
 `;
 

@@ -22,11 +22,12 @@ export default function Services() {
 
 
 const Background = styled.div`
-display: flex;
-align-items: center;
-justify-content: center;
-font-family: "Roboto";
-`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  font-family: "Roboto";
+`;
 
 const ChatContainer = styled.div`
     height: 450px;

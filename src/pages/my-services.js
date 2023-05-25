@@ -35,6 +35,7 @@ export default function Services() {
                         ? myServices.map((myService) => (
                             <MyService
                             myService={myService}
+                            key={myService.id}
                             />
                         ))
                     : <p>Parece que você ainda não tem serviços!</p>}
@@ -53,7 +54,7 @@ const Background = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 90vh;
     width: 100vw;
     font-family: "Roboto";
 

@@ -50,7 +50,8 @@ const Background = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  min-height: 100vh;
+  justify-content: space-between;
+  min-height: 90vh;
   width: 100vw;
 `;
 
