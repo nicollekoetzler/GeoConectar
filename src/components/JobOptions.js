@@ -37,10 +37,8 @@ export default function JobOptions({ job }) {
         } catch (error) {
             if(error.response.status === 409) router.push("/chat");
             if(error.response.status === 403) {
-              {
-                setError(true)
+                setError(true);
                 setErrorMessage("Você não pode inicar um chat consigo mesmo!");
-              }
             }
             console.log(error);
         }
