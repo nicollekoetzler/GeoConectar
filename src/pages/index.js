@@ -1,7 +1,12 @@
-import React from "react";
+import { useRouter } from "next/router";
+import React, { useEffect } from "react";
 
 export default function Home() {
-  return (
-    <h1>oláaa</h1>
-  );
+  const router = useRouter();
+
+  useEffect(() => {
+    router.push("/signin");
+  }, []);
+
+  return (<></>);
 }

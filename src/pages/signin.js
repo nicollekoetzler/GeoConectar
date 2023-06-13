@@ -1,3 +1,5 @@
+import ErrorMessage from "@/components/ErrorMessage";
+import { signin } from "@/services/authRequisitions";
 import styled from "@emotion/styled";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -85,13 +87,14 @@ export default function SignIn() {
 }
 
 const Background = styled.div`
-height: 100vh;
-width: 100vw;
-display: flex;
-align-items: center;
-justify-content: center;
-background-color: #E8E5CB;
-`
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #F9F9F9;
+  font-family: "Roboto";
+`;
 
 const LoadingView = styled.div`
   font-family: "Roboto";
@@ -121,105 +124,118 @@ const Loader = styled(Image)`
 `
 
 const Container = styled.div`
-background-color: white;
-padding: 32px;
-border: 1px solid #CDCDCD;
-border-radius: 12px;
+  background-color: white;
+  padding: 32px;
+  border: 1px solid #cdcdcd;
+  border-radius: 12px;
 
-form {
+  form {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-}
+  }
 
-h1 {
-    align-self: flex-start;
+  h1 {
     font-family: "Saira Semi Condensed";
     font-size: 42px;
     font-weight: 700;
-    color: #4E693C;
-}
+    color: #4e693c;
+    text-align: center;
+  }
 
-h2 {
-    align-self: flex-start;
+  h2 {
     font-size: 24px;
-    font-weight: 500;
+    font-weight: 400;
     margin: 24px 0 24px 0;
-}
+  }
 
-h3 {
+  h3 {
     align-self: flex-start;
     font-size: 16px;
     font-weight: 500;
     margin-bottom: 8px;
-}
+  }
 
-p {
+  p {
     font-size: 14px;
     line-height: 17px;
     text-align: center;
     text-decoration: none;
     margin-top: 8px;
     cursor: pointer;
-}
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    margin: 0 16px;
+    padding: 24px 16px;
+
+    form {
+        margin: 0 10px; 
+    }
+
+    h1 {
+        font-size: 36px;
+    }
+
+    h2 {
+        text-align: center;
+        font-size: 20px;
+    }
+  }
 `;
 
 const Button = styled.div`
-button {
+  button {
     width: 326px;
     height: 42px;
-    background: #A5B167;
+    background: #a5b167;
     border-radius: 50px;
     border: none;
     cursor: pointer;
     color: white;
     font-size: 16px;
     font-weight: 700;
-    margin-top: 24px;
-}
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+
+    button {
+        width: 100%;
+    }
+  }
 `;
 
-const Email = styled.div`
-input {
+const FormStyle = styled.div`
+  input {
     width: 326px;
     height: 42px;
-    background: #E8E5CB;
+    background: #e8e5cb;
     border: none;
     border-radius: 50px;
     font-weight: 400;
     font-size: 14px;
     padding-left: 20px;
-    outline: 1px solid #E8E5CB;
+    outline: 1px solid #e8e5cb;
     transition: 0.5s;
     margin-bottom: 24px;
-}
+  }
 
-input:focus {
-    outline: 1px solid #A5B167;
-}
+  input:focus {
+    outline: 1px solid #a5b167;
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+
+    input {
+        width: 100%;
+    }
+  }
 `;
 
-const Senha = styled.div`
-
-input {
-    width: 326px;
-    height: 42px;
-    background: #E8E5CB;
-    border: none;
-    border-radius: 50px;
-    font-weight: 400;
-    font-size: 14px;
-    padding-left: 20px;
-    outline: 1px solid #E8E5CB;
-    transition: 0.5s;
-}
-
-input:focus {
-    outline: 1px solid #A5B167;
-}
+const Verde = styled.a`
+  color: #4e693c;
 `;
-
-const Verde = styled.span`
-color: #4E693C;
-`

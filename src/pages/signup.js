@@ -45,9 +45,7 @@ export default function SignUp() {
     
     try {
         delete newUser.confirmPassword;
-        await new Promise((resolve) => setTimeout(resolve, 2000));
         await signup(newUser);
-      
         router.push("/signin");
     } catch (err) {
         const CONFLICT_MESSAGE = "Email ou CPF já cadastrados";
