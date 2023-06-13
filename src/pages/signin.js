@@ -1,30 +1,87 @@
 import styled from "@emotion/styled";
-import React from "react";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import foto from "../../public/imgs/loading.svg"
+import Image from "next/image"
+import { height } from "@mui/system";
 
 export default function SignIn() {
+  const router = useRouter();
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
+  const [error, setError] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-    return (
-        <Background>
-            <Container>
-                <h1>GeoConectar</h1>
-                <h2>Faça o seu login</h2>
-                <form>
-                    <h3>Email</h3>
-                    <Email>
-                        <input type="email" placeholder="Digite o seu email"/>
-                    </Email>
-                    <h3>Senha</h3>
-                    <Senha>
-                        <input type="password" placeholder="Digite a sua senha"/>
-                    </Senha>
-                    <Button>
-                        <button type="submit">Entrar</button>
-                    </Button>
-                </form>
-                <p>Não tem uma conta? <Verde>Cadastre-se agora</Verde></p>
-            </Container>
-        </Background>
-    );
+  async function handleSubmit(e) {
+      e.preventDefault();
+      setIsLoading(true);
+      setError([]);
+
+    try {
+      const result = await signin(user);
+      const token = result.data.token;
+      localStorage.setItem("token", token);
+      router.push("/services");
+      setIsLoading(false);
+    } catch (err) {
+      const INVALID_CREDENTIALS = "Email ou senha incorretos";
+
+      if(err.response.status === 401) {
+        setError([INVALID_CREDENTIALS]);
+      }
+      console.log(err);
+      setIsLoading(false);
+    }
+  }
+
+  return (
+    <Background>
+      <LoadingView isLoading={ isLoading }>
+        <LoaderContainer >
+            <Loader src={foto}/>
+        </LoaderContainer>
+      </LoadingView>
+      <Container>
+        <h1>GeoConectar</h1>
+        <h2>Faça o seu login</h2>
+        <form onSubmit={handleSubmit}>
+          { error.length > 0 ? <ErrorMessage messages={ error } /> : <></> }
+          <h3>Email</h3>
+          <FormStyle>
+            <input
+              type="email"
+              placeholder="Digite o seu email"
+              value={user.email}
+              onChange={(e) => {
+                setUser({ ...user, email: e.target.value });
+              }}
+              required
+            />
+          </FormStyle>
+          <h3>Senha</h3>
+          <FormStyle>
+            <input
+              type="password"
+              placeholder="Digite a sua senha"
+              value={user.password}
+              onChange={(e) => {
+                setUser({ ...user, password: e.target.value });
+              }}
+              required
+            />
+          </FormStyle>
+          <Button>
+            <button type="submit">Entrar</button>
+          </Button>
+        </form>
+        <p>
+          Não tem uma conta? <Verde href="/signup">Cadastre-se agora</Verde>
+        </p>
+      </Container>
+    </Background>
+  );
 }
 
 const Background = styled.div`
@@ -34,6 +91,33 @@ display: flex;
 align-items: center;
 justify-content: center;
 background-color: #E8E5CB;
+`
+
+const LoadingView = styled.div`
+  font-family: "Roboto";
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 1;
+  display: ${({isLoading}) => isLoading ? "flex" : "none"};
+  justify-content: center;
+  align-items: center;
+  background-color: #F9F9F9;
+`
+
+const LoaderContainer = styled.div`
+  padding: 50px 0;
+  border-radius: 10px;
+  background-color: #FFFFFF;
+  border: 1px solid #cdcdcd;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Loader = styled(Image)`
+  height: 50px;
 `
 
 const Container = styled.div`
