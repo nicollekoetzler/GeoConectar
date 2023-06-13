@@ -9,6 +9,7 @@ services:
     volumes:
       - .:/app
       - next:/app/.next
+      - /app/node_modules
 
 volumes:
   next:
