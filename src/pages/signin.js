@@ -3,6 +3,9 @@ import { signin } from "@/services/authRequisitions";
 import styled from "@emotion/styled";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import foto from "../../public/imgs/loading.svg"
+import Image from "next/image"
+import { height } from "@mui/system";
 
 export default function SignIn() {
   const router = useRouter();
@@ -11,9 +14,11 @@ export default function SignIn() {
     password: "",
   });
   const [error, setError] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   async function handleSubmit(e) {
       e.preventDefault();
+      setIsLoading(true);
       setError([]);
 
     try {
@@ -21,6 +26,7 @@ export default function SignIn() {
       const token = result.data.token;
       localStorage.setItem("token", token);
       router.push("/services");
+      setIsLoading(false);
     } catch (err) {
       const INVALID_CREDENTIALS = "Email ou senha incorretos";
 
@@ -28,11 +34,17 @@ export default function SignIn() {
         setError([INVALID_CREDENTIALS]);
       }
       console.log(err);
+      setIsLoading(false);
     }
   }
 
   return (
     <Background>
+      <LoadingView isLoading={ isLoading }>
+        <LoaderContainer >
+            <Loader src={foto}/>
+        </LoaderContainer>
+      </LoadingView>
       <Container>
         <h1>GeoConectar</h1>
         <h2>Faça o seu login</h2>
@@ -83,6 +95,33 @@ const Background = styled.div`
   background-color: #F9F9F9;
   font-family: "Roboto";
 `;
+
+const LoadingView = styled.div`
+  font-family: "Roboto";
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 1;
+  display: ${({isLoading}) => isLoading ? "flex" : "none"};
+  justify-content: center;
+  align-items: center;
+  background-color: #F9F9F9;
+`
+
+const LoaderContainer = styled.div`
+  padding: 50px 0;
+  border-radius: 10px;
+  background-color: #FFFFFF;
+  border: 1px solid #cdcdcd;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Loader = styled(Image)`
+  height: 50px;
+`
 
 const Container = styled.div`
   background-color: white;
