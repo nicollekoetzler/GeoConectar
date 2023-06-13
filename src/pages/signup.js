@@ -46,7 +46,6 @@ export default function SignUp() {
     try {
         delete newUser.confirmPassword;
         await signup(newUser);
-        
         router.push("/signin");
     } catch (err) {
         const CONFLICT_MESSAGE = "Email ou CPF já cadastrados";
@@ -74,7 +73,6 @@ export default function SignUp() {
   }
 
   function removeAllErrorMessage() {
-    console.log("baaijafgj")
     setError([]);
   }
 
@@ -175,6 +173,11 @@ const Background = styled.div`
   justify-content: center;
   background-color: #F9F9F9;
   font-family: "Roboto";
+
+  img {
+    width: 50px;
+    height: 50px;
+  }
 `;
 
 const Container = styled.div`
@@ -239,6 +242,7 @@ const Container = styled.div`
     }
   }
 `;
+
 
 const Button = styled.div`
   button {
