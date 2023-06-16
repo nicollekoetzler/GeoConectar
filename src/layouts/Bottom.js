@@ -8,10 +8,10 @@ export default function BottomLayout(){
             <h4>GeoConectar</h4>
             <BottomLinks>
                 <Link href="/about-us"><p>Sobre nós</p></Link>
-                <Link href="/request-or-offer"><p>Contato</p></Link>
-                <Link href="/request-or-offer"><p>Perguntas frequentes</p></Link>
-                <Link href="/request-or-offer"><p>Termos</p></Link>
-                <Link href="/request-or-offer"><p>Privacidade</p></Link>
+                <Link href="/contact"><p>Contato</p></Link>
+                <Link href="/faq"><p>Perguntas frequentes</p></Link>
+                <Link href="/terms"><p>Termos</p></Link>
+                <Link href="/privacy"><p>Privacidade</p></Link>
             </BottomLinks>
         </Bottom>
     )
