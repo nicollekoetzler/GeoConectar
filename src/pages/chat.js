@@ -39,7 +39,7 @@ const ChatContainer = styled.div`
     display: flex;
 
     @media screen and (max-width: 600px) {
-        width: 98%;
+        width: 94%;
         height: auto;
     }
 `;

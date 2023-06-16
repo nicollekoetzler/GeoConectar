@@ -5,7 +5,7 @@ import Link from "next/link"
 export default function BottomLayout(){
     return(
         <Bottom>
-            <p>GeoConectar</p>
+            <h4>GeoConectar</h4>
             <BottomLinks>
                 <Link href="/my-services"><p>Sobre nós</p></Link>
                 <Link href="/request-or-offer"><p>Contato</p></Link>
@@ -17,7 +17,7 @@ export default function BottomLayout(){
     )
 }
 
-const Bottom = styled.div`
+const Bottom = styled.footer`
     height: 100px;
     width: 100%;
     background-color: #E7E4C9;
@@ -31,14 +31,22 @@ const Bottom = styled.div`
     margin-top: 100px;
 
     @media screen and (max-width: 600px) {
-        margin-top: 30px;
+        height: auto;
+        margin-top: 80px;
+        display: flex;
+        flex-direction: column;
+
+        h4 {
+            margin: 24px 0 24px 0;
+        }
     }
 `;
 
 const BottomLinks = styled.div`
-    display: flex;
-    justify-content: center;
     width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-family: "Roboto";
 
     p {
@@ -47,25 +55,28 @@ const BottomLinks = styled.div`
         font-weight: 400;
         cursor: pointer;
         transition: 0.3s;
-        margin-right: 24px
+        margin-right: 24px;
     }
 
     p:hover {
         color: #000000;
     }
 
+    a:nth-child(5) {
+        margin-right: 0;
+    }
+
     @media screen and (max-width: 600px) {
         width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 24px;
 
         p {
             font-size: 14px;
             align-self: center;
+            margin: 0;
+            padding-bottom: 8px;
         }
-
-        a:nth-child(3),
-        a:nth-child(2) {
-            display: none;
-        }
-
     }
 `

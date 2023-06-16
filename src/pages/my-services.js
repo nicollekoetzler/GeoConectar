@@ -66,7 +66,7 @@ const Background = styled.div`
 
     @media screen and (max-width: 600px) {
         h1 {
-            margin: 20px auto;
+            margin: 32px auto;
         }
     }
 `;
@@ -93,5 +93,7 @@ const MyServices = styled.div`
         display: flex;
         flex-direction: column;
         align-items: center;
+        width: 94%;
+        height: auto;
     }
 `;
