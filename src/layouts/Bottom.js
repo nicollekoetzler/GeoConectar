@@ -76,7 +76,7 @@ const BottomLinks = styled.div`
             font-size: 14px;
             align-self: center;
             margin: 0;
-            padding-bottom: 8px;
+            padding-bottom: 6px;
         }
     }
 `
