@@ -7,7 +7,7 @@ export default function BottomLayout(){
         <Bottom>
             <h4>GeoConectar</h4>
             <BottomLinks>
-                <Link href="/my-services"><p>Sobre nós</p></Link>
+                <Link href="/about-us"><p>Sobre nós</p></Link>
                 <Link href="/request-or-offer"><p>Contato</p></Link>
                 <Link href="/request-or-offer"><p>Perguntas frequentes</p></Link>
                 <Link href="/request-or-offer"><p>Termos</p></Link>
@@ -76,7 +76,7 @@ const BottomLinks = styled.div`
             font-size: 14px;
             align-self: center;
             margin: 0;
-            padding-bottom: 6px;
+            padding-bottom: 8px;
         }
     }
 `
