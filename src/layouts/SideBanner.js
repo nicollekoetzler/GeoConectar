@@ -33,13 +33,14 @@ font-family: "Roboto";
     }
 
     @media screen and (max-width: 600px) {
-        width: 98%;
+        width: 94%;
         display: flex;
         flex-direction: column;
         align-items: center;
 
         p {
             text-align: center;
+            margin-top: 0;
         }
     }
 `

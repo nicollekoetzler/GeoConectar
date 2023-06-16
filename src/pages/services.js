@@ -62,7 +62,7 @@ const ContainerBottom = styled.div`
   border: 1px solid #cdcdcd;
 
     @media screen and (max-width: 600px) {
-        width: 98%;
+        width: 94%;
         height: auto;
     }
 `;

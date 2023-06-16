@@ -57,8 +57,13 @@ const Content = styled.div`
   margin-top: 64px;
 
   @media screen and (max-width: 600px) {
-    width: 100%;
+    width: 94%;
     flex-direction: column;
     align-items: center;
+    margin-top: 32px;
+
+      div {
+        width: 100%;
+      }
   }
 `;
