@@ -145,7 +145,7 @@ const Container = styled.div`
 const ConnectButton = styled.button`
   text-decoration: none;
   width: 168px;
-  height: 35px;
+  padding: 9px 0;
   background: #4e693c;
   border-radius: 50px;
   border: none;
@@ -158,7 +158,7 @@ const ConnectButton = styled.button`
 
 const QuestionButton = styled.button`
   width: 168px;
-  height: 35px;
+  padding: 9px 0;
   background: white;
   border-radius: 50px;
   border: none;
