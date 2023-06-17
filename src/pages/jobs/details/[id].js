@@ -57,12 +57,17 @@ const Background = styled.div`
 `;
 
 const Content = styled.div`
-    display: flex;
-    margin-top: 64px;
+  display: flex;
+  margin-top: 64px;
 
-    @media screen and (max-width: 600px) {
+  @media screen and (max-width: 600px) {
+    width: 94%;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 32px;
+
+      div {
         width: 100%;
-        flex-direction: column;
-        align-items: center;
-    }
+      }
+  }
 `;
