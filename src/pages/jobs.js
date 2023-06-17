@@ -56,7 +56,6 @@ const Background = styled.div`
     justify-content: space-between;
     flex-direction: column;
     min-height: 90vh;
-    width: 100vw;
 `;
 
 const ContainerBottom = styled.div`
@@ -66,7 +65,7 @@ const ContainerBottom = styled.div`
     border: 1px solid #CDCDCD;
 
     @media screen and (max-width: 600px) {
-            width: 98%;
+            width: 94%;
             height: auto;
     }
 `;
