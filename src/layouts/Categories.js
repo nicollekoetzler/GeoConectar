@@ -28,6 +28,10 @@ button {
     cursor: pointer;
     margin: 0px 16px 0 16px;
     transition: 0.3s;
+
+    @media screen and (max-width: 600px) {
+        margin: 0px 8px 0 8px;
+    }
 }
 
 button:hover {
