@@ -1,11 +1,13 @@
 import styled from "@emotion/styled";
 import React from "react";
-import Link from "next/link"
+import Link from "next/link";
+import Image from "next/image";
+import logo from "../../public/imgs/geoconectar.png"
 
 export default function ContainerTop(){
     return(
         <Container>
-            <h1>GeoConectar</h1>
+            <Logo src={logo}/>
             <h3>Conecte-se com profissionais qualificados 
             para o seu projeto</h3>
             <Link href="/request-or-offer"><button>Solicite ou ofereça seu serviço</button></Link>
@@ -14,7 +16,6 @@ export default function ContainerTop(){
 }
 
 const Container = styled.div`
-    height: 245px;
     width: 62%;
     display: flex;
     align-items: center;
@@ -26,19 +27,12 @@ const Container = styled.div`
     padding: 32px;
     text-align: center;
 
-    h1 {
-        font-family: "Saira Semi Condensed";
-        font-size: 32px;
-        font-weight: 700;
-        color: #4E693C;
-        margin-bottom: 16px;
-    }
-
     h3 {
         font-family: "Roboto";
-        font-size: 24px;
-        width: 65%;
+        font-size: 20px;
+        width: 55%;
         line-height: 128%;
+        padding-top: 16px;
     }
 
     button {
@@ -72,3 +66,7 @@ const Container = styled.div`
         }
     }
 `;
+
+const Logo = styled(Image)`
+    height: 247px*2;
+`

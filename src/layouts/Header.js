@@ -3,16 +3,18 @@ import { useState } from "react";
 import { BsChatDots } from 'react-icons/bs';
 import { AiOutlineUser } from "react-icons/ai";
 import Link from "next/link"
-import Logout from "@/components/Logout";
+import UserToggle from "@/components/UserToggle";
+import Image from "next/image";
+import logo from "../../public/imgs/geoconectarlogopequena.png"
 
 
 export default function HeaderLayout() {
-    const [logout , setLogout] = useState(false);
+    const [toggle , setToggle] = useState(false);
 
     return(
         <TopBar>
             <TopBarLeftLinks>
-                <Link href="/services"><button>GeoConectar</button></Link>
+                <Link href="/services"><Image src={logo}/></Link>
             </TopBarLeftLinks>
             <TopBarLinks>
                 <Link href="/my-services"><h3>Meus Serviços</h3></Link>
@@ -20,9 +22,9 @@ export default function HeaderLayout() {
             </TopBarLinks>
             <TopBarRightLinks>
                 <Link href="/chat"><Chat/></Link>
-                <User onClick={() => {setLogout(!logout)}} logout={logout}/>
+                <User onClick={() => {setToggle(!toggle)}} Toggle={toggle}/>
             </TopBarRightLinks>
-            {logout ? <Logout setLogout={setLogout}/> : ''}
+            {toggle ? <UserToggle setToggle={setToggle}/> : ''}
         </TopBar>
     )
 }

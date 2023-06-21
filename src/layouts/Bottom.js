@@ -1,11 +1,13 @@
 import styled from "@emotion/styled";
 import React from "react";
 import Link from "next/link"
+import Image from "next/image";
+import icon from "../../public/imgs/geoconectaricon.png"
 
 export default function BottomLayout(){
     return(
         <Bottom>
-            <h4>GeoConectar</h4>
+            <Image src={icon}/>
             <BottomLinks>
                 <Link href="/about-us"><p>Sobre nós</p></Link>
                 <Link href="/contact"><p>Contato</p></Link>
@@ -21,10 +23,6 @@ const Bottom = styled.footer`
     height: 100px;
     width: 100%;
     background-color: #E7E4C9;
-    font-family: "Saira Semi Condensed";
-    font-size: 32px;
-    font-weight: 700;
-    color: #65624C;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -35,10 +33,7 @@ const Bottom = styled.footer`
         margin-top: 80px;
         display: flex;
         flex-direction: column;
-
-        h4 {
-            margin: 24px 0 24px 0;
-        }
+        padding-top: 24px;
     }
 `;
 
@@ -50,7 +45,7 @@ const BottomLinks = styled.div`
     font-family: "Roboto";
 
     p {
-        color: #65624C;
+        color: #754c24;
         font-size: 16px;
         font-weight: 400;
         cursor: pointer;
@@ -76,7 +71,7 @@ const BottomLinks = styled.div`
             font-size: 14px;
             align-self: center;
             margin: 0;
-            padding-bottom: 8px;
+            padding-top: 8px;
         }
     }
 `
