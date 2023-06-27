@@ -1,8 +1,47 @@
 import styled from "@emotion/styled";
 import HeaderLayout from "@/layouts/Header";
 import BottomLayout from "@/layouts/Bottom";
+import { useEffect, useState } from "react";
+import { getUserInfo } from "@/services/authRequisitions";
+
+function UserName({ userInfos }) {
+  return (
+    <>
+      <h4>Nome</h4>
+      <Container>
+        <p>{userInfos.name}</p>
+      </Container>
+    </>
+  )
+}
+
+function UserEmail({ userInfos }) {
+  return (
+    <>
+      <h4>Email</h4>
+      <Container>
+        <p>{userInfos.email}</p>
+      </Container>
+    </>
+  )
+}
 
 export default function AboutUs() {
+  const [userInfos, setUserInfos] = useState({});
+
+    async function getUserInformations() {
+      try {
+        const info = await getUserInfo();
+        setUserInfos(info.data);
+        console.log(info.data)
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  
+    useEffect(() => {
+      getUserInformations();
+    }, []);
 
   return (
     <>
@@ -13,15 +52,11 @@ export default function AboutUs() {
           <h3>Informações pessoais</h3>
           <Line/>
 
-          <h4>Nome</h4>
-          <Container>
-            <p>João Pedro</p>
-          </Container>
+          
+          <UserName userInfos={userInfos} />
 
-          <h4>Email</h4>
-          <Container>
-            <p>joaopedro@gmail.com</p>
-          </Container>
+          <UserEmail userInfos={userInfos} />
+
         </BottomContainer>
         <BottomLayout/>
       </Background>

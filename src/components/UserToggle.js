@@ -18,7 +18,7 @@ export default function userToggle() {
     return (
       <>
         <MyAccount>
-          <Link href="/my-account"><p>Minha Conta</p></Link>
+          <Link href="/profile"><p>Minha Conta</p></Link>
         </MyAccount>
         <LogoutComponent onClick={logoutFunctionality}>
           <p>Desconectar</p>
@@ -58,7 +58,7 @@ const MyAccount = styled.div`
         const LogoutComponent = styled.div`
             width: 150px;
             height: 43px;
-            background-color: #754c24;
+            background-color: #E7E4C9;
             border: 1px solid #CDCDCD;
             border-radius: 0px 0px 0px 20px;
         
@@ -72,7 +72,7 @@ const MyAccount = styled.div`
             justify-content: center;
         
             p {
-                color: white;
+                color: #4E693C;
                 font-family: "Roboto";
                 font-size: 14px;
                 font-weight: 700;
