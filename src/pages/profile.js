@@ -9,7 +9,7 @@ function UserName({ userInfos }) {
     <>
       <h4>Nome</h4>
       <Container>
-        <p>{userInfos.name}</p>
+        <p>{userInfos.name ? userInfos.name : "Carregando..."}</p>
       </Container>
     </>
   )
@@ -20,7 +20,7 @@ function UserEmail({ userInfos }) {
     <>
       <h4>Email</h4>
       <Container>
-        <p>{userInfos.email}</p>
+        <p>{userInfos.email ? userInfos.email : "Carregando..."}</p>
       </Container>
     </>
   )
@@ -33,7 +33,6 @@ export default function AboutUs() {
       try {
         const info = await getUserInfo();
         setUserInfos(info.data);
-        console.log(info.data)
       } catch (error) {
         console.log(error);
       }
@@ -68,6 +67,7 @@ const Background = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  justify-content: space-between;
   min-height: 90vh;
   width: 100vw;
   font-family: "Roboto";

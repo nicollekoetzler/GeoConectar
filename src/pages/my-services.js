@@ -37,7 +37,11 @@ export default function Services() {
                             key={myService.id}
                             />
                         ))
-                    : <p>Parece que você ainda não tem serviços!</p>}
+                    :
+                    <NoServiceContainer>
+                      <p>Parece que você ainda não tem serviços!</p>
+                    </NoServiceContainer>
+                    }
                     </MyServices>
                     <SideBanner />
                 </Content>
@@ -47,12 +51,27 @@ export default function Services() {
     );
 }
 
+const NoServiceContainer = styled.div`
+    width: 700px;
+    padding: 32px;
+    margin-bottom: 16px;
 
+    p {
+        color: gray;
+        font-size: 18px;
+        text-align: center;
+    }
+
+    @media screen and (max-width: 600px) {
+        width: 100%;
+    }
+`;
 
 const Background = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
+    justify-content: space-between;
     min-height: 90vh;
     width: 100vw;
     font-family: "Roboto";
