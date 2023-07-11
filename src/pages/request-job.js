@@ -69,13 +69,13 @@ export default function Services() {
         <>
             <HeaderLayout />
             <Background>
-                <h1>Divulgue um serviço</h1>
+                <h1>Divulgue uma vaga</h1>
                 <form onSubmit={ handleSubmit }>
                     <h3>Título</h3>
                     <FormStyle>
                         <input
                             type="text"
-                            placeholder="Título do seu serviço"
+                            placeholder="Título da sua vaga"
                             value={ title }
                             onChange={ (e) => handleChange(e, setTitle) }
                             disabled={ isLoading }
@@ -92,7 +92,7 @@ export default function Services() {
                         }
                         <textarea
                             type="text"
-                            placeholder="Descrição do seu serviço"
+                            placeholder="Descrição da sua vaga"
                             value={ description }
                             onChange={ (e) => handleChange(e, setDescription) }
                             disabled={ isLoading }
