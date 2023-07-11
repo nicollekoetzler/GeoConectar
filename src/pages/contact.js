@@ -1,11 +1,12 @@
 import styled from "@emotion/styled";
 import HeaderLayout from "@/layouts/Header";
 import BottomLayout from "@/layouts/Bottom";
+import { ViewContainer, Background } from "@/shared/ViewGenericStyles";
 
 export default function AboutUs() {
 
   return (
-    <>
+    <ViewContainer>
       <HeaderLayout />
       <Background>
         <TopContainer>
@@ -16,21 +17,11 @@ export default function AboutUs() {
             Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
           </p>
         </BottomContainer>
-        <BottomLayout/>
       </Background>
-    </>
+      <BottomLayout/>
+    </ViewContainer>
   )
 }
-
-const Background = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 90vh;
-  width: 100vw;
-  font-family: "Roboto";
-`;
 
 const TopContainer = styled.div`
   width: 100%;
