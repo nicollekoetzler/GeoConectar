@@ -1,11 +1,12 @@
 import styled from "@emotion/styled";
 import HeaderLayout from "@/layouts/Header";
 import BottomLayout from "@/layouts/Bottom";
+import { ViewContainer, Background } from "@/shared/ViewGenericStyles";
 
 export default function AboutUs() {
 
   return (
-    <>
+    <ViewContainer>
       <HeaderLayout />
       <Background>
         <TopContainer>
@@ -72,20 +73,11 @@ export default function AboutUs() {
             Se os usuários do GeoConectar tiverem alguma dúvida ou preocupação em relação a estes Termos de Uso, eles podem entrar em contato com a Empresa pelo endereço de e-mail [inserir o endereço de e-mail da sua empresa].
           </p>
         </BottomContainer>
-        <BottomLayout/>
       </Background>
-    </>
+      <BottomLayout/>
+    </ViewContainer>
   )
 }
-
-const Background = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  min-height: 90vh;
-  width: 100vw;
-  font-family: "Roboto";
-`;
 
 const TopContainer = styled.div`
   width: 100%;

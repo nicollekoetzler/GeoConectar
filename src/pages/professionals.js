@@ -5,6 +5,7 @@ import ContainerTop from "@/layouts/ContainerTop";
 import Categories from "@/layouts/Categories";
 import Professional from "@/components/Professional";
 import { useEffect, useState } from "react";
+import { ViewContainer, Background } from "@/shared/ViewGenericStyles";
 
 import { getProfessionals } from "@/services/professionalsRequisitions";
 
@@ -25,7 +26,7 @@ export default function Services() {
     }, []);
 
     return (
-        <>
+        <ViewContainer>
             <HeaderLayout />
             <Background>
                 <ContainerTop />
@@ -40,21 +41,11 @@ export default function Services() {
                         ))
                     : ""}
                 </ContainerBottom>
-                <BottomLayout/>
             </Background>
-        </>
+            <BottomLayout/>
+        </ViewContainer>
     );
 }
-
-
-
-const Background = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 90vh;
-`;
 
 const ContainerBottom = styled.div`
     width: 62%;

@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { createChat } from "@/services/chatRequisitions";
 
@@ -8,9 +7,9 @@ export default function MyService({myService}){
 
     async function initChat() {
         try {
-            const body = { secondUserId: myService.userId };
+            const body = { secondUserId: getServiceCreatorId() };
 
-            await createChat(body);
+              await createChat(body);
 
             router.push("/chat");
         } catch (error) {
@@ -49,6 +48,16 @@ export default function MyService({myService}){
         } else {
             return myService.job?.description
         }
+    }
+
+    function getServiceCreatorId() {
+      if (myService.professional !== null){
+        return myService.professional?.userId
+      } else if (myService.service !== null){
+        return myService.service?.userId
+      } else {
+        return myService.job?.userId
+      }
     }
 
   return(

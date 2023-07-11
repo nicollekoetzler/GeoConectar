@@ -15,7 +15,6 @@ async function signin(user) {
 }
 
 async function getUserInfo() {
-  console.log(localStorage.getItem("token"))
   const config = {
     headers: {
       Authorization: `Bearer ${ localStorage.getItem("token") }`

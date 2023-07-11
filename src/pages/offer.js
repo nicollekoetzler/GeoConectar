@@ -88,7 +88,7 @@ const Background = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
-    min-height: 90vh;
+    min-height: 70vh;
     width: 100vw;
     font-family: "Roboto";
 

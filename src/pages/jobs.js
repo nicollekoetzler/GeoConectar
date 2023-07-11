@@ -4,6 +4,7 @@ import HeaderLayout from "@/layouts/Header";
 import BottomLayout from "@/layouts/Bottom";
 import ContainerTop from "@/layouts/ContainerTop";
 import Categories from "@/layouts/Categories";
+import { ViewContainer, Background } from "@/shared/ViewGenericStyles";
 
 import { getJobs } from "@/services/jobsRequisitions";
 import Job from "@/components/Job";
@@ -27,7 +28,7 @@ export default function Services() {
 
 
     return (
-        <>
+        <ViewContainer>
             <HeaderLayout />
             <Background>
                 <ContainerTop />
@@ -42,21 +43,11 @@ export default function Services() {
                         ))
                     : ""}
                 </ContainerBottom>
-                <BottomLayout/>
             </Background>
-        </>
+            <BottomLayout/>
+        </ViewContainer>
     );
 }
-
-
-
-const Background = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: column;
-    min-height: 90vh;
-`;
 
 const ContainerBottom = styled.div`
     width: 62%;

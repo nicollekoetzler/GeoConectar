@@ -69,13 +69,13 @@ export default function Services() {
         <>
             <HeaderLayout />
             <Background>
-                <h1>Divulgue um serviço</h1>
+                <h1>Divulgue uma vaga</h1>
                 <form onSubmit={ handleSubmit }>
                     <h3>Título</h3>
                     <FormStyle>
                         <input
                             type="text"
-                            placeholder="Título do seu serviço"
+                            placeholder="Título da sua vaga"
                             value={ title }
                             onChange={ (e) => handleChange(e, setTitle) }
                             disabled={ isLoading }
@@ -92,7 +92,7 @@ export default function Services() {
                         }
                         <textarea
                             type="text"
-                            placeholder="Descrição do seu serviço"
+                            placeholder="Descrição da sua vaga"
                             value={ description }
                             onChange={ (e) => handleChange(e, setDescription) }
                             disabled={ isLoading }
@@ -214,79 +214,6 @@ const DescriptionForm = styled.div`
         textarea {
             width: 100%;
         }
-    }
-`;
-
-const Goals = styled.div`
-    width: 522px;
-    display: flex;
-    margin: 8px 0px 24px 0px;
-
-    @media screen and (max-width: 600px) {
-        width: 100%;
-    }
-`;
-
-const Request = styled.div`
-    width: 216px;
-    height: 118px;
-    border: 2px solid ${({ type }) => type === "job" ? "#CDCDCD": "#A5B167"};
-    border-radius: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0px 8px 0px 0px;
-    cursor: pointer;
-    transition: 0.3s;
-
-    &:hover {
-        border: 2px solid #A5B167;
-    }
-
-    h3 {
-        width: 60%;
-        font-weight: 700;
-        font-size: 18px;
-        line-height: 21px;
-        text-align: center;
-        align-self: center;
-    }
-
-    @media screen and (max-width: 600px) {
-        display: flex;
-        justify-content: center;
-        align-items: center
-    }
-`;
-
-const Offer = styled.div`
-    width: 216px;
-    height: 118px;
-    border: 2px solid ${({ type }) => type !== "job" ? "#CDCDCD": "#A5B167"};
-    border-radius: 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0px 8px 0px 8px;
-    cursor: pointer;
-    transition: 0.3s;
-
-    &:hover {
-        border: 2px solid #A5B167;
-    }
-
-    h3 {
-        font-weight: 700;
-        font-size: 18px;
-        line-height: 21px;
-        text-align: center;
-        align-self: center;
-    }
-
-    @media screen and (max-width: 600px) {
-        display: flex;
-        justify-content: center;
-        align-items: center
     }
 `;
 
