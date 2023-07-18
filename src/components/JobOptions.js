@@ -22,6 +22,11 @@ export default function JobOptions({ job }) {
       if(error.response.status === 403) {
         setError(true)
         setErrorMessage("Você não pode se conectar consigo mesmo!");
+      } else if(error.response.status === 409) {
+        setError(true)
+        setErrorMessage(
+          "Você já se conectou a essa vaga. Verifique a aba 'Meus Serviços"
+        );
       }
       console.log(error);
     }
