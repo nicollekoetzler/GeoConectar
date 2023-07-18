@@ -22,6 +22,7 @@ export default function ProfessionalOptions({ professional }) {
                 setError(true);
                 setErrorMessage("Você não pode inicar um chat consigo mesmo!");
             }
+
             console.log(error);
         }
     }
@@ -40,7 +41,13 @@ export default function ProfessionalOptions({ professional }) {
       if(error.response.status === 403) {
         setError(true);
         setErrorMessage("Você não pode se conectar consigo mesmo!");
+      } else if(error.response.status === 409) {
+        setError(true)
+        setErrorMessage(
+          "Você já se conectou a esse serviço. Verifique a aba 'Meus Serviços"
+        );
       }
+
       console.log(error);
     }
   }
