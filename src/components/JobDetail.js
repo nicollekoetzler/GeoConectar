@@ -38,7 +38,7 @@ const Info = styled.div`
     h3 {
         font-size: 16px;
         margin-bottom: 16px;
-        color: #4E693C;
+        color: #754D24;
     }
 
     h4 {

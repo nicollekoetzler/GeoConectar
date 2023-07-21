@@ -2,12 +2,12 @@ import styled from "@emotion/styled";
 import React from "react";
 import Link from "next/link"
 import Image from "next/image";
-import icon from "../../public/imgs/geoconectaricon.png"
+import icon from "../../public/imgs/svglogo.svg"
 
 export default function BottomLayout(){
     return(
         <Bottom>
-            <Image src={icon}/>
+            <Image width={60} src={icon}/>
             <BottomLinks>
                 <Link href="/about-us"><p>Sobre nós</p></Link>
                 <Link href="/contact"><p>Contato</p></Link>
@@ -22,7 +22,7 @@ export default function BottomLayout(){
 const Bottom = styled.footer`
     height: 100px;
     width: 100%;
-    background-color: #E7E4C9;
+    border-top: solid 1px #cdcdcd;
     display: flex;
     align-items: center;
     justify-content: center;

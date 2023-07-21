@@ -92,12 +92,12 @@ const Service = styled.div`
 
     h4 {
         font-size: 12px;
-        color: #4E693C;
+        color: #754D24;
         margin: 16px 0px 24px 0px;
     }
 
     p {
-        color: #4E693C;
+        color: #754D24;
         font-weight: 700;
         font-size: 16px;
     }
@@ -113,8 +113,8 @@ const Button = styled.button`
     border-radius: 50px;
     border: none;
     cursor: pointer;
-    color: #4E693C;
-    border: solid 1px #4E693C;
+    color: #754D24;
+    border: solid 1px #754D24;
     font-weight: 700;
     font-size: 14px;
     padding: 0px 32px 0px 32px;

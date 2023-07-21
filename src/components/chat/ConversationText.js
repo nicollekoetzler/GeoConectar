@@ -93,7 +93,7 @@ const Bottom = styled.div`
     button {
         height: 35px;
         width: 80px;
-        background-color: #A5B167;
+        background-color: #c59c6c;
         border-radius: 50px;
         border: none;
         cursor: pointer;

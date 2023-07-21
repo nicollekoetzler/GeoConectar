@@ -91,7 +91,7 @@ const BottomContainer = styled.div`
   color: #121212;
 
   h3 {
-    color: #4E693C;
+    color: #754D24;
     font-size: 20px;
     font-weight: 700;
     margin-bottom: 24px;

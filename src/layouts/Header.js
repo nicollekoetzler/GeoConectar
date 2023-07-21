@@ -5,7 +5,7 @@ import { AiOutlineUser } from "react-icons/ai";
 import Link from "next/link"
 import UserToggle from "@/components/UserToggle";
 import Image from "next/image";
-import logo from "../../public/imgs/geoconectarlogopequena.png"
+import logo from "../../public/imgs/svglogohorizontal.svg"
 
 
 export default function HeaderLayout() {
@@ -14,7 +14,7 @@ export default function HeaderLayout() {
     return(
         <TopBar>
             <TopBarLeftLinks>
-                <Link href="/services"><Image src={logo}/></Link>
+                <Link href="/services"><Image width={170} src={logo}/></Link>
             </TopBarLeftLinks>
             <TopBarLinks>
                 <Link href="/my-services"><h3>Meus Serviços</h3></Link>
@@ -51,7 +51,7 @@ const TopBarLeftLinks = styled.div`
         font-family: "Saira Semi Condensed";
         font-size: 32px;
         font-weight: 700;
-        color: #4E693C;
+        color: #754D24;
         cursor: pointer;
         background-color: white;
         border: none;
@@ -88,7 +88,7 @@ const TopBarLinks = styled.div`
     }
 
     h3:hover {
-        color: #4E693C;
+        color: #754D24;
     }
 
     @media screen and (max-width: 600px) {

@@ -87,7 +87,7 @@ export default function Professional({ professional }) {
       <h3>{ professional.user?.name } | Publicado há {getTime()}</h3>
       <h2>{ professional.description }</h2>
       <div>
-          <Link href={`/professionals/details/${professional.id}`}><ConnectButton>Conecte-se</ConnectButton></Link>
+          <Link href={`/professionals/details/${professional.id}`}><ConnectButton>Saiba mais</ConnectButton></Link>
           <QuestionButton onClick={ initChat }>Faça uma pergunta</QuestionButton>
       </div>
     </Service>
@@ -105,13 +105,17 @@ const Service = styled.div`
     }
 
     h2 {
-        padding: 0px 24px 24px 24px;
-        line-height: 128%;
+      padding: 0px 24px;
+      line-height: 128%;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
     }
 
     h3 {
         font-size: 14px;
-        color: #4E693C;
+        color: #754D24;
         padding-left: 24px;
         margin: 16px 0px 24px 0px;
     }
@@ -122,7 +126,11 @@ const Service = styled.div`
             flex-direction: column;
             justify-content: space-between;
             align-items: flex-start;
-            padding: 0 20px;
+            padding: 16px 20px 0 20px;
+        }
+
+        h2 {
+          -webkit-line-clamp: 3;
         }
 
         div > button,
@@ -135,7 +143,7 @@ const Service = styled.div`
 const ConnectButton = styled.button`
     width: 168px;
     height: 35px;
-    background: #4E693C;
+    background: #754D24;
     border-radius: 50px;
     border: none;
     cursor: pointer;
@@ -152,9 +160,10 @@ const QuestionButton = styled.button`
     border-radius: 50px;
     border: none;
     cursor: pointer;
-    color: #4E693C;
-    border: solid 1px #4E693C;
+    color: #754D24;
+    border: solid 1px #754D24;
     font-weight: 700;
     font-size: 14px;
     margin-left: 16px;
+    margin-top: 24px;
 `

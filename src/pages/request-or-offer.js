@@ -72,7 +72,7 @@ const Goals = styled.div`
 const Request = styled.button`
     width: 190px;
     height: 168px;
-    background-color: #E7E4C9;
+    background-color: #E2DDD7;
     border-radius: 24px;
     padding: 12px;
     display: flex;
@@ -88,7 +88,7 @@ const Request = styled.button`
         font-size: 18px;
         line-height: 21px;
         text-align: center;
-        color: #4E693C;
+        color: #754D24;
     }
 
     h4 {
@@ -107,7 +107,7 @@ const Request = styled.button`
 const Job = styled.button`
     width: 190px;
     height: 168px;
-    background-color: #E7E4C9;
+    background-color: #E2DDD7;
     border-radius: 24px;
     padding: 12px;
     display: flex;
@@ -123,7 +123,7 @@ const Job = styled.button`
         font-size: 18px;
         line-height: 21px;
         text-align: center;
-        color: #4E693C;
+        color: #754D24;
     }
 
     h4 {
@@ -141,20 +141,20 @@ const Job = styled.button`
 
 const Cash = styled(FaMoneyCheck)`
     font-size: 34px;
-    color: #4E693C;
+    color: #754D24;
     margin-bottom: 8px;
 `
 
 const Planet = styled(BiWorld)`
     font-size: 38px;
-    color: #4E693C;
+    color: #754D24;
     margin-bottom: 8px;
 `
 
 const Offer = styled.button`
     width: 190px;
     height: 168px;
-    background-color: #E7E4C9;
+    background-color: #E2DDD7;
     padding: 10px;
     border-radius: 24px;
     display: flex;
@@ -170,7 +170,7 @@ const Offer = styled.button`
         font-size: 18px;
         line-height: 21px;
         text-align: center;
-        color: #4E693C;
+        color: #754D24;
     }
 
     h4 {
@@ -188,10 +188,10 @@ const Offer = styled.button`
 
 const Megaphone = styled(BsMegaphone)`
     font-size: 32px;
-    color: #4E693C;
+    color: #754D24;
     margin-bottom: 8px;
 `
 
 const Verde = styled.span`
-color: #4E693C;
+color: #754D24;
 `

@@ -65,7 +65,7 @@ const NotLoggedContainer = styled.div`
 const RedirectLoginButton = styled.button`
   width: 326px;
   height: 42px;
-  background: #a5b167;
+  background: #c59c6c;
   border-radius: 50px;
   border: none;
   cursor: pointer;

@@ -15,7 +15,7 @@ const Banner = styled.div`
 width: 273px;
 height: fit-content;
 border-radius: 12px;
-background-color: #E7E4C9;
+background-color: #E2DDD7;
 padding: 32px;
 font-family: "Roboto";
 
@@ -23,7 +23,7 @@ font-family: "Roboto";
         font-family: "Saira Semi Condensed";
         font-size: 22px;
         font-weight: 700;
-        color: #4E693C;
+        color: #754D24;
         margin-bottom: 24px;
     }
 
@@ -48,7 +48,7 @@ font-family: "Roboto";
 const BannerButton = styled.button`
     height: 52px;
     width: 100%;
-    background-color: #A5B167;
+    background-color: #c59c6c;
     border-radius: 50px;
     border: none;
     cursor: pointer;

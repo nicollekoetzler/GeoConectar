@@ -16,7 +16,7 @@ const Message = styled.div`
     align-self: ${({addressed}) => addressed ? "flex-start" : "flex-end" };
     border-radius: ${({addressed}) => addressed ? "0px 20px 20px 20px": "20px 20px 0px 20px"};
     padding: 16px;
-    background-color: ${({addressed}) => addressed ? "#EDF0DE" : "#4E693C"};
+    background-color: ${({addressed}) => addressed ? "#EDF0DE" : "#754D24"};
     line-height: 128%;
     color: ${({addressed}) => addressed ? "black" : "white" };
 

@@ -89,7 +89,7 @@ export default function Service({ service }) {
       <h2>{service.description}</h2>
       <div>
         <Link href={`/services/details/${service.id}`}>
-          <ConnectButton>Conecte-se</ConnectButton>
+          <ConnectButton>Saiba mais</ConnectButton>
         </Link>
         <QuestionButton onClick={ initChat }>Faça uma pergunta</QuestionButton>
       </div>
@@ -108,13 +108,17 @@ const Container = styled.div`
   }
 
   h2 {
-    padding: 0px 24px 24px 24px;
+    padding: 0px 24px;
     line-height: 128%;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
   }
 
   h3 {
     font-size: 14px;
-    color: #4e693c;
+    color: #754D24;
     padding-left: 24px;
     margin: 16px 0px 24px 0px;
   }
@@ -132,7 +136,11 @@ const Container = styled.div`
             flex-direction: column;
             justify-content: space-between;
             align-items: flex-start;
-            padding: 0 20px;
+            padding: 16px 20px 0 20px;
+        }
+
+        h2 {
+          -webkit-line-clamp: 3;
         }
 
         div > button,
@@ -146,7 +154,7 @@ const ConnectButton = styled.button`
   text-decoration: none;
   width: 168px;
   padding: 9px 0;
-  background: #4e693c;
+  background: #754D24;
   border-radius: 50px;
   border: none;
   cursor: pointer;
@@ -159,13 +167,15 @@ const ConnectButton = styled.button`
 const QuestionButton = styled.button`
   width: 168px;
   padding: 9px 0;
+  margin-top: 24px;
   background: white;
   border-radius: 50px;
   border: none;
   cursor: pointer;
-  color: #4e693c;
-  border: solid 1px #4e693c;
+  color: #754D24;
+  border: solid 1px #754D24;
   font-weight: 700;
   font-size: 14px;
   margin-left: 16px;
+
 `;

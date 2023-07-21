@@ -45,7 +45,7 @@ const MyAccount = styled.div`
     justify-content: center;
     
     p {
-        color: #4E693C;
+        color: #754D24;
         font-family: "Roboto";
         font-size: 14px;
         font-weight: 700;
@@ -58,7 +58,7 @@ const MyAccount = styled.div`
         const LogoutComponent = styled.div`
             width: 150px;
             height: 43px;
-            background-color: #E7E4C9;
+            background-color: #E2DDD7;
             border: 1px solid #CDCDCD;
             border-radius: 0px 0px 0px 20px;
         
@@ -72,7 +72,7 @@ const MyAccount = styled.div`
             justify-content: center;
         
             p {
-                color: #4E693C;
+                color: #754D24;
                 font-family: "Roboto";
                 font-size: 14px;
                 font-weight: 700;

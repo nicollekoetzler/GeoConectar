@@ -56,7 +56,7 @@ const SingleMessage = styled.div`
     flex-direction: column;
     padding: 0px 20px 0px 20px;
     cursor: pointer;
-    border-bottom: 2px solid #E7E4C9;
+    border-bottom: 2px solid #E2DDD7;
 
     h4 {
         font-weight: 500;

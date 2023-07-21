@@ -199,7 +199,7 @@ const Button = styled.div`
     button {
         width: 522px;
         height: 42px;
-        background-color: #4E693C;
+        background-color: #754D24;
         border-radius: 50px;
         border: none;
         cursor: pointer;

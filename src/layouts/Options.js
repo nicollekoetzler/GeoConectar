@@ -16,7 +16,7 @@ const OptionsBanner = styled.div`
 width: 273px;
 height: fit-content;
 border-radius: 12px;
-background-color: #E7E4C9;
+background-color: #E2DDD7;
 padding: 32px;
 
 p {
@@ -29,7 +29,7 @@ p {
 const ConnectButton = styled.button`
 height: 35px;
 width: 100%;
-background-color: #4E693C;
+background-color: #754D24;
 border-radius: 50px;
 border: none;
 cursor: pointer;
@@ -43,9 +43,9 @@ height: 35px;
 width: 100%;
 border-radius: 50px;
 border: none;
-border: 1px solid #4E693C;
-background-color: #E7E4C9;
+border: 1px solid #754D24;
+background-color: #E2DDD7;
 cursor: pointer;
-color: #4E693C;
+color: #754D24;
 font-weight: 700;
 `

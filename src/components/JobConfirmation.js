@@ -35,7 +35,7 @@ const ContainerTop = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: #E7E4C9;
+    background-color: #E2DDD7;
     border-radius: 12px;
     margin: 64px 0px 32px 0px;
     padding: 32px;
@@ -45,7 +45,7 @@ const ContainerTop = styled.div`
     h1 {
         font-size: 24px;
         font-weight: 700;
-        color: #4E693C;
+        color: #754D24;
         margin-bottom: 8px;
     }
 
@@ -64,7 +64,7 @@ const ContainerTop = styled.div`
 
     button {
         height: 42px;
-        background: #A5B167;
+        background: #c59c6c;
         border-radius: 50px;
         border: none;
         cursor: pointer;

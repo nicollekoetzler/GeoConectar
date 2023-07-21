@@ -96,7 +96,7 @@ export default function AboutUs() {
 
 const TopContainer = styled.div`
   width: 100%;
-  background-color: #A5B167;
+  background-color: #c59c6c;
   color: #fff;
   display: flex;
   justify-content: center;

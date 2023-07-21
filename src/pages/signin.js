@@ -140,7 +140,7 @@ const Container = styled.div`
     font-family: "Saira Semi Condensed";
     font-size: 42px;
     font-weight: 700;
-    color: #4e693c;
+    color: #754D24;
     text-align: center;
   }
 
@@ -190,7 +190,7 @@ const Button = styled.div`
   button {
     width: 326px;
     height: 42px;
-    background: #a5b167;
+    background: #c59c6c;
     border-radius: 50px;
     border: none;
     cursor: pointer;
@@ -224,7 +224,7 @@ const FormStyle = styled.div`
   }
 
   input:focus {
-    outline: 1px solid #a5b167;
+    outline: 1px solid #c59c6c;
   }
 
   @media screen and (max-width: 600px) {
@@ -237,5 +237,5 @@ const FormStyle = styled.div`
 `;
 
 const Verde = styled.a`
-  color: #4e693c;
+  color: #754D24;
 `;

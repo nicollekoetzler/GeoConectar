@@ -22,7 +22,7 @@ const Container = styled.div`
     h1 {
         font-weight: 700;
         font-size: 22px;
-        color: #4E693C;
+        color: #754D24;
         padding-left: 24px;
     }
 
@@ -40,8 +40,8 @@ const QuestionButton = styled.button`
     border-radius: 50px;
     border: none;
     cursor: pointer;
-    color: #4E693C;
-    border: solid 1px #4E693C;
+    color: #754D24;
+    border: solid 1px #754D24;
     font-weight: 700;
     font-size: 14px;
     margin-left: 24px;
