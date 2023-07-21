@@ -10,7 +10,7 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>GeoConectar</title>
+        <title>GEOCONECTAR</title>
       </Head>
       <AppWrapper>
           <NotLoggedMessage />
