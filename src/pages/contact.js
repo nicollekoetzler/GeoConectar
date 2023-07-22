@@ -34,7 +34,7 @@ const TopContainer = styled.div`
   h1 {
       font-weight: 700;
       font-size: 42px;
-      padding: 100px 0;
+      padding: 40px 0;
   }
 `
 
