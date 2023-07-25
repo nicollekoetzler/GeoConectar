@@ -6,6 +6,7 @@ import Link from "next/link"
 import UserToggle from "@/components/UserToggle";
 import Image from "next/image";
 import logo from "../../public/imgs/svglogohorizontal.svg"
+import logoMobile from "../../public/imgs/svglogo.svg"
 
 
 export default function HeaderLayout() {
@@ -15,6 +16,7 @@ export default function HeaderLayout() {
         <TopBar>
             <TopBarLeftLinks>
                 <Link href="/services"><Image width={170} src={logo}/></Link>
+                <Link href="/services"><Image src={logoMobile}/></Link>
             </TopBarLeftLinks>
             <TopBarLinks>
                 <Link href="/my-services"><h3>Meus Serviços</h3></Link>
@@ -46,6 +48,7 @@ const TopBar = styled.div`
 
 const TopBarLeftLinks = styled.div`
     width: 25%;
+    padding: 0 10px;
 
     button {
         font-family: "Saira Semi Condensed";
@@ -57,8 +60,27 @@ const TopBarLeftLinks = styled.div`
         border: none;
     }
 
-    @media screen and (max-width: 600px) {
-        width: 100%;
+    a:first-child {
+      display: flex;
+    }
+
+    a:last-child {
+      display: none;
+    }
+
+    @media screen and (max-width: 800px) {
+
+        img {
+          width: 70px;
+          height: auto;
+        }
+
+        a:first-child {
+          display: none;
+        }
+        a:last-child {
+          display: flex;
+        }
 
         button {
             font-size: 22px;
@@ -72,6 +94,10 @@ const TopBarLinks = styled.div`
     width: 50%;
     font-family: "Roboto";
 
+    a {
+      text-align: center;
+    }
+
     h3 {
         color: #1E1E1E;
         font-size: 18px;
@@ -80,10 +106,6 @@ const TopBarLinks = styled.div`
     }
 
     h3:nth-child(1) {
-        margin-right: 32px;
-    }
-
-    h3:nth-child(2) {
         margin-right: 32px;
     }
 
