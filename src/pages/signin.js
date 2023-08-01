@@ -30,7 +30,7 @@ export default function SignIn() {
     } catch (err) {
       const INVALID_CREDENTIALS = "Email ou senha incorretos";
 
-      if(err.response.status === 401) {
+      if(err?.response?.status === 401) {
         setError([INVALID_CREDENTIALS]);
       }
       console.log(err);
