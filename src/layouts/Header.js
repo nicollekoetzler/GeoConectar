@@ -22,6 +22,8 @@ export default function HeaderLayout() {
                 <Link href="/my-services"><h3>Meus Serviços</h3></Link>
                 <Link href="/request-or-offer"><h3>Criar serviço</h3></Link>
                 <Link href="/terms"><h3>Termos</h3></Link>
+                <Link href="/terms"><h3>Sobre nós</h3></Link>
+                <Link href="/terms"><h3>Contato</h3></Link>
             </TopBarLinks>
             <TopBarRightLinks>
                 <Link href="/chat"><Chat/></Link>
@@ -122,6 +124,8 @@ const TopBarLinks = styled.div`
             align-self: center;
         }
 
+        a:nth-child(5),
+        a:nth-child(4),
         a:nth-child(3),
         a:nth-child(2) {
             display: none;
