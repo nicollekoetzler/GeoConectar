@@ -2,68 +2,93 @@ import styled from "@emotion/styled";
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import logo from "../../public/imgs/svglogovertical.svg"
+import banner from "../../public/imgs/banner.png"
+import logo from "../../public/imgs/svglogohorizontal.svg"
 
 export default function ContainerTop(){
     return(
         <Container>
-            <Image width={170} src={logo}/>
-            <h3>Conecte-se com profissionais qualificados 
-            para o seu projeto</h3>
-            <Link href="/request-or-offer"><button>Solicite ou ofereça seu serviço</button></Link>
+            <Left>
+                <BannerInfo>
+                    <Image width={190} src={logo} />
+                    <h1>A sua conexão com <br/> profissionais da geociências</h1>
+                    <h4>Ofereça serviços, requira serviços, divulgue uma vaga. <br/> Aqui você cria conexões com pessoas do Brasil inteiro!</h4>
+                    <div>
+                        <Link href={`/services`}>
+                            <ConnectButton>Conecte-se agora</ConnectButton>
+                        </Link>
+                        <Link href={`/request-or-offer`}>
+                            <QuestionButton>Criar novo serviço</QuestionButton>
+                        </Link>
+                    </div>
+                </BannerInfo>
+            </Left>
         </Container>
     )
 }
 
 const Container = styled.div`
-    width: 62%;
+    width: 100vw;
     display: flex;
-    align-items: center;
     justify-content: center;
-    flex-direction: column;
-    background-color: #E2DDD7;
-    border-radius: 12px;
-    margin: 64px 0px 32px 0px;
-    padding: 32px;
-    text-align: center;
-
-    h3 {
-        font-family: "Roboto";
-        font-size: 20px;
-        width: 55%;
-        line-height: 128%;
-        padding-top: 16px;
-    }
-
-    button {
-        width: 326px;
-        height: 42px;
-        background: #c59c6c;
-        border-radius: 50px;
-        border: none;
-        cursor: pointer;
-        color: white;
-        font-size: 16px;
-        font-weight: 700;
-        margin-top: 24px;
-    }
+    margin-bottom: 64px;
+    background: center/cover url(${banner}) no-repeat;
 
     @media screen and (max-width: 600px) {
         width: 94%;
         height: auto;
         padding: 50px 30px;
         margin-top: 32px;
-
-        h1, h3 {
-            width: 100%;
-        }
-
-        button {
-            width: 100%;
-            height: auto;
-            text-align: center;
-            padding: 10px 20px;
-        }
     }
 `;
 
+const Left = styled.div`
+    display: flex;
+    justify-content: left;
+    align-items: center;
+`
+
+const BannerInfo = styled.div`
+    color: #1d1d1d;
+
+    h1 {
+        font-size: 50px;
+        font-weight: 800;
+        padding-top: 32px;
+        line-height: 130%;
+    }
+
+    h4 {
+        font-size: 26px;
+        padding-top: 32px;
+        line-height: 130%;
+    }
+`
+const ConnectButton = styled.button`
+  text-decoration: none;
+  width: 230px;
+  padding: 12px 0;
+  background: #754D24;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+`;
+
+const QuestionButton = styled.button`
+  width: 230px;
+  padding: 12px 0;
+  margin-top: 32px;
+  background: white;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  color: #754D24;
+  border: solid 1px #754D24;
+  font-weight: 700;
+  font-size: 18px;
+  margin-left: 10px;
+
+`;
