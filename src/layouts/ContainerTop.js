@@ -7,7 +7,7 @@ import logo from "../../public/imgs/svglogohorizontal.svg"
 
 export default function ContainerTop(){
     return(
-        <Container>
+        <Container bgImg={banner}>
             <Left>
                 <BannerInfo>
                     <Image width={190} src={logo} />
@@ -29,10 +29,11 @@ export default function ContainerTop(){
 
 const Container = styled.div`
     width: 100vw;
+    height: 800px;
     display: flex;
     justify-content: center;
     margin-bottom: 64px;
-    background: center/cover url(${banner}) no-repeat;
+    background: center/cover url(${(props) => props.bgImg.src}) no-repeat;
 
     @media screen and (max-width: 600px) {
         width: 94%;
@@ -46,10 +47,13 @@ const Left = styled.div`
     display: flex;
     justify-content: left;
     align-items: center;
+    width: 100%;
+    padding-left: 19%;
 `
 
 const BannerInfo = styled.div`
     color: #1d1d1d;
+    width: 50%;
 
     h1 {
         font-size: 50px;
