@@ -11,14 +11,14 @@ export default function ContainerTop(){
             <Left>
                 <BannerInfo>
                     <Image width={190} src={logo} />
-                    <h1>A sua conexão com <br/> profissionais da geociências</h1>
+                    <h1>A sua conexão com profissionais da geociências</h1>
                     <h4>Ofereça serviços, requira serviços, divulgue uma vaga. <br/> Aqui você cria conexões com pessoas do Brasil inteiro!</h4>
                     <div>
                         <Link href={`/services`}>
                             <ConnectButton>Conecte-se agora</ConnectButton>
                         </Link>
                         <Link href={`/request-or-offer`}>
-                            <QuestionButton>Criar novo serviço</QuestionButton>
+                            <QuestionButton>Crie um novo serviço</QuestionButton>
                         </Link>
                     </div>
                 </BannerInfo>
@@ -36,10 +36,9 @@ const Container = styled.div`
     background: center/cover url(${(props) => props.bgImg.src}) no-repeat;
 
     @media screen and (max-width: 600px) {
-        width: 94%;
+        width: 100%;
         height: auto;
         padding: 50px 30px;
-        margin-top: 32px;
     }
 `;
 
@@ -49,6 +48,10 @@ const Left = styled.div`
     align-items: center;
     width: 100%;
     padding-left: 19%;
+
+    @media screen and (max-width: 600px) {
+        padding-left: 0;
+    }
 `
 
 const BannerInfo = styled.div`
@@ -66,6 +69,19 @@ const BannerInfo = styled.div`
         font-size: 26px;
         padding-top: 32px;
         line-height: 130%;
+    }
+
+    @media screen and (max-width: 600px) {
+        width: 100%;
+
+        h1 {
+            font-size: 36px;
+        }
+
+        h4 {
+            font-size: 20px;
+            padding: 16px 0;
+        }
     }
 `
 const ConnectButton = styled.button`
@@ -95,4 +111,8 @@ const QuestionButton = styled.button`
   font-size: 18px;
   margin-left: 10px;
 
+    @media screen and (max-width: 600px) {
+        margin-left: 0px;
+        margin-top: 12px;
+    }
 `;
