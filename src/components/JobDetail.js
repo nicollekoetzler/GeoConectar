@@ -9,7 +9,6 @@ export default function JobDetail({ job }) {
         return `${diaCreatedAt} de ${nomeMesCreatedAt}`
     }
 
-
     return(
         <Info>
             <h2>{ job.title }</h2>

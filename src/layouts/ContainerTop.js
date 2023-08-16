@@ -12,7 +12,7 @@ export default function ContainerTop(){
                 <BannerInfo>
                     <Image width={190} src={logo} />
                     <h1>A sua conexão com profissionais da geociências</h1>
-                    <h4>Ofereça serviços, requira serviços, divulgue uma vaga. <br/> Aqui você cria conexões com pessoas do Brasil inteiro!</h4>
+                    <h4>Ofereça serviços, requira serviços, divulgue uma vaga. Aqui você cria conexões com pessoas do Brasil inteiro!</h4>
                     <div>
                         <Link href={`/services`}>
                             <ConnectButton>Conecte-se agora</ConnectButton>
@@ -29,7 +29,7 @@ export default function ContainerTop(){
 
 const Container = styled.div`
     width: 100vw;
-    height: 800px;
+    height: 600px;
     display: flex;
     justify-content: center;
     margin-bottom: 64px;
@@ -56,10 +56,10 @@ const Left = styled.div`
 
 const BannerInfo = styled.div`
     color: #1d1d1d;
-    width: 50%;
+    width: 40%;
 
     h1 {
-        font-size: 50px;
+        font-size: 40px;
         font-weight: 800;
         padding-top: 32px;
         line-height: 130%;
@@ -101,7 +101,7 @@ const QuestionButton = styled.button`
   width: 230px;
   padding: 12px 0;
   margin-top: 32px;
-  background: white;
+  background: #f2f3f3;
   border-radius: 50px;
   border: none;
   cursor: pointer;
