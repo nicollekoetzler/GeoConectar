@@ -6,6 +6,26 @@ import banner from "../../public/imgs/banner.png"
 import logo from "../../public/imgs/svglogohorizontal.svg"
 
 export default function ContainerTop(){
+/*     const [anchorTarget, setAnchorTarget] = useState(null);
+
+    useEffect(() => {
+        setAnchorTarget(document.getElementById(tag));
+    }, [tag]);
+
+    const handleClick = event => {
+        event.preventDefault();
+        anchorTarget.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }; */
+
+    const handleClickScroll = () => {
+        const element = document.getElementById('tag');
+        document.documentElement.style.scrollBehavior = "smooth";
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      };
+    
+
     return(
         <Container bgImg={banner}>
             <Left>
@@ -14,7 +34,10 @@ export default function ContainerTop(){
                     <h1>A sua conexão com profissionais da geociências</h1>
                     <h4>Ofereça serviços, requira serviços, divulgue uma vaga. Aqui você cria conexões com pessoas do Brasil inteiro!</h4>
                     <div>
-                        <Link href={`/services`}>
+                        <Link 
+                            href={`#tag`}
+                            onClick={handleClickScroll}
+                        >
                             <ConnectButton>Conecte-se agora</ConnectButton>
                         </Link>
                         <Link href={`/request-or-offer`}>
@@ -39,6 +62,12 @@ const Container = styled.div`
         width: 100%;
         height: auto;
         padding: 50px 30px;
+    }
+
+    @media screen and (min-width: 600px) and (max-width: 1500px){
+        width: 100%;
+        height: auto;
+        height: 450px;
     }
 `;
 
@@ -83,6 +112,17 @@ const BannerInfo = styled.div`
             padding: 16px 0;
         }
     }
+
+    @media screen and (min-width: 600px) and (max-width: 1500px){
+        h1 {
+            font-size: 36px;
+        }
+
+        h4 {
+            font-size: 20px;
+            padding: 16px 0;
+        }
+    }
 `
 const ConnectButton = styled.button`
   text-decoration: none;
@@ -109,10 +149,15 @@ const QuestionButton = styled.button`
   border: solid 1px #754D24;
   font-weight: 700;
   font-size: 18px;
-  margin-left: 10px;
+  margin-left: 8px;
 
     @media screen and (max-width: 600px) {
         margin-left: 0px;
+        margin-top: 12px;
+    }
+
+    @media screen and (min-width: 600px) and (max-width: 1500px){
+        margin-left: 8px;
         margin-top: 12px;
     }
 `;

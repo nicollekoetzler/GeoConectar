@@ -5,7 +5,7 @@ import { useRouter } from "next/router";;
 export default function Categories() {
     const router = useRouter();
     return(
-        <Category>
+        <Category id="tag">
             <Link href="/services"><button className={router.pathname === '/services' ? 'active' : ''}>Serviços</button></Link>
             <Link href="/professionals"><button className={router.pathname === '/professionals' ? 'active' : ''}>Profissionais</button></Link>
             <Link href="/jobs"><button className={router.pathname === '/jobs' ? 'active' : ''}>Vagas</button></Link>
