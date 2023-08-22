@@ -6,16 +6,6 @@ import banner from "../../public/imgs/banner.png"
 import logo from "../../public/imgs/svglogohorizontal.svg"
 
 export default function ContainerTop(){
-/*     const [anchorTarget, setAnchorTarget] = useState(null);
-
-    useEffect(() => {
-        setAnchorTarget(document.getElementById(tag));
-    }, [tag]);
-
-    const handleClick = event => {
-        event.preventDefault();
-        anchorTarget.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }; */
 
     const handleClickScroll = () => {
         const element = document.getElementById('tag');
@@ -67,7 +57,7 @@ const Container = styled.div`
     @media screen and (min-width: 600px) and (max-width: 1500px){
         width: 100%;
         height: auto;
-        height: 450px;
+        padding: 20px;
     }
 `;
 
@@ -91,7 +81,7 @@ const BannerInfo = styled.div`
         font-size: 40px;
         font-weight: 800;
         padding-top: 32px;
-        line-height: 130%;
+        line-height: 120%;
     }
 
     h4 {
@@ -135,6 +125,20 @@ const ConnectButton = styled.button`
   color: white;
   font-size: 18px;
   font-weight: 700;
+
+  @media screen and (min-width: 600px) and (max-width: 1500px){
+        margin-right: 8px;
+        font-size: 14px;
+        padding: 10px 0;
+        width: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+        margin-right: 8px;
+        font-size: 14px;
+        padding: 10px 0;
+        width: 200px;
+    }
 `;
 
 const QuestionButton = styled.button`
@@ -154,10 +158,16 @@ const QuestionButton = styled.button`
     @media screen and (max-width: 600px) {
         margin-left: 0px;
         margin-top: 12px;
+        font-size: 14px;
+        padding: 10px 0;
+        width: 200px;
     }
 
     @media screen and (min-width: 600px) and (max-width: 1500px){
-        margin-left: 8px;
-        margin-top: 12px;
+        margin: 0;
+        margin-top: 8px;
+        font-size: 14px;
+        padding: 10px 0;
+        width: 200px;
     }
 `;
