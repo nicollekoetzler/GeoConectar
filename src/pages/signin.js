@@ -3,9 +3,12 @@ import { signin } from "@/services/authRequisitions";
 import styled from "@emotion/styled";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import foto from "../../public/imgs/loading.svg"
-import Image from "next/image"
-import { height } from "@mui/system";
+import foto from "../../public/imgs/loading.svg";
+import {
+  LoadingView,
+  LoaderContainer,
+  Loader,
+} from "@/shared/ViewLoadingStyles";
 
 export default function SignIn() {
   const router = useRouter();
@@ -17,9 +20,9 @@ export default function SignIn() {
   const [isLoading, setIsLoading] = useState(false);
 
   async function handleSubmit(e) {
-      e.preventDefault();
-      setIsLoading(true);
-      setError([]);
+    e.preventDefault();
+    setIsLoading(true);
+    setError([]);
 
     try {
       const result = await signin(user);
@@ -30,7 +33,7 @@ export default function SignIn() {
     } catch (err) {
       const INVALID_CREDENTIALS = "Email ou senha incorretos";
 
-      if(err?.response?.status === 401) {
+      if (err?.response?.status === 401) {
         setError([INVALID_CREDENTIALS]);
       }
       console.log(err);
@@ -40,16 +43,16 @@ export default function SignIn() {
 
   return (
     <Background>
-      <LoadingView isLoading={ isLoading }>
-        <LoaderContainer >
-            <Loader src={foto}/>
+      <LoadingView isLoading={isLoading}>
+        <LoaderContainer>
+          <Loader src={foto} />
         </LoaderContainer>
       </LoadingView>
       <Container>
         <h1>GeoConectar</h1>
         <h2>Faça o seu login</h2>
         <form onSubmit={handleSubmit}>
-          { error.length > 0 ? <ErrorMessage messages={ error } /> : <></> }
+          {error.length > 0 ? <ErrorMessage messages={error} /> : <></>}
           <h3>Email</h3>
           <FormStyle>
             <input
@@ -92,36 +95,9 @@ const Background = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #F9F9F9;
+  background-color: #f9f9f9;
   font-family: "Roboto";
 `;
-
-const LoadingView = styled.div`
-  font-family: "Roboto";
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  z-index: 1;
-  display: ${({isLoading}) => isLoading ? "flex" : "none"};
-  justify-content: center;
-  align-items: center;
-  background-color: #F9F9F9;
-`
-
-const LoaderContainer = styled.div`
-  padding: 50px 0;
-  border-radius: 10px;
-  background-color: #FFFFFF;
-  border: 1px solid #cdcdcd;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-const Loader = styled(Image)`
-  height: 50px;
-`
 
 const Container = styled.div`
   background-color: white;
@@ -140,7 +116,7 @@ const Container = styled.div`
     font-family: "Saira Semi Condensed";
     font-size: 42px;
     font-weight: 700;
-    color: #754D24;
+    color: #754d24;
     text-align: center;
   }
 
@@ -172,16 +148,16 @@ const Container = styled.div`
     padding: 24px 16px;
 
     form {
-        margin: 0 10px; 
+      margin: 0 10px;
     }
 
     h1 {
-        font-size: 36px;
+      font-size: 36px;
     }
 
     h2 {
-        text-align: center;
-        font-size: 20px;
+      text-align: center;
+      font-size: 20px;
     }
   }
 `;
@@ -203,7 +179,7 @@ const Button = styled.div`
     width: 100%;
 
     button {
-        width: 100%;
+      width: 100%;
     }
   }
 `;
@@ -231,11 +207,11 @@ const FormStyle = styled.div`
     width: 100%;
 
     input {
-        width: 100%;
+      width: 100%;
     }
   }
 `;
 
 const Verde = styled.a`
-  color: #754D24;
+  color: #754d24;
 `;

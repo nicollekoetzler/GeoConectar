@@ -17,8 +17,8 @@ async function signin(user) {
 async function getUserInfo() {
   const config = {
     headers: {
-      Authorization: `Bearer ${ localStorage.getItem("token") }`
-    }
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
   };
 
   return await axios.get(
@@ -27,4 +27,20 @@ async function getUserInfo() {
   );
 }
 
-export { signup, signin, getUserInfo };
+async function confirmUserEmail(token) {
+  console.log(token);
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  return await axios.post(
+    process.env.NEXT_PUBLIC_API_URL +
+      process.env.NEXT_PUBLIC_EMAIL_CONFIRMATION_ROUTE,
+    {},
+    config
+  );
+}
+
+export { signup, signin, getUserInfo, confirmUserEmail };
