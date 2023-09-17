@@ -32,7 +32,11 @@ export default function Services() {
           <MyServices>
             {myServices.length !== 0 ? (
               myServices.map((myService) => (
-                <MyService myService={myService} key={myService.id} />
+                <MyService
+                  myService={myService}
+                  key={myService.id}
+                  getAllMyServices={getAllMyServices}
+                />
               ))
             ) : (
               <NoServiceContainer>

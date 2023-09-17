@@ -30,4 +30,19 @@ async function postJob(title, description, company, city) {
   );
 }
 
-export { getJobs, getJob, postJob };
+async function deleteJob(id) {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("geo-tk")}`,
+    },
+  };
+
+  return await axios.delete(
+    process.env.NEXT_PUBLIC_API_URL +
+      process.env.NEXT_PUBLIC_JOBS_ROUTE +
+      `/${id}`,
+    config
+  );
+}
+
+export { getJobs, getJob, postJob, deleteJob };

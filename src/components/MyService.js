@@ -5,16 +5,15 @@ import { BsTrash } from "react-icons/bs";
 import DeleteConfirmation from "./DeleteConfirmation";
 import { useState } from "react";
 
-export default function MyService({ myService }) {
-  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(true);
+export default function MyService({ myService, getAllMyServices }) {
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
   const router = useRouter();
-  const servicesTypes = ["job", "professional", "service"];
   const isUserService =
     getServiceCreatorId() === localStorage.getItem("geo-id");
 
   async function initChat() {
     try {
-      const body = { secondUserId: getServiceCreatorId() };
+      const body = { secondUserId: myService.creatorId };
 
       await createChat(body);
 
@@ -23,16 +22,6 @@ export default function MyService({ myService }) {
       if (error.response.status === 409) router.push("/chat");
       console.log(error);
     }
-  }
-
-  function getTitle() {
-    const [serviceType] = servicesTypes.filter(
-      (type) => myService[type]?.title !== undefined
-    );
-
-    if (serviceType === undefined) return myService.title;
-
-    return myService[serviceType].title;
   }
 
   function getDay() {
@@ -56,31 +45,17 @@ export default function MyService({ myService }) {
     return `${diaCreatedAt} de ${nomeMesCreatedAt}`;
   }
 
-  function getDescription() {
-    const [serviceType] = servicesTypes.filter(
-      (type) => myService[type]?.description !== undefined
-    );
-
-    if (serviceType === undefined) return myService.description;
-
-    return myService[serviceType].description;
-  }
-
   function getServiceCreatorId() {
-    const [serviceType] = servicesTypes.filter(
-      (type) => myService[type]?.userId !== undefined
-    );
+    if (myService.userId !== undefined) return myService.userId;
 
-    if (serviceType === undefined) return myService.userId;
-
-    return myService[serviceType].userId;
+    return myService.creatorId;
   }
 
   return (
     <Service>
-      <h2>{getTitle()}</h2>
+      <h2>{myService.title}</h2>
       <h4>Conectado em {getDay()}</h4>
-      <h3>{getDescription()}</h3>
+      <h3>{myService.description}</h3>
       {isUserService && (
         <div>
           <BsTrash
@@ -97,6 +72,9 @@ export default function MyService({ myService }) {
       <DeleteConfirmation
         visible={showDeleteConfirmation}
         setVisible={setShowDeleteConfirmation}
+        serviceType={myService.type}
+        getAllMyServices={getAllMyServices}
+        id={myService.id}
       />
     </Service>
   );

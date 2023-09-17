@@ -1,25 +1,52 @@
+import { deleteJob } from "@/services/jobsRequisitions";
+import { deleteProfessional } from "@/services/professionalsRequisitions";
+import { deleteService } from "@/services/servicesRequisitions";
 import styled from "@emotion/styled";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useState } from "react";
 
-export default function DeleteConfirmation({ visible, setVisible }) {
-  const router = useRouter();
-
-  function showNotLoggedMessge() {}
+export default function DeleteConfirmation({
+  visible,
+  setVisible,
+  serviceType,
+  getAllMyServices,
+  id,
+}) {
+  const [isLoading, setIsLoading] = useState(false);
 
   const cancelDelete = () => {
     setVisible(false);
   };
 
-  useEffect(showNotLoggedMessge, [router]);
+  const deleteMyService = async () => {
+    setIsLoading(true);
+
+    try {
+      if (serviceType === "job") {
+        await deleteJob(id);
+      } else if (serviceType === "service") {
+        await deleteService(id);
+      } else if (serviceType === "professional") {
+        await deleteProfessional(id);
+      }
+
+      await getAllMyServices();
+    } catch (err) {
+      console.log(err);
+    }
+
+    setIsLoading(false);
+    setVisible(false);
+  };
 
   return (
     <DeleteConfirmationView visible={visible}>
       <DeleteConfirmationContainer>
         <h4>Tem certeza que deseja excluir esse serviço?</h4>
         <div>
-          <DeleteOptionButton onClick={() => ""}>Excluir</DeleteOptionButton>
-          <DeleteOptionButton onClick={cancelDelete}>
+          <DeleteOptionButton onClick={deleteMyService} disabled={isLoading}>
+            Excluir
+          </DeleteOptionButton>
+          <DeleteOptionButton onClick={cancelDelete} disabled={isLoading}>
             Cancelar
           </DeleteOptionButton>
         </div>
