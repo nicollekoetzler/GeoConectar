@@ -1,121 +1,134 @@
 import styled from "@emotion/styled";
 import { useRouter } from "next/router";
 import { createChat } from "@/services/chatRequisitions";
+import { BsTrash } from "react-icons/bs";
+import DeleteConfirmation from "./DeleteConfirmation";
+import { useState } from "react";
 
-export default function MyService({myService}){
-    const router = useRouter();
+export default function MyService({ myService, getAllMyServices }) {
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+  const router = useRouter();
+  const isUserService =
+    getServiceCreatorId() === localStorage.getItem("geo-id");
 
-    async function initChat() {
-        try {
-            const body = { secondUserId: getServiceCreatorId() };
+  async function initChat() {
+    try {
+      const body = { secondUserId: myService.creatorId };
 
-              await createChat(body);
+      await createChat(body);
 
-            router.push("/chat");
-        } catch (error) {
-            if(error.response.status === 409) router.push("/chat");
-            console.log(error);
-        }
+      router.push("/chat");
+    } catch (error) {
+      if (error.response.status === 409) router.push("/chat");
+      console.log(error);
     }
+  }
 
-    function getTitle(){
-        if(myService.title !== undefined){
-            return myService.title
-        } else if (myService.professional !== null){
-            return myService.professional?.title
-        } else if (myService.service !== null){
-            return myService.service?.title
-        } else {
-            return myService.job?.title
-        }
-    }
+  function getDay() {
+    const createdAt = new Date(myService.createdAt);
+    const meses = [
+      "Janeiro",
+      "Fevereiro",
+      "Março",
+      "Abril",
+      "Maio",
+      "Junho",
+      "Julho",
+      "Agosto",
+      "Setembro",
+      "Outubro",
+      "Novembro",
+      "Dezembro",
+    ];
+    const nomeMesCreatedAt = meses[createdAt.getMonth()];
+    const diaCreatedAt = createdAt.getDate();
+    return `${diaCreatedAt} de ${nomeMesCreatedAt}`;
+  }
 
-    function getDay() {
-        const createdAt = new Date(myService.createdAt);
-        const meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
-        const nomeMesCreatedAt = meses[createdAt.getMonth()];
-        const diaCreatedAt = createdAt.getDate();
-        return `${diaCreatedAt} de ${nomeMesCreatedAt}`
-    }
+  function getServiceCreatorId() {
+    if (myService.userId !== undefined) return myService.userId;
 
-    function getDescription(){
-        if(myService.description !== undefined){
-            return myService.description
-        } else if (myService.professional !== null){
-            return myService.professional?.description
-        } else if (myService.service !== null){
-            return myService.service?.description
-        } else {
-            return myService.job?.description
-        }
-    }
+    return myService.creatorId;
+  }
 
-    function getServiceCreatorId() {
-      if (myService.professional !== null){
-        return myService.professional?.userId
-      } else if (myService.service !== null){
-        return myService.service?.userId
-      } else {
-        return myService.job?.userId
-      }
-    }
-
-  return(
+  return (
     <Service>
-        <h2>{getTitle()}</h2>
-        <h4>Conectado em {getDay()}</h4>
-        <h3>{getDescription()}</h3>
-          <div>
-              <Button onClick={ initChat }>Ir para as mensagens</Button>
-          </div>
+      <h2>{myService.title}</h2>
+      <h4>Conectado em {getDay()}</h4>
+      <h3>{myService.description}</h3>
+      {isUserService && (
+        <div>
+          <BsTrash
+            onClick={() => setShowDeleteConfirmation(true)}
+            style={{ color: "#FF2E2E", fontSize: "20px", cursor: "pointer" }}
+          />
+        </div>
+      )}
+      {!isUserService && (
+        <div>
+          <Button onClick={initChat}>Ir para as mensagens</Button>
+        </div>
+      )}
+      <DeleteConfirmation
+        visible={showDeleteConfirmation}
+        setVisible={setShowDeleteConfirmation}
+        serviceType={myService.type}
+        getAllMyServices={getAllMyServices}
+        id={myService.id}
+      />
     </Service>
-  )
+  );
 }
 
-
 const Service = styled.div`
-    width: 700px;
-    background-color: white;
-    border-radius: 12px;
-    border: 1px solid #CDCDCD;
-    padding: 32px;
-    margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  width: 700px;
+  background-color: white;
+  border-radius: 12px;
+  border: 1px solid #cdcdcd;
+  padding: 32px;
+  margin-bottom: 16px;
 
-    h2 {
-        font-size: 22px;
-    }
+  h2 {
+    font-size: 22px;
+  }
 
-    h3 {
-        padding: 0px 24px 24px 0px;
-        line-height: 128%;
-    }
+  h3 {
+    padding: 0px 24px 24px 0px;
+    line-height: 128%;
+  }
 
-    h4 {
-        font-size: 12px;
-        color: #754D24;
-        margin: 16px 0px 24px 0px;
-    }
+  h4 {
+    font-size: 12px;
+    color: #754d24;
+    margin: 16px 0px 24px 0px;
+  }
 
-    p {
-        color: #754D24;
-        font-weight: 700;
-        font-size: 16px;
-    }
+  p {
+    color: #754d24;
+    font-weight: 700;
+    font-size: 16px;
+  }
 
-    @media screen and (max-width: 600px) {
-        width: 100%;
-    }
+  div {
+    align-self: flex-end;
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+  }
 `;
 
 const Button = styled.button`
-    height: 35px;
-    background: white;
-    border-radius: 50px;
-    border: none;
-    cursor: pointer;
-    color: #754D24;
-    border: solid 1px #754D24;
-    font-weight: 700;
-    font-size: 14px;
-    padding: 0px 32px 0px 32px;
+  height: 35px;
+  background: white;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  color: #754d24;
+  border: solid 1px #754d24;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 0px 32px 0px 32px;
 `;

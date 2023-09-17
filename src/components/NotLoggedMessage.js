@@ -4,13 +4,18 @@ import { useEffect, useState } from "react";
 
 export default function NotLoggedMessage() {
   const router = useRouter();
-  const [ visible, setVisible ] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   function showNotLoggedMessge() {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("geo-tk");
     const currentRoute = router.pathname;
 
-    if(!token && currentRoute !== "/signin" && currentRoute !== "/signup" && currentRoute !== "/") {
+    if (
+      !token &&
+      currentRoute !== "/signin" &&
+      currentRoute !== "/signup" &&
+      currentRoute !== "/"
+    ) {
       setVisible(true);
     }
   }
@@ -23,12 +28,14 @@ export default function NotLoggedMessage() {
   useEffect(showNotLoggedMessge, [router]);
 
   return (
-    <NotLoggedView visible={ visible }>
+    <NotLoggedView visible={visible}>
       <NotLoggedContainer>
         <h4>Sua sessão não foi iniciada ou expirou</h4>
-        <RedirectLoginButton onClick={  handleClick }>Ir para o login</RedirectLoginButton>
+        <RedirectLoginButton onClick={handleClick}>
+          Ir para o login
+        </RedirectLoginButton>
       </NotLoggedContainer>
-    </NotLoggedView>  
+    </NotLoggedView>
   );
 }
 
@@ -38,17 +45,17 @@ const NotLoggedView = styled.div`
   height: 100vh;
   position: fixed;
   z-index: 1;
-  display: ${({visible}) => visible ? "flex" : "none"};
+  display: ${({ visible }) => (visible ? "flex" : "none")};
   justify-content: center;
   align-items: center;
-  background-color: #EEEEEE;
+  background-color: #eeeeee;
 `;
 
 const NotLoggedContainer = styled.div`
   margin: 0 20px;
   padding: 50px 30px;
   border-radius: 10px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;

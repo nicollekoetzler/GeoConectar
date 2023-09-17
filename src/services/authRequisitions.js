@@ -17,8 +17,8 @@ async function signin(user) {
 async function getUserInfo() {
   const config = {
     headers: {
-      Authorization: `Bearer ${ localStorage.getItem("token") }`
-    }
+      Authorization: `Bearer ${localStorage.getItem("geo-tk")}`,
+    },
   };
 
   return await axios.get(
