@@ -4,6 +4,7 @@ import { createChat } from "@/services/chatRequisitions";
 import { BsTrash } from "react-icons/bs";
 import DeleteConfirmation from "./DeleteConfirmation";
 import { useState } from "react";
+import { FiEdit } from "react-icons/fi";
 
 export default function MyService({ myService, getAllMyServices }) {
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
@@ -51,6 +52,10 @@ export default function MyService({ myService, getAllMyServices }) {
     return myService.creatorId;
   }
 
+  function navigateEditJob(id) {
+    router.push(`/jobs/edit/${id}`);
+  }
+
   return (
     <Service>
       <h2>{myService.title}</h2>
@@ -58,6 +63,15 @@ export default function MyService({ myService, getAllMyServices }) {
       <h3>{myService.description}</h3>
       {isUserService && (
         <div>
+          <FiEdit
+            onClick={() => navigateEditJob(myService.id)}
+            style={{
+              color: "#754d24",
+              fontSize: "20px",
+              cursor: "pointer",
+              marginRight: "10px",
+            }}
+          />
           <BsTrash
             onClick={() => setShowDeleteConfirmation(true)}
             style={{ color: "#FF2E2E", fontSize: "20px", cursor: "pointer" }}
