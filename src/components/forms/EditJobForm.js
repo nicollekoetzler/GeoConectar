@@ -46,7 +46,7 @@ export default function EditServiceForm() {
 
   const handleChange = (e, setFunction) => {
     const newValue = e.target.value;
-    const isDescription = e.target.placeholder === "Descrição do seu serviço";
+    const isDescription = e.target.placeholder === "Descrição da sua vaga";
 
     if (verifyInputLength(newValue, isDescription)) return;
 
@@ -86,7 +86,7 @@ export default function EditServiceForm() {
       <FormStyle>
         <input
           type="text"
-          placeholder="Título do seu serviço"
+          placeholder="Título da sua vaga"
           value={title}
           onChange={(e) => handleChange(e, setTitle)}
           disabled={isLoading}
@@ -106,7 +106,7 @@ export default function EditServiceForm() {
         )}
         <textarea
           type="text"
-          placeholder="Descrição do seu serviço"
+          placeholder="Descrição da sua vaga"
           value={description}
           onChange={(e) => handleChange(e, setDescription)}
           disabled={isLoading}

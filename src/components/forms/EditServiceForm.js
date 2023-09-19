@@ -71,7 +71,6 @@ export default function EditServiceForm({ type }) {
     try {
       let response;
 
-      console.log(type);
       if (type === "service") {
         response = await getService(id);
       } else if (type === "professional") {

@@ -10,7 +10,7 @@ export default function Services() {
     <>
       <HeaderLayout />
       <BackgroundEdit>
-        <h1>Divulgue um serviço</h1>
+        <h1>Edite sua vaga</h1>
         <EditJobForm />
       </BackgroundEdit>
       <BottomLayout />
