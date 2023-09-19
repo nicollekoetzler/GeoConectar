@@ -30,6 +30,24 @@ async function postService(title, description) {
   );
 }
 
+async function editService(id, title, description) {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("geo-tk")}`,
+    },
+  };
+
+  const body = { title, description };
+
+  return await axios.patch(
+    process.env.NEXT_PUBLIC_API_URL +
+      process.env.NEXT_PUBLIC_SERVICES_ROUTE +
+      `/${id}`,
+    body,
+    config
+  );
+}
+
 async function deleteService(id) {
   const config = {
     headers: {
@@ -45,4 +63,4 @@ async function deleteService(id) {
   );
 }
 
-export { getServices, getService, postService, deleteService };
+export { getServices, getService, postService, editService, deleteService };
