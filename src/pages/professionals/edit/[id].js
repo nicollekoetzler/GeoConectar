@@ -5,13 +5,13 @@ import BottomLayout from "@/layouts/Bottom";
 import EditServiceForm from "@/components/forms/EditServiceForm";
 import { Background } from "@/shared/ViewGenericStyles";
 
-export default function Services() {
+export default function Profissionals() {
   return (
     <>
       <HeaderLayout />
       <BackgroundEdit>
-        <h1>Edite seu Serviço</h1>
-        <EditServiceForm type={"service"} />
+        <h1>Edite sua Oferta</h1>
+        <EditServiceForm type={"professional"} />
       </BackgroundEdit>
       <BottomLayout />
     </>

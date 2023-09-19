@@ -4,8 +4,12 @@ import { Alert } from "@mui/material";
 import { showPopupErrorMessage } from "@/services/showPopupErrorMessage";
 import { useEffect, useState } from "react";
 import { editService, getService } from "@/services/servicesRequisitions";
+import {
+  getProfessional,
+  updateProfessional,
+} from "@/services/professionalsRequisitions";
 
-export default function EditServiceForm() {
+export default function EditServiceForm({ type }) {
   const router = useRouter();
   const { id } = router.query;
   const [isLoading, setIsLoading] = useState(false);
@@ -27,7 +31,12 @@ export default function EditServiceForm() {
     }
 
     try {
-      await editService(id, title, description);
+      if (type === "service") {
+        await editService(id, title, description);
+      } else if (type === "professional") {
+        await updateProfessional(id, title, description);
+      }
+
       router.push("/my-services");
 
       setInputsDefaultValue();
@@ -56,13 +65,21 @@ export default function EditServiceForm() {
     setDescription("");
   };
 
-  const getJobData = async () => {
+  const getServiceData = async () => {
     setIsLoading(true);
 
     try {
-      const { data } = await getService(id);
-      setTitle(data.title);
-      setDescription(data.description);
+      let response;
+
+      console.log(type);
+      if (type === "service") {
+        response = await getService(id);
+      } else if (type === "professional") {
+        response = await getProfessional(id);
+      }
+
+      setTitle(response.data.title);
+      setDescription(response.data.description);
     } catch (err) {
       console.log(err);
     }
@@ -71,7 +88,7 @@ export default function EditServiceForm() {
   };
 
   useEffect(() => {
-    if (id !== undefined) getJobData();
+    if (id !== undefined) getServiceData();
   }, [id]);
 
   return (
