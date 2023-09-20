@@ -14,6 +14,13 @@ async function signin(user) {
   );
 }
 
+async function registerAdmin(user) {
+  return await axios.post(
+    process.env.NEXT_PUBLIC_API_URL + process.env.NEXT_PUBLIC_ADMIN_ROUTE,
+    user
+  );
+}
+
 async function getUserInfo() {
   const config = {
     headers: {
@@ -27,4 +34,4 @@ async function getUserInfo() {
   );
 }
 
-export { signup, signin, getUserInfo };
+export { signup, signin, getUserInfo, registerAdmin };

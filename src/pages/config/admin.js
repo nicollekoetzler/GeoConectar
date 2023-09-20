@@ -1,9 +1,9 @@
 import ErrorMessage from "@/components/ErrorMessage";
-import { signin } from "@/services/authRequisitions";
+import { registerAdmin } from "@/services/authRequisitions";
 import styled from "@emotion/styled";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import foto from "../../public/imgs/loading.svg";
+import foto from "../../../public/imgs/loading.svg";
 import Image from "next/image";
 
 export default function SignIn() {
@@ -11,6 +11,7 @@ export default function SignIn() {
   const [user, setUser] = useState({
     email: "",
     password: "",
+    adminKey: "",
   });
   const [error, setError] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -21,21 +22,21 @@ export default function SignIn() {
     setError([]);
 
     try {
-      const result = await signin(user);
-      const { userId, token } = result.data;
+      const result = await registerAdmin(user);
+      const { token, userId } = result.data;
+
       localStorage.setItem("geo-tk", token);
       localStorage.setItem("geo-id", userId);
-      router.push("/services");
-      setIsLoading(false);
+      //router.push("/services");
     } catch (err) {
-      const INVALID_CREDENTIALS = "Email ou senha incorretos";
+      const INVALID_CREDENTIALS = "Email, senha ou chave de acesso incorretos";
 
       if (err?.response?.status === 401) {
         setError([INVALID_CREDENTIALS]);
       }
       console.log(err);
-      setIsLoading(false);
     }
+    setIsLoading(false);
   }
 
   return (
@@ -70,6 +71,18 @@ export default function SignIn() {
               value={user.password}
               onChange={(e) => {
                 setUser({ ...user, password: e.target.value });
+              }}
+              required
+            />
+          </FormStyle>
+          <h3>Chave de acesso de Administrador</h3>
+          <FormStyle>
+            <input
+              type="password"
+              placeholder="Digite a chave de acesso do admin"
+              value={user.adminKey}
+              onChange={(e) => {
+                setUser({ ...user, adminKey: e.target.value });
               }}
               required
             />
