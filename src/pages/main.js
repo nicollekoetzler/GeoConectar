@@ -6,6 +6,7 @@ import bannergeoconectar from "../../public/imgs/shoutingperson.svg"
 import discovergeoconectar from "../../public/imgs/discovergeoconectar.jpg"
 import banner from "../../public/imgs/findprofessionals.png"
 import { ViewContainer, Background } from "@/shared/ViewGenericStyles";
+import { BsArrowRight } from 'react-icons/bs';
 
 export default function AboutUs() {
 
@@ -40,11 +41,17 @@ export default function AboutUs() {
                 <ButtonArea>
                   <BigButton>
                     <h4>Divulgue um serviço freelancer</h4>
-                    <p>Começar</p>
+                    <Start>
+                      <p>Começar</p>
+                      <Chat/>
+                    </Start>
                   </BigButton>
                   <BigButton>
                     <h4>Anuncie uma vaga de emprego</h4>
-                    <p>Começar</p>
+                    <Start>
+                      <p>Começar</p>
+                      <Chat/>
+                    </Start>
                   </BigButton>
                 </ButtonArea>
               </FindFreela>
@@ -197,4 +204,15 @@ const BigButton = styled.div`
   p {
     margin: 0;
   }
+`
+
+const Chat = styled(BsArrowRight)`
+    margin-left: 8px;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+`
+
+const Start = styled.div`
+  display: flex;
 `
