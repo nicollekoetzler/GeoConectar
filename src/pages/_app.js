@@ -10,20 +10,22 @@ import NotLoggedMessage from "@/components/NotLoggedMessage";
 export default function App({ Component, pageProps }) {
   return (
     <>
+      <Head>
+        <title>GEOCONECTAR</title>
+      </Head>
       <Script
         id="Adsense-id"
         async
         strategy="afterInteractive"
-        onError={ (e) => { console.error('Script failed to load', e) }}
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1565712275254066"
+        onError={(e) => {
+          console.error("Script failed to load", e);
+        }}
+        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_GOOGLE_ADS_CLIENT_ID}`}
         crossorigin="anonymous"
       />
-      <Head>
-        <title>GEOCONECTAR</title>
-      </Head>
       <AppWrapper>
-          <NotLoggedMessage />
-          <Component {...pageProps} />
+        <NotLoggedMessage />
+        <Component {...pageProps} />
       </AppWrapper>
     </>
   );
