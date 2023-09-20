@@ -32,6 +32,24 @@ async function postProfessional(title, description) {
   );
 }
 
+async function updateProfessional(id, title, description) {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("geo-tk")}`,
+    },
+  };
+
+  const body = { title, description };
+
+  return await axios.patch(
+    process.env.NEXT_PUBLIC_API_URL +
+      process.env.NEXT_PUBLIC_PROFESSIONALS_ROUTE +
+      `/${id}`,
+    body,
+    config
+  );
+}
+
 async function deleteProfessional(id) {
   const config = {
     headers: {
@@ -51,5 +69,6 @@ export {
   getProfessionals,
   getProfessional,
   postProfessional,
+  updateProfessional,
   deleteProfessional,
 };

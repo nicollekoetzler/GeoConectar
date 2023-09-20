@@ -2,17 +2,19 @@ import { useRouter } from "next/router";
 import { Alert } from "@mui/material";
 import { showPopupErrorMessage } from "@/services/showPopupErrorMessage";
 import { useEffect, useState } from "react";
-import { editJob, getJob } from "@/services/jobsRequisitions";
+import { editService, getService } from "@/services/servicesRequisitions";
+import {
+  getProfessional,
+  updateProfessional,
+} from "@/services/professionalsRequisitions";
 import { FormStyle, DescriptionForm, Button } from "@/shared/FormGenericStyles";
 
-export default function EditServiceForm() {
+export default function EditServiceForm({ type }) {
   const router = useRouter();
   const { id } = router.query;
   const [isLoading, setIsLoading] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [company, setCompany] = useState("");
-  const [city, setCity] = useState("");
   const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
@@ -29,7 +31,12 @@ export default function EditServiceForm() {
     }
 
     try {
-      await editJob(id, title, description, company, city);
+      if (type === "service") {
+        await editService(id, title, description);
+      } else if (type === "professional") {
+        await updateProfessional(id, title, description);
+      }
+
       router.push("/my-services");
 
       setInputsDefaultValue();
@@ -46,7 +53,7 @@ export default function EditServiceForm() {
 
   const handleChange = (e, setFunction) => {
     const newValue = e.target.value;
-    const isDescription = e.target.placeholder === "Descrição da sua vaga";
+    const isDescription = e.target.placeholder === "Descrição do seu serviço";
 
     if (verifyInputLength(newValue, isDescription)) return;
 
@@ -56,19 +63,22 @@ export default function EditServiceForm() {
   const setInputsDefaultValue = () => {
     setTitle("");
     setDescription("");
-    setCompany("");
-    setCity("");
   };
 
-  const getJobData = async () => {
+  const getServiceData = async () => {
     setIsLoading(true);
 
     try {
-      const { data } = await getJob(id);
-      setTitle(data.title);
-      setDescription(data.description);
-      setCompany(data.company);
-      setCity(data.city);
+      let response;
+
+      if (type === "service") {
+        response = await getService(id);
+      } else if (type === "professional") {
+        response = await getProfessional(id);
+      }
+
+      setTitle(response.data.title);
+      setDescription(response.data.description);
     } catch (err) {
       console.log(err);
     }
@@ -77,7 +87,7 @@ export default function EditServiceForm() {
   };
 
   useEffect(() => {
-    if (id !== undefined) getJobData();
+    if (id !== undefined) getServiceData();
   }, [id]);
 
   return (
@@ -86,7 +96,7 @@ export default function EditServiceForm() {
       <FormStyle>
         <input
           type="text"
-          placeholder="Título da sua vaga"
+          placeholder="Título do seu serviço"
           value={title}
           onChange={(e) => handleChange(e, setTitle)}
           disabled={isLoading}
@@ -106,31 +116,13 @@ export default function EditServiceForm() {
         )}
         <textarea
           type="text"
-          placeholder="Descrição da sua vaga"
+          placeholder="Descrição do seu serviço"
           value={description}
           onChange={(e) => handleChange(e, setDescription)}
           disabled={isLoading}
           required
         />
       </DescriptionForm>
-      <h3>Nome da empresa</h3>
-      <FormStyle>
-        <input
-          type="text"
-          placeholder="Nome da empresa"
-          value={company}
-          onChange={(e) => handleChange(e, setCompany)}
-        />
-      </FormStyle>
-      <h3>Nome da cidade e estado</h3>
-      <FormStyle>
-        <input
-          type="text"
-          placeholder="Nome da cidade"
-          value={city}
-          onChange={(e) => handleChange(e, setCity)}
-        />
-      </FormStyle>
       <Button>
         <button type="submit">Enviar</button>
       </Button>
