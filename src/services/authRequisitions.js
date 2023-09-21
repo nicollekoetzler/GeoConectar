@@ -34,4 +34,17 @@ async function getUserInfo() {
   );
 }
 
-export { signup, signin, getUserInfo, registerAdmin };
+async function getUsers() {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("geo-tk")}`,
+    },
+  };
+
+  return await axios.get(
+    process.env.NEXT_PUBLIC_API_URL + process.env.NEXT_PUBLIC_USERS_ROUTE,
+    config
+  );
+}
+
+export { signup, signin, getUserInfo, registerAdmin, getUsers };

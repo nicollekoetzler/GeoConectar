@@ -6,7 +6,7 @@ import { useState } from "react";
 import foto from "../../../public/imgs/loading.svg";
 import Image from "next/image";
 
-export default function SignIn() {
+export default function RegisterAdmin() {
   const router = useRouter();
   const [user, setUser] = useState({
     email: "",
@@ -27,7 +27,7 @@ export default function SignIn() {
 
       localStorage.setItem("geo-tk", token);
       localStorage.setItem("geo-id", userId);
-      //router.push("/services");
+      router.push("/config/admin/management");
     } catch (err) {
       const INVALID_CREDENTIALS = "Email, senha ou chave de acesso incorretos";
 
@@ -48,7 +48,7 @@ export default function SignIn() {
       </LoadingView>
       <Container>
         <h1>GeoConectar</h1>
-        <h2>Faça o seu login</h2>
+        <h2>Faça o registro como usuário Admin</h2>
         <form onSubmit={handleSubmit}>
           {error.length > 0 ? <ErrorMessage messages={error} /> : <></>}
           <h3>Email</h3>
