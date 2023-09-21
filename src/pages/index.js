@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import HeaderLayout from "@/layouts/Header";
 import BottomLayout from "@/layouts/Bottom";
 import Image from "next/image";
 import bannergeoconectar from "../../public/imgs/shoutingperson.svg"
@@ -7,19 +6,35 @@ import discovergeoconectar from "../../public/imgs/discovergeoconectar.jpg"
 import banner from "../../public/imgs/findprofessionals.png"
 import { ViewContainer, Background } from "@/shared/ViewGenericStyles";
 import { BsArrowRight } from 'react-icons/bs';
+import Link from "next/link"
+import logo from "../../public/imgs/svglogohorizontal.svg"
+import logoMobile from "../../public/imgs/svglogo.svg"
 
 export default function AboutUs() {
 
   return (
     <ViewContainer>
-      <HeaderLayout />
+      <TopBar>
+          <TopBarLeftLinks>
+              <Link href="/services"><Image width={170} src={logo}/></Link>
+              <Link href="/services"><Image src={logoMobile}/></Link>
+          </TopBarLeftLinks>
+          <TopBarLinks>
+              <Link href="/about-us"><h3>Sobre nós</h3></Link>
+              <Link href="/contact"><h3>Contato</h3></Link>
+          </TopBarLinks>
+          <TopBarRightLinks>
+              <Link href="/signin"><h3>Login</h3></Link>
+              <Link href="/signup"><h3>Cadastre-se</h3></Link>
+          </TopBarRightLinks>
+      </TopBar>
       <Background>
         <Content>
           <TopContainer>
             <Info>
               <h1>Conecte-se com profissionais qualificados para o seu projeto</h1>
               <p>Lorem ipsum descubra os melhores serviços lorem ipsum domet</p>
-              <ConnectButton>Acessar gratuitamente</ConnectButton>
+              <Link href="/signup"><ConnectButton>Acessar gratuitamente</ConnectButton></Link>
             </Info>
             <Image width={600} src={bannergeoconectar}/>
           </TopContainer>
@@ -28,7 +43,7 @@ export default function AboutUs() {
             <InfoContainer>
               <h3>Descubra os melhores serviços</h3>
               <p>Encontre oportunidades incríveis ao conectar-se com novos clientes ou aplique para vagas de emprego e faça a sua carreira decolar.</p>
-              <DiscoverButton>Descobrir</DiscoverButton>
+              <Link href="/signup"><DiscoverButton>Descobrir</DiscoverButton></Link>
             </InfoContainer>
           </Discover>
           <Find>
@@ -39,20 +54,20 @@ export default function AboutUs() {
                   <p>Conecte-se com uma vasta gama de profissionais qualificados e prontos para ajudar no que você precisa.</p>
                 </div>
                 <ButtonArea>
-                  <BigButton>
+                  <Link href="/signup"><BigButton>
                     <h4>Divulgue um serviço freelancer</h4>
                     <Start>
                       <p>Começar</p>
-                      <Chat/>
+                      <Arrow/>
                     </Start>
-                  </BigButton>
-                  <BigButton>
+                  </BigButton></Link>
+                  <Link href="/signup"><BigButton>
                     <h4>Anuncie uma vaga de emprego</h4>
                     <Start>
                       <p>Começar</p>
-                      <Chat/>
+                      <Arrow/>
                     </Start>
-                  </BigButton>
+                  </BigButton></Link>
                 </ButtonArea>
               </FindFreela>
             </InfoContainer>
@@ -72,6 +87,11 @@ const TopContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 100px 0;
+
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+    width: 100%;
+  }
 `
 
 const Info = styled.div`
@@ -92,6 +112,10 @@ const Info = styled.div`
     width: 100%;
     margin: 32px 0;
     line-height: 128%;
+  }
+
+  a {
+    width: 100%;
   }
 `
 
@@ -146,6 +170,10 @@ const FindFreela = styled.div`
 const ButtonArea = styled.div`
   display: flex;
   column-gap: 16px;
+
+  a {
+    color: white
+  }
 `
 
 const DiscoverButton = styled.button`
@@ -206,7 +234,7 @@ const BigButton = styled.div`
   }
 `
 
-const Chat = styled(BsArrowRight)`
+const Arrow = styled(BsArrowRight)`
     margin-left: 8px;
     font-size: 24px;
     color: white;
@@ -215,4 +243,140 @@ const Chat = styled(BsArrowRight)`
 
 const Start = styled.div`
   display: flex;
+`
+
+const TopBar = styled.div`
+    min-height: 80px;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #CDCDCD;
+    padding: 0px 64px 0px 64px;
+
+    @media screen and (max-width: 600px) {
+        padding: 0px 10px;
+    };
+`
+
+const TopBarLeftLinks = styled.div`
+    width: 25%;
+    padding: 0 10px;
+
+    button {
+        font-family: "Saira Semi Condensed";
+        font-size: 32px;
+        font-weight: 700;
+        color: #754D24;
+        cursor: pointer;
+        background-color: white;
+        border: none;
+    }
+
+    a:first-child {
+      display: flex;
+    }
+
+    a:last-child {
+      display: none;
+    }
+
+    @media screen and (max-width: 800px) {
+
+        img {
+          width: 70px;
+          height: auto;
+        }
+
+        a:first-child {
+          display: none;
+        }
+        a:last-child {
+          display: flex;
+        }
+
+        button {
+            font-size: 22px;
+        }
+    }
+`
+
+const TopBarLinks = styled.div`
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    font-family: "Roboto";
+
+    a {
+      text-align: center;
+    }
+
+    h3 {
+        color: #1E1E1E;
+        font-size: 18px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    h3:nth-child(1) {
+        margin-right: 32px;
+    }
+
+    h3:hover {
+        color: #754D24;
+    }
+
+    @media screen and (max-width: 600px) {
+        width: 100%;
+
+        h3 {
+            font-size: 14px;
+            align-self: center;
+        }
+
+        a:nth-child(5),
+        a:nth-child(4),
+        a:nth-child(3),
+        a:nth-child(2) {
+            display: none;
+        }
+
+    }
+`
+
+const TopBarRightLinks = styled.div`
+    display: flex;
+    justify-content: end;
+    width: 25%;
+    font-family: "Roboto";
+
+    h3 {
+        font-size: 18px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    a:nth-child(1) {
+        margin-right: 32px;
+        color: #1E1E1E;
+    }
+
+    a:nth-child(2) {
+      color: #754D24;
+      font-weight: 700;
+    }
+
+    h3:hover {
+        color: #754D24;
+    }
+
+    @media screen and (max-width: 600px) {
+        width: 100%;
+
+        h3 {
+            font-size: 14px;
+            align-self: center;
+        }
+    }
 `
