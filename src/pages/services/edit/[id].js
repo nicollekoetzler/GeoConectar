@@ -1,7 +1,7 @@
 import React from "react";
 import HeaderLayout from "@/layouts/Header";
 import BottomLayout from "@/layouts/Bottom";
-import EditJobForm from "@/components/forms/EditJobForm";
+import EditServiceForm from "@/components/forms/EditServiceForm";
 import { BackgroundForm } from "@/shared/FormGenericStyles";
 
 export default function Services() {
@@ -9,8 +9,8 @@ export default function Services() {
     <>
       <HeaderLayout />
       <BackgroundForm>
-        <h1>Edite sua vaga</h1>
-        <EditJobForm />
+        <h1>Edite seu Serviço</h1>
+        <EditServiceForm type={"service"} />
       </BackgroundForm>
       <BottomLayout />
     </>

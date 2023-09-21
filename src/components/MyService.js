@@ -53,7 +53,7 @@ export default function MyService({ myService, getAllMyServices }) {
   }
 
   function navigateEditJob(id) {
-    router.push(`/jobs/edit/${id}`);
+    router.push(`/${myService.type}s/edit/${id}`);
   }
 
   return (
