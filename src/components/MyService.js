@@ -86,8 +86,8 @@ export default function MyService({ myService, getAllMyServices }) {
       <DeleteConfirmation
         visible={showDeleteConfirmation}
         setVisible={setShowDeleteConfirmation}
-        serviceType={myService.type}
-        getAllMyServices={getAllMyServices}
+        entityType={myService.type}
+        getAllEntities={getAllMyServices}
         id={myService.id}
       />
     </Service>

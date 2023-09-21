@@ -1,7 +1,11 @@
 import UserItem from "./UserItem";
 import { ListHeader } from "@/shared/AdminListGenericStyles";
 
-export default function UserList({ users }) {
+export default function UserList({
+  users,
+  setShowDeleteMessage,
+  setToDeleteEntity,
+}) {
   return (
     <>
       <ListHeader>
@@ -10,7 +14,14 @@ export default function UserList({ users }) {
         <p>Opções</p>
       </ListHeader>
       {users.map((user) => {
-        return <UserItem key={user.id} user={user} />;
+        return (
+          <UserItem
+            key={user.id}
+            user={user}
+            setShowDeleteMessage={setShowDeleteMessage}
+            setToDeleteEntity={setToDeleteEntity}
+          />
+        );
       })}
     </>
   );

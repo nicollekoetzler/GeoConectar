@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { FiSearch } from "react-icons/fi";
 import UserList from "./UserList";
 import EntityList from "./EntityList";
 import { useEffect, useState } from "react";
@@ -7,26 +6,26 @@ import { getUsers } from "@/services/authRequisitions";
 import { getServices } from "@/services/servicesRequisitions";
 import { getProfessionals } from "@/services/professionalsRequisitions";
 import { getJobs } from "@/services/jobsRequisitions";
+import EntitySearchHeader from "./EntitySearchHeader";
+import DeleteConfirmation from "../DeleteConfirmation";
 
 export default function EntityContainer({ entityName }) {
-  const [entitySearch, setEntitySearch] = useState("");
   const [entities, setEntities] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [showDeleteMessage, setShowDeleteMessage] = useState(false);
+  const [toDeleteEntity, setToDeleteEntity] = useState(null);
+  const entityType = indetifyEntity();
 
   const getEntitiesData = async () => {
-    setIsLoading(true);
-    const entityType = indetifyEntity();
-
     try {
       let response;
 
-      if (entityType === "users") {
+      if (entityType === "user") {
         response = await getUsers();
-      } else if (entityType === "services") {
+      } else if (entityType === "service") {
         response = await getServices();
-      } else if (entityType === "jobs") {
+      } else if (entityType === "job") {
         response = await getJobs();
-      } else if (entityType === "professionals") {
+      } else if (entityType === "professional") {
         response = await getProfessionals();
       }
 
@@ -34,21 +33,19 @@ export default function EntityContainer({ entityName }) {
     } catch (err) {
       console.log(err);
     }
-
-    setIsLoading(false);
   };
 
-  const indetifyEntity = () => {
+  function indetifyEntity() {
     if (entityName === "Usuários") {
-      return "users";
+      return "user";
     } else if (entityName === "Serviços") {
-      return "services";
+      return "service";
     } else if (entityName === "Vagas") {
-      return "jobs";
+      return "job";
     } else if (entityName === "Profissionais") {
-      return "professionals";
+      return "professional";
     }
-  };
+  }
 
   useEffect(() => {
     getEntitiesData();
@@ -56,41 +53,35 @@ export default function EntityContainer({ entityName }) {
 
   return (
     <EntityBox>
-      <EntityHeader>
-        <EntityDataContainer>
-          <h3>{entityName}</h3>
-          <p>
-            {entities.length} {entityName}
-          </p>
-        </EntityDataContainer>
-        <SearchContainer>
-          <FiSearch
-            style={{
-              fontSize: "22px",
-              color: "#9e9e9e",
-              position: "absolute",
-              top: "8px",
-              left: "18px",
-              fontWeight: "bold",
-            }}
-          />
-          <input
-            type="search"
-            placeholder="Pesquise aqui"
-            value={entitySearch}
-            onChange={(e) => setEntitySearch(e.target.value)}
-          />
-        </SearchContainer>
-      </EntityHeader>
+      <EntitySearchHeader
+        entityName={entityName}
+        qtdEntities={entities.length}
+      />
       {entities.length > 0 && entityName === "Usuários" && (
-        <UserList users={entities} />
+        <UserList
+          users={entities}
+          setShowDeleteMessage={setShowDeleteMessage}
+          setToDeleteEntity={setToDeleteEntity}
+        />
       )}
       {entities.length > 0 && entityName !== "Usuários" && (
-        <EntityList entities={entities} />
+        <EntityList
+          entities={entities}
+          entityType={entityType}
+          setShowDeleteMessage={setShowDeleteMessage}
+          setToDeleteEntity={setToDeleteEntity}
+        />
       )}
       {entities.length === 0 && (
         <h3>Nenhum {entityName.toLowerCase()} cadastrado</h3>
       )}
+      <DeleteConfirmation
+        visible={showDeleteMessage}
+        setVisible={setShowDeleteMessage}
+        entityType={entityType}
+        getAllEntities={getEntitiesData}
+        id={toDeleteEntity}
+      />
     </EntityBox>
   );
 }
@@ -111,42 +102,5 @@ const EntityBox = styled.div`
     margin-top: 120px;
     font-size: 20px;
     align-self: center;
-  }
-`;
-
-const EntityHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
-const EntityDataContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-
-  p {
-    margin-top: 14px;
-    font-size: 16px;
-    font-weight: 400;
-    color: #3a3a3a;
-  }
-
-  h3 {
-    font-size: 22px;
-    font-weight: 800;
-  }
-`;
-
-const SearchContainer = styled.div`
-  position: relative;
-
-  input {
-    font-size: 16px;
-    max-width: 210px;
-    justify-content: space-between;
-    border: solid 1px #cdcdcd;
-    border-radius: 20px;
-    padding: 0.6em 0.6em 0.6em 2.8em;
   }
 `;

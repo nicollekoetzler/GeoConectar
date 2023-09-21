@@ -47,4 +47,19 @@ async function getUsers() {
   );
 }
 
-export { signup, signin, getUserInfo, registerAdmin, getUsers };
+async function deleteUser(id) {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("geo-tk")}`,
+    },
+  };
+
+  return await axios.delete(
+    process.env.NEXT_PUBLIC_API_URL +
+      process.env.NEXT_PUBLIC_USERS_ROUTE +
+      `/${id}`,
+    config
+  );
+}
+
+export { signup, signin, getUserInfo, registerAdmin, getUsers, deleteUser };

@@ -1,3 +1,4 @@
+import { deleteUser } from "@/services/authRequisitions";
 import { deleteJob } from "@/services/jobsRequisitions";
 import { deleteProfessional } from "@/services/professionalsRequisitions";
 import { deleteService } from "@/services/servicesRequisitions";
@@ -7,8 +8,8 @@ import { useState } from "react";
 export default function DeleteConfirmation({
   visible,
   setVisible,
-  serviceType,
-  getAllMyServices,
+  entityType,
+  getAllEntities,
   id,
 }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -21,15 +22,17 @@ export default function DeleteConfirmation({
     setIsLoading(true);
 
     try {
-      if (serviceType === "job") {
+      if (entityType === "job") {
         await deleteJob(id);
-      } else if (serviceType === "service") {
+      } else if (entityType === "service") {
         await deleteService(id);
-      } else if (serviceType === "professional") {
+      } else if (entityType === "professional") {
         await deleteProfessional(id);
+      } else if (entityType === "user") {
+        await deleteUser(id);
       }
 
-      await getAllMyServices();
+      await getAllEntities();
     } catch (err) {
       console.log(err);
     }
@@ -41,7 +44,7 @@ export default function DeleteConfirmation({
   return (
     <DeleteConfirmationView visible={visible}>
       <DeleteConfirmationContainer>
-        <h4>Tem certeza que deseja excluir esse serviço?</h4>
+        <h4>Tem certeza que deseja excluir?</h4>
         <div>
           <DeleteOptionButton onClick={deleteMyService} disabled={isLoading}>
             Excluir
@@ -94,7 +97,7 @@ const DeleteConfirmationContainer = styled.div`
 const DeleteOptionButton = styled.button`
   width: 32%;
   border-radius: 20px;
-  padding: 0.6em 1.4em;
+  padding: 0.6em 1em;
   border: none;
   cursor: pointer;
   font-size: 16px;
