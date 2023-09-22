@@ -1,9 +1,19 @@
 import styled from "@emotion/styled";
 import { FiSearch } from "react-icons/fi";
-import { useState } from "react";
 
-export default function EntitySearchHeader({ entityName, qtdEntities }) {
-  const [entitySearch, setEntitySearch] = useState("");
+export default function EntitySearchHeader({
+  entityName,
+  qtdEntities,
+  entitySearch,
+  setEntitySearch,
+  searchForEntity,
+}) {
+  const searchProperty = entityName === "Usuários" ? "email" : "título";
+
+  const handleSerch = (e) => {
+    setEntitySearch(e.target.value);
+    searchForEntity(e.target.value);
+  };
 
   return (
     <EntityHeader>
@@ -26,9 +36,9 @@ export default function EntitySearchHeader({ entityName, qtdEntities }) {
         />
         <input
           type="search"
-          placeholder="Pesquise aqui"
+          placeholder={`Pesquise por ${searchProperty}`}
           value={entitySearch}
-          onChange={(e) => setEntitySearch(e.target.value)}
+          onChange={handleSerch}
         />
       </SearchContainer>
     </EntityHeader>

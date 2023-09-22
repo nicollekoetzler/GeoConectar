@@ -2,10 +2,16 @@ import styled from "@emotion/styled";
 import UserList from "./UserList";
 import EntityList from "./EntityList";
 import { useEffect, useState } from "react";
-import { getUsers } from "@/services/authRequisitions";
-import { getServices } from "@/services/servicesRequisitions";
-import { getProfessionals } from "@/services/professionalsRequisitions";
-import { getJobs } from "@/services/jobsRequisitions";
+import { getUsers, getUsersByEmail } from "@/services/authRequisitions";
+import {
+  getServices,
+  getServicesByTitle,
+} from "@/services/servicesRequisitions";
+import {
+  getProfessionals,
+  getProfessionalsByTitle,
+} from "@/services/professionalsRequisitions";
+import { getJobs, getJobsByTitle } from "@/services/jobsRequisitions";
 import EntitySearchHeader from "./EntitySearchHeader";
 import DeleteConfirmation from "../DeleteConfirmation";
 
@@ -13,6 +19,7 @@ export default function EntityContainer({ entityName }) {
   const [entities, setEntities] = useState([]);
   const [showDeleteMessage, setShowDeleteMessage] = useState(false);
   const [toDeleteEntity, setToDeleteEntity] = useState(null);
+  const [entitySearch, setEntitySearch] = useState("");
   const entityType = indetifyEntity();
 
   const getEntitiesData = async () => {
@@ -29,7 +36,7 @@ export default function EntityContainer({ entityName }) {
         response = await getProfessionals();
       }
 
-      setEntities(response.data);
+      setEntities(response?.data);
     } catch (err) {
       console.log(err);
     }
@@ -47,6 +54,29 @@ export default function EntityContainer({ entityName }) {
     }
   }
 
+  const searchForEntity = async (entityProperty) => {
+    if (entityProperty.length === 0) return getEntitiesData();
+    if (entityProperty.length < 3) return;
+
+    try {
+      let response;
+
+      if (entityType === "user") {
+        response = await getUsersByEmail(entityProperty);
+      } else if (entityType === "service") {
+        response = await getServicesByTitle(entityProperty);
+      } else if (entityType === "job") {
+        response = await getJobsByTitle(entityProperty);
+      } else if (entityType === "professional") {
+        response = await getProfessionalsByTitle(entityProperty);
+      }
+
+      setEntities(response?.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
     getEntitiesData();
   }, []);
@@ -54,8 +84,11 @@ export default function EntityContainer({ entityName }) {
   return (
     <EntityBox>
       <EntitySearchHeader
+        entitySearch={entitySearch}
+        setEntitySearch={setEntitySearch}
         entityName={entityName}
         qtdEntities={entities.length}
+        searchForEntity={searchForEntity}
       />
       {entities.length > 0 && entityName === "Usuários" && (
         <UserList

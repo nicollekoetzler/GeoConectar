@@ -63,4 +63,26 @@ async function deleteService(id) {
   );
 }
 
-export { getServices, getService, postService, editService, deleteService };
+async function getServicesByTitle(title) {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("geo-tk")}`,
+    },
+  };
+
+  return await axios.get(
+    process.env.NEXT_PUBLIC_API_URL +
+      process.env.NEXT_PUBLIC_SERVICES_ROUTE +
+      `/${title}`,
+    config
+  );
+}
+
+export {
+  getServices,
+  getService,
+  postService,
+  editService,
+  deleteService,
+  getServicesByTitle,
+};
