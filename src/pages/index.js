@@ -36,7 +36,7 @@ export default function AboutUs() {
               <p>Lorem ipsum descubra os melhores serviços lorem ipsum domet</p>
               <Link href="/signup"><ConnectButton>Acessar gratuitamente</ConnectButton></Link>
             </Info>
-            <Image width={600} src={bannergeoconectar}/>
+            <ShoutingImage src={bannergeoconectar}/>
           </TopContainer>
           <Discover>
             <ImageContainer bgImg={discovergeoconectar}></ImageContainer>
@@ -91,6 +91,7 @@ const TopContainer = styled.div`
   @media screen and (max-width: 600px) {
     flex-direction: column;
     width: 100%;
+    padding: 50px 20px;
   }
 `
 
@@ -117,6 +118,21 @@ const Info = styled.div`
   a {
     width: 100%;
   }
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+
+    h1 {
+    font-size: 38px;
+    line-height: 120%;
+  }
+
+  p {
+    width: 100%;
+    margin: 20px 0;
+    line-height: 128%;
+  }
+  }
 `
 
 const Discover = styled.div`
@@ -125,6 +141,12 @@ const Discover = styled.div`
   background-color: #C59C6C;
   border-radius: 12px;
   display: flex;
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    flex-direction: column;
+    height: 800px;
+  }
 `
 
 const ImageContainer = styled.div`
@@ -133,6 +155,11 @@ const ImageContainer = styled.div`
   border-radius: 12px;
   background-color: black;
   background: center/cover url(${(props) => props.bgImg.src}) no-repeat;
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    height: 100%;
+  }
 `
 
 const InfoContainer = styled.div`
@@ -154,9 +181,17 @@ const InfoContainer = styled.div`
     margin-bottom: 32px;
     line-height: 140%;
   }
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+  }
 `
 
 const Content = styled.div`
+
+@media screen and (max-width: 600px) {
+    padding: 0 20px;
+  }
 `
 
 const FindFreela = styled.div`
@@ -210,6 +245,12 @@ const Find = styled.div`
   border-radius: 12px;
   display: flex;
   margin-top: 64px;
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    flex-direction: column;
+    height: 800px;
+  }
 `
 
 const BigButton = styled.div`
@@ -334,14 +375,6 @@ const TopBarLinks = styled.div`
             font-size: 14px;
             align-self: center;
         }
-
-        a:nth-child(5),
-        a:nth-child(4),
-        a:nth-child(3),
-        a:nth-child(2) {
-            display: none;
-        }
-
     }
 `
 
@@ -373,10 +406,19 @@ const TopBarRightLinks = styled.div`
 
     @media screen and (max-width: 600px) {
         width: 100%;
+        justify-content: center;
 
         h3 {
             font-size: 14px;
             align-self: center;
         }
     }
+`
+
+const ShoutingImage = styled(Image)`
+  height: 500px;
+
+  @media screen and (max-width: 600px) {
+    width: 300px;
+  }
 `
