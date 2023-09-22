@@ -63,4 +63,19 @@ async function deleteJob(id) {
   );
 }
 
-export { getJobs, getJob, postJob, editJob, deleteJob };
+async function getJobsByTitle(title) {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("geo-tk")}`,
+    },
+  };
+
+  return await axios.get(
+    process.env.NEXT_PUBLIC_API_URL +
+      process.env.NEXT_PUBLIC_JOBS_ROUTE +
+      `/${title}`,
+    config
+  );
+}
+
+export { getJobs, getJob, postJob, editJob, deleteJob, getJobsByTitle };

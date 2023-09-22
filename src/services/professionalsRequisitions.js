@@ -65,10 +65,26 @@ async function deleteProfessional(id) {
   );
 }
 
+async function getProfessionalsByTitle(title) {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("geo-tk")}`,
+    },
+  };
+
+  return await axios.get(
+    process.env.NEXT_PUBLIC_API_URL +
+      process.env.NEXT_PUBLIC_PROFESSIONALS_ROUTE +
+      `/${title}`,
+    config
+  );
+}
+
 export {
   getProfessionals,
   getProfessional,
   postProfessional,
   updateProfessional,
   deleteProfessional,
+  getProfessionalsByTitle,
 };
