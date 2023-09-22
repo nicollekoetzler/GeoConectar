@@ -273,6 +273,14 @@ const BigButton = styled.div`
   p {
     margin: 0;
   }
+
+  @media screen and (max-width: 600px) {
+    h4 {
+    font-size: 20px;
+    line-height: 120%;
+  }
+  }
+  
 `
 
 const Arrow = styled(BsArrowRight)`
