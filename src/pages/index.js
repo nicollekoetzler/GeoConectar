@@ -116,6 +116,9 @@ const TopContainer = styled.div`
   align-items: center;
   padding: 100px 0;
 
+  @media screen and (max-width: 1366px) {
+    padding: 100px 50px;
+
   @media screen and (max-width: 600px) {
     flex-direction: column;
     width: 100%;
