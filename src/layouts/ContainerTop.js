@@ -167,6 +167,7 @@ const QuestionButton = styled.button`
 
 const ShoutingImage = styled(Image)`
   width: 800px;
+  height: auto;
 
   @media screen and (max-width: 600px) {
     width: 100%;
