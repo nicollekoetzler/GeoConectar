@@ -42,7 +42,7 @@ export default function SignIn() {
     <Background>
       <LoadingView isLoading={isLoading}>
         <LoaderContainer>
-          <Loader src={foto} />
+          <Loader src={foto} alt="Circulo girando em carregamento" />
         </LoaderContainer>
       </LoadingView>
       <Container>

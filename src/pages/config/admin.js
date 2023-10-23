@@ -43,7 +43,7 @@ export default function RegisterAdmin() {
     <Background>
       <LoadingView isLoading={isLoading}>
         <LoaderContainer>
-          <Loader src={foto} />
+          <Loader src={foto} alt="Círculo girando em carregamento" />
         </LoaderContainer>
       </LoadingView>
       <Container>
