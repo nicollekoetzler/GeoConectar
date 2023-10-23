@@ -16,10 +16,14 @@ export default function AboutUs() {
       <TopBar>
         <TopBarLeftLinks>
           <Link href="/services">
-            <Image width={170} src={logo} />
+            <Image
+              width={170}
+              src={logo}
+              alt="Logo da GeoConectar e nome do site em marrom"
+            />
           </Link>
           <Link href="/services">
-            <Image src={logoMobile} />
+            <Image src={logoMobile} alt="Logo da GeoConectar em marrom" />
           </Link>
         </TopBarLeftLinks>
         <TopBarLinks>
@@ -51,10 +55,20 @@ export default function AboutUs() {
                 <ConnectButton>Acessar gratuitamente</ConnectButton>
               </Link>
             </Info>
-            <ShoutingImage src={bannergeoconectar} />
+            <ShoutingImage
+              src={bannergeoconectar}
+              alt="Desenho de um homem usando um alto-falante, com diversos 
+                ícones como fones, player de vídeo, engrenagem,
+                para simbolizar serviços"
+            />
           </TopContainer>
           <Discover>
-            <ImageContainer bgImg={discovergeoconectar}></ImageContainer>
+            <ImageContainer
+              bgImg={discovergeoconectar}
+              alt="Mulher de vestida com camisa e chapéu branco, e um short
+                verde, com um notebook na mão enquanto estuda uma parede
+                rochosa"
+            ></ImageContainer>
             <InfoContainer>
               <h3>Descubra os melhores serviços</h3>
               <p>
@@ -99,7 +113,11 @@ export default function AboutUs() {
                 </ButtonArea>
               </FindFreela>
             </InfoContainer>
-            <ImageContainer bgImg={banner}></ImageContainer>
+            <ImageContainer
+              bgImg={banner}
+              alt="Homem sorrindo com uma camisa branca e uma camisa social 
+                azul claro por cima, enquanto usa um notebook"
+            ></ImageContainer>
           </Find>
         </Content>
       </Background>
@@ -118,6 +136,7 @@ const TopContainer = styled.div`
 
   @media screen and (max-width: 1366px) {
     padding: 100px 50px;
+  }
 
   @media screen and (max-width: 600px) {
     flex-direction: column;
