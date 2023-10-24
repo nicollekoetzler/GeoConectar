@@ -15,20 +15,74 @@ async function getService(id) {
 }
 
 async function postService(title, description) {
-    const config = {
-        headers: {
-            Authorization: `Bearer ${ localStorage.getItem("token") }`
-        }
-    };
+  const config = {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("geo-tk")}`,
+    },
+  };
 
-    const body = { title, description };
+  const body = { title, description };
 
-    return await axios.post(
-        process.env.NEXT_PUBLIC_API_URL +
-        process.env.NEXT_PUBLIC_SERVICES_ROUTE,
-        body,
-        config
-    );
+  return await axios.post(
+    process.env.NEXT_PUBLIC_API_URL + process.env.NEXT_PUBLIC_SERVICES_ROUTE,
+    body,
+    config
+  );
 }
 
-export { getServices, getService, postService };
+async function editService(id, title, description) {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("geo-tk")}`,
+    },
+  };
+
+  const body = { title, description };
+
+  return await axios.patch(
+    process.env.NEXT_PUBLIC_API_URL +
+      process.env.NEXT_PUBLIC_SERVICES_ROUTE +
+      `/${id}`,
+    body,
+    config
+  );
+}
+
+async function deleteService(id) {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("geo-tk")}`,
+    },
+  };
+
+  return await axios.delete(
+    process.env.NEXT_PUBLIC_API_URL +
+      process.env.NEXT_PUBLIC_SERVICES_ROUTE +
+      `/${id}`,
+    config
+  );
+}
+
+async function getServicesByTitle(title) {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("geo-tk")}`,
+    },
+  };
+
+  return await axios.get(
+    process.env.NEXT_PUBLIC_API_URL +
+      process.env.NEXT_PUBLIC_SERVICES_ROUTE +
+      `/${title}`,
+    config
+  );
+}
+
+export {
+  getServices,
+  getService,
+  postService,
+  editService,
+  deleteService,
+  getServicesByTitle,
+};

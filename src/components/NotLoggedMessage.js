@@ -16,7 +16,7 @@ export default function NotLoggedMessage() {
   }
 
   function isNotLogged() {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("geo-tk");
     const currentRoute = router.pathname;
 
     return (

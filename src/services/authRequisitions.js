@@ -14,10 +14,17 @@ async function signin(user) {
   );
 }
 
+async function registerAdmin(user) {
+  return await axios.post(
+    process.env.NEXT_PUBLIC_API_URL + process.env.NEXT_PUBLIC_ADMIN_ROUTE,
+    user
+  );
+}
+
 async function getUserInfo() {
   const config = {
     headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
+      Authorization: `Bearer ${localStorage.getItem("geo-tk")}`,
     },
   };
 
@@ -43,4 +50,56 @@ async function confirmUserEmail(token) {
   );
 }
 
-export { signup, signin, getUserInfo, confirmUserEmail };
+async function getUsers() {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("geo-tk")}`,
+    },
+  };
+
+  return await axios.get(
+    process.env.NEXT_PUBLIC_API_URL + process.env.NEXT_PUBLIC_USERS_ROUTE,
+    config
+  );
+}
+
+async function deleteUser(id) {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("geo-tk")}`,
+    },
+  };
+
+  return await axios.delete(
+    process.env.NEXT_PUBLIC_API_URL +
+      process.env.NEXT_PUBLIC_USERS_ROUTE +
+      `/${id}`,
+    config
+  );
+}
+
+async function getUsersByEmail(email) {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("geo-tk")}`,
+    },
+  };
+
+  return await axios.get(
+    process.env.NEXT_PUBLIC_API_URL +
+      process.env.NEXT_PUBLIC_USERS_ROUTE +
+      `/${email}`,
+    config
+  );
+}
+
+export {
+  signup,
+  signin,
+  getUserInfo,
+  confirmUserEmail
+  registerAdmin,
+  getUsers,
+  deleteUser,
+  getUsersByEmail,
+};

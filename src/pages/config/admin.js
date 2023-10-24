@@ -1,21 +1,17 @@
 import ErrorMessage from "@/components/ErrorMessage";
-import { signin } from "@/services/authRequisitions";
+import { registerAdmin } from "@/services/authRequisitions";
 import styled from "@emotion/styled";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import foto from "../../public/imgs/loading.svg";
+import foto from "../../../public/imgs/loading.svg";
 import Image from "next/image";
-import {
-  LoadingView,
-  LoaderContainer,
-  Loader,
-} from "@/shared/ViewLoadingStyles";
 
-export default function SignIn() {
+export default function RegisterAdmin() {
   const router = useRouter();
   const [user, setUser] = useState({
     email: "",
     password: "",
+    adminKey: "",
   });
   const [error, setError] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -26,33 +22,33 @@ export default function SignIn() {
     setError([]);
 
     try {
-      const result = await signin(user);
-      const { userId, token } = result.data;
+      const result = await registerAdmin(user);
+      const { token, userId } = result.data;
+
       localStorage.setItem("geo-tk", token);
       localStorage.setItem("geo-id", userId);
-      router.push("/services");
-      setIsLoading(false);
+      router.push("/config/admin/management");
     } catch (err) {
-      const INVALID_CREDENTIALS = "Email ou senha incorretos";
+      const INVALID_CREDENTIALS = "Email, senha ou chave de acesso incorretos";
 
       if (err?.response?.status === 401) {
         setError([INVALID_CREDENTIALS]);
       }
       console.log(err);
-      setIsLoading(false);
     }
+    setIsLoading(false);
   }
 
   return (
     <Background>
       <LoadingView isLoading={isLoading}>
         <LoaderContainer>
-          <Loader src={foto} alt="Circulo girando em carregamento" />
+          <Loader src={foto} alt="Círculo girando em carregamento" />
         </LoaderContainer>
       </LoadingView>
       <Container>
         <h1>GeoConectar</h1>
-        <h2>Faça o seu login</h2>
+        <h2>Faça o registro como usuário Admin</h2>
         <form onSubmit={handleSubmit}>
           {error.length > 0 ? <ErrorMessage messages={error} /> : <></>}
           <h3>Email</h3>
@@ -75,6 +71,18 @@ export default function SignIn() {
               value={user.password}
               onChange={(e) => {
                 setUser({ ...user, password: e.target.value });
+              }}
+              required
+            />
+          </FormStyle>
+          <h3>Chave de acesso de Administrador</h3>
+          <FormStyle>
+            <input
+              type="password"
+              placeholder="Digite a chave de acesso do admin"
+              value={user.adminKey}
+              onChange={(e) => {
+                setUser({ ...user, adminKey: e.target.value });
               }}
               required
             />
