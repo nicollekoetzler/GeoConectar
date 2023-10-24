@@ -97,7 +97,7 @@ export {
   signup,
   signin,
   getUserInfo,
-  confirmUserEmail
+  confirmUserEmail,
   registerAdmin,
   getUsers,
   deleteUser,
