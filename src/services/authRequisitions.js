@@ -34,6 +34,22 @@ async function getUserInfo() {
   );
 }
 
+async function confirmUserEmail(token) {
+  console.log(token);
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  return await axios.post(
+    process.env.NEXT_PUBLIC_API_URL +
+      process.env.NEXT_PUBLIC_EMAIL_CONFIRMATION_ROUTE,
+    {},
+    config
+  );
+}
+
 async function getUsers() {
   const config = {
     headers: {
@@ -81,6 +97,7 @@ export {
   signup,
   signin,
   getUserInfo,
+  confirmUserEmail
   registerAdmin,
   getUsers,
   deleteUser,

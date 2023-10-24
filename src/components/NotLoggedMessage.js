@@ -7,22 +7,25 @@ export default function NotLoggedMessage() {
   const [visible, setVisible] = useState(false);
 
   function showNotLoggedMessge() {
-    const token = localStorage.getItem("geo-tk");
-    const currentRoute = router.pathname;
-
-    if (
-      !token &&
-      currentRoute !== "/signin" &&
-      currentRoute !== "/signup" &&
-      currentRoute !== "/"
-    ) {
-      setVisible(true);
-    }
+    if (isNotLogged()) setVisible(true);
   }
 
   function handleClick() {
     router.push("/signin");
     setVisible(false);
+  }
+
+  function isNotLogged() {
+    const token = localStorage.getItem("geo-tk");
+    const currentRoute = router.pathname;
+
+    return (
+      !token &&
+      currentRoute !== "/signin" &&
+      currentRoute !== "/signup" &&
+      currentRoute !== "/" &&
+      currentRoute !== "/email-confirmation"
+    );
   }
 
   useEffect(showNotLoggedMessge, [router]);

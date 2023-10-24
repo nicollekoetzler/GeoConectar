@@ -5,6 +5,11 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import foto from "../../public/imgs/loading.svg";
 import Image from "next/image";
+import {
+  LoadingView,
+  LoaderContainer,
+  Loader,
+} from "@/shared/ViewLoadingStyles";
 
 export default function SignIn() {
   const router = useRouter();
