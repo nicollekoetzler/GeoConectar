@@ -47,10 +47,11 @@ export default function AboutUs() {
         <Content>
           <TopContainer>
             <Info>
-              <h1>
-                Conecte-se com profissionais qualificados para o seu projeto
-              </h1>
-              <p>Lorem ipsum descubra os melhores serviços lorem ipsum domet</p>
+              <h1>Conecte-se com profissionais das geociências agora mesmo!</h1>
+              <p>
+                Geologia, Engenharia de Minas, Geografia, Engenharia Ambiental e
+                afins.
+              </p>
               <Link href="/signup">
                 <ConnectButton>Acessar gratuitamente</ConnectButton>
               </Link>
@@ -70,12 +71,17 @@ export default function AboutUs() {
                 rochosa"
             ></ImageContainer>
             <InfoContainer>
-              <h3>Descubra os melhores serviços</h3>
-              <p>
-                Encontre oportunidades incríveis ao conectar-se com novos
-                clientes ou aplique para vagas de emprego e faça a sua carreira
-                decolar.
-              </p>
+              <h3>Procurando projetos freelance?</h3>
+              <div>
+                <p>
+                  Geoconetar é a plataforma ideal para demandas especificas da
+                  geociências.
+                </p>
+                <p>
+                  Encontre oportunidades de trabalho pontual, além de novas
+                  vagas de emprego compatíveis com o seu perfil.
+                </p>
+              </div>
               <Link href="/signup">
                 <DiscoverButton>Descobrir</DiscoverButton>
               </Link>
@@ -85,10 +91,10 @@ export default function AboutUs() {
             <InfoContainer>
               <FindFreela>
                 <div>
-                  <h3>Encontre os melhores profissionais</h3>
+                  <h3>Anuncie agora mesmo!</h3>
                   <p>
-                    Conecte-se com uma vasta gama de profissionais qualificados
-                    e prontos para ajudar no que você precisa.
+                    Divulgue um serviço freelance ou uma vaga e obtenha a
+                    conexão ideal para sua demanda.
                   </p>
                 </div>
                 <ButtonArea>
@@ -230,6 +236,14 @@ const InfoContainer = styled.div`
   p {
     margin-bottom: 32px;
     line-height: 140%;
+  }
+
+  div {
+    margin-bottom: 32px;
+  }
+
+  div > p {
+    margin-bottom: 16px;
   }
 
   @media screen and (max-width: 600px) {
