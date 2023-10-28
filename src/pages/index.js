@@ -415,6 +415,7 @@ const TopBarLeftLinks = styled.div`
 const TopBarLinks = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 50%;
   font-family: "Roboto";
 
@@ -450,6 +451,7 @@ const TopBarLinks = styled.div`
 const TopBarRightLinks = styled.div`
   display: flex;
   justify-content: end;
+  align-items: center;
   width: 25%;
   font-family: "Roboto";
 
