@@ -51,7 +51,7 @@ export default function SignIn() {
         </LoaderContainer>
       </LoadingView>
       <Container>
-        <h1>GeoConectar</h1>
+        <h1>Geoconectar</h1>
         <h2>Faça o seu login</h2>
         <form onSubmit={handleSubmit}>
           {error.length > 0 ? <ErrorMessage messages={error} /> : <></>}
