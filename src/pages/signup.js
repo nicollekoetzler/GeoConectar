@@ -89,7 +89,7 @@ export default function SignUp() {
   return (
     <Background>
       <Container>
-        <h1>GeoConectar</h1>
+        <h1>Geoconectar</h1>
         <h2>Cadastre-se</h2>
         <form onSubmit={handleSubmit}>
           {error.length > 0 ? <ErrorMessage messages={error} /> : <></>}
