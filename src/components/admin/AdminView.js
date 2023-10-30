@@ -25,4 +25,9 @@ const AdminContainer = styled.div`
     font-weight: 800;
     margin-bottom: 100px;
   }
+
+  @media screen and (max-width: 1200px) {
+    width: 100%;
+    padding: 0 6px;
+  }
 `;
