@@ -136,4 +136,8 @@ const EntityBox = styled.div`
     font-size: 20px;
     align-self: center;
   }
+
+  @media screen and (max-width: 700px) {
+    padding: 40px 10px 26px 10px;
+  }
 `;
