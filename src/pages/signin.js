@@ -86,6 +86,10 @@ export default function SignIn() {
         <p>
           Não tem uma conta? <Verde href="/signup">Cadastre-se agora</Verde>
         </p>
+        <p>
+          Esqueceu a senha?
+          <Verde href="/forget-password"> Redefina clicando aqui</Verde>
+        </p>
       </Container>
     </Background>
   );
