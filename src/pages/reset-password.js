@@ -1,5 +1,4 @@
 import ErrorMessage from "@/components/ErrorMessage";
-import { forgetPassword } from "@/services/authRequisitions";
 import styled from "@emotion/styled";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -9,30 +8,40 @@ import {
   LoaderContainer,
   Loader,
 } from "@/shared/ViewLoadingStyles";
-import { BiCheckCircle } from "react-icons/bi";
 
 export default function SignIn() {
   const router = useRouter();
-  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [showSucessMessage, setShowSucessMessage] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
     setIsLoading(true);
     setError([]);
 
-    try {
-      await forgetPassword(email);
+    if (password !== confirmPassword) {
+      const DIFFERENT_PASSWORDS_MESSAGE = "As senhas não são iguais";
+      setConfirmPassword("");
+      setError([...error, DIFFERENT_PASSWORDS_MESSAGE]);
+    }
+    if (password.length < 6) {
+      const PASSWORD_LENGTH_MESSAGE =
+        "A senha deve conter no mínimo 6 caracteres";
+      setError([...error, PASSWORD_LENGTH_MESSAGE]);
+    }
 
-      setShowSucessMessage(true);
+    try {
+      // await forgetPassword(email);
+      // router.push("/reset-password");
       setIsLoading(false);
     } catch (err) {
-      const INVALID_CREDENTIALS = "Email incorreto";
+      const INVALID_CREDENTIALS =
+        "Você precisa utilizar o link enviado em seu email";
 
       if (err?.response?.status === 401) {
-        setError([INVALID_CREDENTIALS]);
+        setError([...error, INVALID_CREDENTIALS]);
       }
       console.log(err);
       setIsLoading(false);
@@ -41,17 +50,6 @@ export default function SignIn() {
 
   return (
     <Background>
-      <EmailConfirmationView show={showSucessMessage}>
-        <EmailConfirmationContainer>
-          <SucessMessageContainer>
-            <BiCheckCircle style={{ color: "green", fontSize: "38px" }} />
-            <h4>Foi enviado um email de redefinição de senha para {email}</h4>
-            <RedirectHomeButton onClick={() => router.push("/")}>
-              Retornar a página principal
-            </RedirectHomeButton>
-          </SucessMessageContainer>
-        </EmailConfirmationContainer>
-      </EmailConfirmationView>
       <LoadingView isLoading={isLoading}>
         <LoaderContainer>
           <Loader src={foto} alt="Circulo girando em carregamento" />
@@ -59,21 +57,31 @@ export default function SignIn() {
       </LoadingView>
       <Container>
         <h1>Geoconectar</h1>
-        <h2>Esqueci minha senha</h2>
+        <h2>Redefinir senha</h2>
         <form onSubmit={handleSubmit}>
           {error.length > 0 ? <ErrorMessage messages={error} /> : <></>}
-          <h3>Email</h3>
+          <h3>Senha</h3>
           <FormStyle>
             <input
-              type="email"
-              placeholder="Digite o seu email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              type="password"
+              placeholder="Digite sua nova senha"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </FormStyle>
+          <h3>Confirmação de senha</h3>
+          <FormStyle>
+            <input
+              type="password"
+              placeholder="Digite novamente sua nova senha"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
               required
             />
           </FormStyle>
           <Button>
-            <button type="submit">Resgatar senha</button>
+            <button type="submit">Redefinir senha</button>
           </Button>
         </form>
       </Container>
@@ -192,67 +200,5 @@ const FormStyle = styled.div`
     input {
       width: 100%;
     }
-  }
-`;
-
-const EmailConfirmationView = styled.div`
-  font-family: "Roboto";
-  width: 100vw;
-  height: 100vh;
-  display: ${({ show }) => (show ? "flex" : "none")};
-  justify-content: center;
-  align-items: center;
-  background-color: #eeeeee;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1;
-`;
-
-const EmailConfirmationContainer = styled.div`
-  min-height: 300px;
-  margin: 0 20px;
-  padding: 50px 30px;
-  border-radius: 10px;
-  background-color: #ffffff;
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.05);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  h4 {
-    font-size: 20px;
-    font-weight: 800;
-    margin-bottom: 32px;
-  }
-`;
-
-const RedirectHomeButton = styled.button`
-  width: 326px;
-  height: 42px;
-  background: #c59c6c;
-  border-radius: 50px;
-  border: none;
-  cursor: pointer;
-  color: white;
-  font-size: 16px;
-  font-weight: 700;
-
-  @media screen and (max-width: 600px) {
-    width: 100%;
-  }
-`;
-
-const SucessMessageContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-
-  h4 {
-    font-size: 20px;
-    margin-top: 1em;
-    font-weight: 500;
   }
 `;
