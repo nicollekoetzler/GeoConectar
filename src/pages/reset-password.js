@@ -8,6 +8,8 @@ import {
   LoaderContainer,
   Loader,
 } from "@/shared/ViewLoadingStyles";
+import { resetPassword } from "@/services/authRequisitions";
+import { useSearchParams } from "next/navigation";
 
 export default function SignIn() {
   const router = useRouter();
@@ -15,6 +17,8 @@ export default function SignIn() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const searchParams = useSearchParams();
+  const token = searchParams.get("tk");
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -33,8 +37,7 @@ export default function SignIn() {
     }
 
     try {
-      // await forgetPassword(email);
-      // router.push("/reset-password");
+      await resetPassword(password, token);
       setIsLoading(false);
     } catch (err) {
       const INVALID_CREDENTIALS =

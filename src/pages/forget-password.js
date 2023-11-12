@@ -1,7 +1,6 @@
 import ErrorMessage from "@/components/ErrorMessage";
 import { forgetPassword } from "@/services/authRequisitions";
 import styled from "@emotion/styled";
-import { useRouter } from "next/router";
 import { useState } from "react";
 import foto from "../../public/imgs/loading.svg";
 import {
@@ -9,14 +8,14 @@ import {
   LoaderContainer,
   Loader,
 } from "@/shared/ViewLoadingStyles";
-import { BiCheckCircle } from "react-icons/bi";
+import RedirectMessage from "@/components/RedirectMessage";
 
 export default function SignIn() {
-  const router = useRouter();
   const [email, setEmail] = useState("");
   const [error, setError] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [showSucessMessage, setShowSucessMessage] = useState(false);
+  const confirmationMessage = `Foi enviado um email de confirmação para ${email}`;
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -41,17 +40,11 @@ export default function SignIn() {
 
   return (
     <Background>
-      <EmailConfirmationView show={showSucessMessage}>
-        <EmailConfirmationContainer>
-          <SucessMessageContainer>
-            <BiCheckCircle style={{ color: "green", fontSize: "38px" }} />
-            <h4>Foi enviado um email de redefinição de senha para {email}</h4>
-            <RedirectHomeButton onClick={() => router.push("/")}>
-              Retornar a página principal
-            </RedirectHomeButton>
-          </SucessMessageContainer>
-        </EmailConfirmationContainer>
-      </EmailConfirmationView>
+      <RedirectMessage
+        show={showSucessMessage}
+        message={confirmationMessage}
+        path={"/"}
+      />
       <LoadingView isLoading={isLoading}>
         <LoaderContainer>
           <Loader src={foto} alt="Circulo girando em carregamento" />
