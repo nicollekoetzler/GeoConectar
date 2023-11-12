@@ -110,7 +110,7 @@ async function resetPassword(password, token) {
 
   return await axios.post(
     process.env.NEXT_PUBLIC_API_URL +
-      process.env.NEXT_PUBLIC_FORGET_PASSWORD_ROUTE,
+      process.env.NEXT_PUBLIC_RESET_PASSWORD_ROUTE,
     { password },
     config
   );

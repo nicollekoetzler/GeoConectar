@@ -1,6 +1,5 @@
 import ErrorMessage from "@/components/ErrorMessage";
 import styled from "@emotion/styled";
-import { useRouter } from "next/router";
 import { useState } from "react";
 import foto from "../../public/imgs/loading.svg";
 import {
@@ -10,15 +9,17 @@ import {
 } from "@/shared/ViewLoadingStyles";
 import { resetPassword } from "@/services/authRequisitions";
 import { useSearchParams } from "next/navigation";
+import RedirectMessage from "@/components/RedirectMessage";
 
 export default function SignIn() {
-  const router = useRouter();
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [showSucessMessage, setShowSucessMessage] = useState(false);
   const searchParams = useSearchParams();
   const token = searchParams.get("tk");
+  const confirmationMessage = "Sua senha foi alterada com sucesso!";
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -38,6 +39,8 @@ export default function SignIn() {
 
     try {
       await resetPassword(password, token);
+
+      setShowSucessMessage(true);
       setIsLoading(false);
     } catch (err) {
       const INVALID_CREDENTIALS =
@@ -53,6 +56,11 @@ export default function SignIn() {
 
   return (
     <Background>
+      <RedirectMessage
+        show={showSucessMessage}
+        message={confirmationMessage}
+        path={"/signin"}
+      />
       <LoadingView isLoading={isLoading}>
         <LoaderContainer>
           <Loader src={foto} alt="Circulo girando em carregamento" />
