@@ -93,6 +93,29 @@ async function getUsersByEmail(email) {
   );
 }
 
+async function forgetPassword(email) {
+  return await axios.post(
+    process.env.NEXT_PUBLIC_API_URL +
+      process.env.NEXT_PUBLIC_FORGET_PASSWORD_ROUTE,
+    { email }
+  );
+}
+
+async function resetPassword(password, token) {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  return await axios.post(
+    process.env.NEXT_PUBLIC_API_URL +
+      process.env.NEXT_PUBLIC_RESET_PASSWORD_ROUTE,
+    { password },
+    config
+  );
+}
+
 export {
   signup,
   signin,
@@ -102,4 +125,6 @@ export {
   getUsers,
   deleteUser,
   getUsersByEmail,
+  forgetPassword,
+  resetPassword,
 };
