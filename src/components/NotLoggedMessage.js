@@ -24,7 +24,9 @@ export default function NotLoggedMessage() {
       currentRoute !== "/signin" &&
       currentRoute !== "/signup" &&
       currentRoute !== "/" &&
-      currentRoute !== "/email-confirmation"
+      currentRoute !== "/email-confirmation" &&
+      currentRoute !== "/forget-password" &&
+      currentRoute !== "/reset-password"
     );
   }
 
