@@ -25,19 +25,26 @@ export default function SignIn() {
     e.preventDefault();
     setIsLoading(true);
     setError([]);
+    let submitErrors = [];
 
     if (password !== confirmPassword) {
       const DIFFERENT_PASSWORDS_MESSAGE = "As senhas não são iguais";
       setConfirmPassword("");
-      setError([...error, DIFFERENT_PASSWORDS_MESSAGE]);
+      submitErrors = [...submitErrors, DIFFERENT_PASSWORDS_MESSAGE];
     }
     if (password.length < 6) {
       const PASSWORD_LENGTH_MESSAGE =
         "A senha deve conter no mínimo 6 caracteres";
-      setError([...error, PASSWORD_LENGTH_MESSAGE]);
+      submitErrors = [...error, PASSWORD_LENGTH_MESSAGE];
     }
 
     try {
+      if (submitErrors.length !== 0) {
+        setError([...error, ...submitErrors]);
+        setIsLoading(false);
+        return;
+      }
+
       await resetPassword(password, token);
 
       setShowSucessMessage(true);
