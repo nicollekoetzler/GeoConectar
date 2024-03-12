@@ -26,7 +26,12 @@ export default function NotLoggedMessage() {
       currentRoute !== "/" &&
       currentRoute !== "/email-confirmation" &&
       currentRoute !== "/forget-password" &&
-      currentRoute !== "/reset-password"
+      currentRoute !== "/reset-password" &&
+      currentRoute !== "/contact" &&
+      currentRoute !== "/about-us" &&
+      currentRoute !== "/faq" &&
+      currentRoute !== "/terms" &&
+      currentRoute !== "/privacy"
     );
   }
 

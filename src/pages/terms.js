@@ -2,11 +2,13 @@ import styled from "@emotion/styled";
 import HeaderLayout from "@/layouts/Header";
 import BottomLayout from "@/layouts/Bottom";
 import { ViewContainer, Background } from "@/shared/ViewGenericStyles";
+import NotLoggedNavBar from "@/components/NotLoggedNavBar";
 
 export default function AboutUs() {
 
   return (
     <ViewContainer>
+      <NotLoggedNavBar />
       <HeaderLayout />
       <Background>
         <TopContainer>
@@ -14,63 +16,80 @@ export default function AboutUs() {
         </TopContainer>
         <BottomContainer>
           <p>
-            Bem-vindo ao GeoConectar. O GeoConectar é operado por [inserir o nome da sua empresa] (a "Empresa"). Ao usar o GeoConectar, você concorda com estes Termos de Uso. Se você não concorda com estes Termos de Uso, não use o GeoConectar.
+            Bem-vindo à plataforma de conexões de geociências da Geoconectar!
           </p>
-
-          <h4>
-            Uso do GeoConectar
-          </h4>
           <p>
-          Você pode usar o GeoConectar apenas para fins legais e de acordo com estes Termos de Uso. Você não pode usar o GeoConectar de uma forma que infrinja os direitos de terceiros ou que viole qualquer lei ou regulamento aplicável.
+            Ao utilizar nossos serviços, você concorda com os seguintes termos e condições. Leia
+            atentamente antes de prosseguir:
           </p>
-
-          <h4>
-            Direitos autorais e propriedade intelectual
-          </h4>
           <p>
-            Todo o conteúdo do GeoConectar, incluindo texto, gráficos, logotipos, ícones, imagens, clipes de áudio, downloads digitais e software, é de propriedade da Empresa ou de seus licenciadores e está protegido por leis de direitos autorais e outras leis de propriedade intelectual. Você não pode usar o conteúdo do GeoConectar sem autorização prévia por escrito da Empresa.
+            1. Cadastro e Informações da Conta
           </p>
-
-          <h4>
-            Responsabilidade do usuário
-          </h4>
           <p>
-            Você é responsável por todas as atividades realizadas em sua conta do GeoConectar. Você concorda em manter a confidencialidade de sua senha e em informar a Empresa imediatamente se suspeitar que sua conta foi comprometida.
+            1.1 Ao se cadastrar em nossa plataforma, você concorda em fornecer informações precisas,
+            atualizadas e completas sobre sua experiência profissional, formação acadêmica e outras
+            informações relevantes.
           </p>
-
-          <h4>
-            Isenção de responsabilidade
-          </h4>
           <p>
-            A Empresa não garante que o GeoConectar será livre de erros ou interrupções. O GeoConectar é fornecido "como está" e a Empresa não se responsabiliza por qualquer dano que possa ocorrer como resultado do uso do GeoConectar. A Empresa se reserva o direito de modificar, suspender ou encerrar o GeoConectar a qualquer momento, sem aviso prévio.
+            1.2 Você é responsável por manter a confidencialidade de suas credenciais de login. Caso haja
+            suspeita de uso não autorizado, notifique-nos imediatamente.
           </p>
-
-          <h4>
-            Links para sites de terceiros
-          </h4>
           <p>
-            O GeoConectar pode conter links para sites de terceiros que não são controlados pela Empresa. A Empresa não se responsabiliza pelo conteúdo ou práticas de privacidade de sites de terceiros.
+            2. Oportunidades de Emprego e Candidaturas
           </p>
-
-          <h4>
-            Alterações nos Termos de Uso
-          </h4>
           <p>
-            A Empresa reserva-se o direito de alterar estes Termos de Uso a qualquer momento, sem aviso prévio aos usuários do GeoConectar. As alterações serão publicadas nesta página.
+            2.1 A Geoconectar fornece informações sobre oportunidades de emprego e conexões na área
+            de geociências. Não garantimos a obtenção de emprego, apenas facilitamos a conexão entre
+            solicitante e interessados.
           </p>
-
-          <h4>
-            Lei aplicável
-          </h4>
           <p>
-          Estes Termos de Uso serão regidos e interpretados de acordo com as leis do Brasil e qualquer disputa decorrente destes Termos de Uso será submetida à jurisdição exclusiva dos tribunais desse país.
+            2.2 Ao se conectar com outro usuário, você autoriza o compartilhamento de suas informações
+            de perfil com o solicitante correspondente.
           </p>
-
-          <h4>
-            Contato
-          </h4>
           <p>
-            Se os usuários do GeoConectar tiverem alguma dúvida ou preocupação em relação a estes Termos de Uso, eles podem entrar em contato com a Empresa pelo endereço de e-mail [inserir o endereço de e-mail da sua empresa].
+            3. Responsabilidades do Usuário
+          </p>
+          <p>
+            3.1 Ao utilizar nossa plataforma, você concorda em agir de acordo com todas as leis aplicáveis
+            e éticas profissionais.
+          </p>
+          <p>
+            3.2 Você é responsável por avaliar as oportunidades de emprego, empregadores e condições
+            de trabalho, tomando decisões informadas antes de se candidatar.
+          </p>
+          <p>
+            4. Privacidade
+          </p>
+          <p>
+            4.1 Respeitamos sua privacidade. Leia nossa Política de Privacidade [inserir link] para entender
+            como suas informações serão utilizadas e protegidas.
+          </p>
+          <p>
+            5. Conteúdo do Usuário
+          </p>
+          <p>
+            5.1 Ao fornecer conteúdo, como currículos e informações de perfil, você concede à
+            Geoconectar o direito de usar, armazenar e compartilhar essas informações com
+            empregadores interessados.6. Modificações nos Termos
+          </p>
+          <p>
+            6.1 Reservamos o direito de modificar estes termos a qualquer momento. Alterações entrarão
+            em vigor imediatamente após a publicação no site. Recomendamos revisar regularmente os
+            termos para estar ciente de quaisquer atualizações.
+          </p>
+          <p>
+            7. Encerramento de Conta
+          </p>
+          <p>
+            7.1 A Geoconectar reserva-se o direito de encerrar contas que violem estes termos ou que
+            estejam inativas por longos períodos.
+          </p>
+          <p>
+            Estes Termos e Condições foram atualizados em janeiro de 2024. Para dúvidas ou mais
+            informações, entre em contato conosco através de contato@geoconectar.com.
+          </p>
+          <p>
+            Agradecemos por escolher Geoconectar para ampliar suas conexões!
           </p>
         </BottomContainer>
       </Background>

@@ -14,7 +14,7 @@ export default function EmailConfirmation() {
   const [sucess, setSucess] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const searchParams = useSearchParams();
-  const token = searchParams.get("tk");
+  const token = searchParams.get("token");
 
   const confirmEmail = async () => {
     setIsLoading(true);
@@ -23,7 +23,7 @@ export default function EmailConfirmation() {
       try {
         await confirmUserEmail(token);
         setSucess(true);
-        localStorage.setItem("token", token);
+        localStorage.setItem("geo-tk", token);
       } catch (err) {
         setSucess(false);
         console.log(err);

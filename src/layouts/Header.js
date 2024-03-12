@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BsChatDots } from "react-icons/bs";
 import { AiOutlineUser } from "react-icons/ai";
 import Link from "next/link";
@@ -10,9 +10,25 @@ import logoMobile from "../../public/imgs/svglogo.svg";
 
 export default function HeaderLayout() {
   const [toggle, setToggle] = useState(false);
+  const [visible, setVisible] = useState(false);
+
+  function showNotLoggedMessge() {
+      if (isLogged()) setVisible(true);
+  }
+
+  function isLogged() {
+      if (typeof window !== 'undefined') {
+          const token = localStorage.getItem("geo-tk");
+          return token;
+      } else {
+          return false;
+      }
+  }
+
+  useEffect(showNotLoggedMessge, []);
 
   return (
-    <TopBar>
+    <TopBar visible={visible}>
       <TopBarLeftLinks>
         <Link href="/services">
           <Image
@@ -35,9 +51,6 @@ export default function HeaderLayout() {
         <Link href="/about-us">
           <h3>Sobre nós</h3>
         </Link>
-        <Link href="/contact">
-          <h3>Contato</h3>
-        </Link>
       </TopBarLinks>
       <TopBarRightLinks>
         <Link href="/chat">
@@ -59,7 +72,7 @@ const TopBar = styled.div`
   min-height: 80px;
   width: 100%;
   background-color: white;
-  display: flex;
+  display: ${({visible}) => visible ? 'flex' : 'none'};
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid #cdcdcd;

@@ -30,9 +30,6 @@ export default function AboutUs() {
           <Link href="/about-us">
             <h3>Sobre nós</h3>
           </Link>
-          <Link href="/contact">
-            <h3>Contato</h3>
-          </Link>
         </TopBarLinks>
         <TopBarRightLinks>
           <Link href="/signin">

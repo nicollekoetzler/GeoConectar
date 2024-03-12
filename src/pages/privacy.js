@@ -2,11 +2,13 @@ import styled from "@emotion/styled";
 import HeaderLayout from "@/layouts/Header";
 import BottomLayout from "@/layouts/Bottom";
 import { ViewContainer, Background } from "@/shared/ViewGenericStyles";
+import NotLoggedNavBar from "@/components/NotLoggedNavBar";
 
 export default function AboutUs() {
 
   return (
     <ViewContainer>
+      <NotLoggedNavBar />
       <HeaderLayout />
       <Background>
         <TopContainer>
@@ -14,78 +16,90 @@ export default function AboutUs() {
         </TopContainer>
         <BottomContainer>
           <p>
-            Esta Política de Uso e Privacidade se aplica ao GeoConectar, que é operado por [inserir o nome da sua empresa] (a "Empresa"). Ao usar o GeoConectar, você concorda com os termos desta Política de Uso e Privacidade.
-          </p>
-
-          <h4>
-            Informações que coletamos
-          </h4>
-          <p>
-            A Empresa pode coletar as seguintes informações pessoais e não pessoais dos usuários do GeoConectar:
+            Bem-vindo à Geoconectar, a sua plataforma dedicada a conectar profissionais de
+            geociências com oportunidades de emprego. Nossa prioridade é garantir a segurança e
+            privacidade das informações dos nossos usuários. Ao utilizar nossos serviços, você concorda
+            com os termos descritos nesta Política de Privacidade.
           </p>
           <p>
-            • Informações de contato, como nome, endereço de e-mail e número de telefone<br/>
-            • Informações demográficas, como idade, sexo e localização<br/>
-            • Informações de uso, como o número de visitas ao GeoConectar, as páginas que foram visitadas e o tempo gasto em cada página<br/>
-            • Informações de pagamento, como informações de cartão de crédito ou débito<br/>
-            • Como usamos as informações
+            1. Informações Coletadas
           </p>
           <p>
-            A Empresa usa as informações coletadas dos usuários do GeoConectar para os seguintes fins:
+            1.1 Informações de Cadastro: Ao criar uma conta, coletamos informações como nome,
+            endereço de e-mail, histórico profissional, formação acadêmica e outras informações
+            relevantes para a busca de emprego.
           </p>
           <p>
-            • Fornecer os produtos e serviços solicitados pelos usuários<br/>
-            • Personalizar a experiência do usuário no GeoConectar<br/>
-            • Melhorar o GeoConectar e os serviços da Empresa<br/>
-            • Entrar em contato com os usuários em relação a produtos, serviços ou promoções da Empresa<br/>
-            • Processar pagamentos e prevenir fraudes<br/>
-            • Compartilhamento de informações
+            1.2 Informações de Navegação: Registramos dados de navegação, incluindo endereço IP, tipo
+            de dispositivo, navegador utilizado, páginas visitadas e tempos de acesso.
           </p>
           <p>
-            A Empresa pode compartilhar informações pessoais dos usuários do GeoConectar com terceiros, incluindo:
+            2. Uso das Informações
           </p>
           <p>
-            • Parceiros de negócios que trabalham com a Empresa para fornecer produtos e serviços aos usuários do GeoConectar <br/>
-            • Fornecedores de serviços que realizam serviços em nome da Empresa <br/>
-            • Agências governamentais ou outras autoridades quando exigido por lei
+            2.1 Oportunidades de Emprego: Utilizamos suas informações para facilitar a busca de
+            oportunidades de emprego compatíveis com seu perfil.
           </p>
           <p>
-            A Empresa pode compartilhar informações não pessoais dos usuários do GeoConectar com terceiros para fins de marketing ou publicidade.
+            2.2 Compartilhamento com Empregadores: Ao se candidatar a uma vaga, suas informações de
+            perfil são compartilhadas com o empregador correspondente.
           </p>
-
-          <h4>
-            Segurança das informações
-          </h4>
           <p>
-            A Empresa implementa medidas de segurança razoáveis ​​para proteger as informações dos usuários do GeoConectar contra acesso não autorizado, alteração ou destruição. No entanto, a Empresa não pode garantir a segurança absoluta das informações transmitidas pela Internet.
+            2.3 Comunicações: Podemos utilizar suas informações para enviar atualizações sobre
+            oportunidades de emprego, notificações importantes ou informações relacionadas à
+            plataforma.
           </p>
-
-          <h4>
-            Cookies e outras tecnologias de rastreamento
-          </h4>
           <p>
-            O GeoConectar pode usar cookies e outras tecnologias de rastreamento para melhorar a experiência do usuário e fornecer serviços personalizados. Os usuários podem controlar o uso de cookies e outras tecnologias de rastreamento nas configurações do navegador.
+            3. Proteção de Dados
           </p>
-
-          <h4>
-            Links para outros sites
-          </h4>
           <p>
-            O GeoConectar pode conter links para outros sites que não são operados pela Empresa. A Empresa não é responsável pelas práticas de privacidade ou pelo conteúdo desses sites de terceiros.
+            3.1 Segurança: Implementamos medidas de segurança para proteger suas informações contra
+            acesso não autorizado, alteração, divulgação ou destruição não autorizada.
           </p>
-
-          <h4>
-            Alterações nesta Política de Uso e Privacidade
-          </h4>
           <p>
-            A Empresa reserva-se o direito de alterar esta Política de Uso e Privacidade a qualquer momento, sem aviso prévio aos usuários do GeoConectar. As alterações serão publicadas nesta página.
+            3.2 Retenção de Dados: Manteremos suas informações apenas pelo tempo necessário para
+            cumprir os fins para os quais foram coletadas.
           </p>
-
-          <h4>
-            Contato
-          </h4>
           <p>
-            Se os usuários do GeoConectar tiverem alguma dúvida ou preocupação em relação a esta Política de Uso e Privacidade, eles podem entrar em contato com a Empresa pelo endereço de e-mail [inserir o endereço de e-mail da sua empresa].
+            4. Cookies e Tecnologias Semelhantes4.1 Cookies: Utilizamos cookies para melhorar a experiência do usuário, analisar o tráfego do
+            site e personalizar conteúdo.
+          </p>
+          <p>
+            5. Compartilhamento de Informações
+          </p>
+          <p>
+            5.1 Com Empregadores: Suas informações serão compartilhadas com empregadores ao se
+            candidatar a uma vaga, conforme necessário para facilitar o processo de contratação.
+          </p>
+          <p>
+            5.2 Parceiros de Serviço: Podemos compartilhar informações com terceiros que prestam
+            serviços em nosso nome, como processamento de pagamentos ou análise de dados.
+          </p>
+          <p>
+            6. Direitos do Usuário
+          </p>
+          <p>
+            6.1 Acesso e Atualização: Você tem o direito de acessar e corrigir suas informações pessoais a
+            qualquer momento através das configurações da sua conta.
+          </p>
+          <p>
+            6.2 Exclusão de Conta: Pode solicitar a exclusão da sua conta e dados associados a qualquer
+            momento.
+          </p>
+          <p>
+            7. Alterações na Política de Privacidade
+          </p>
+          <p>
+            7.1 Atualizações: Reservamo-nos o direito de fazer alterações nesta política. Alterações
+            entrarão em vigor imediatamente após a publicação no site.
+          </p>
+          <p>
+            Estamos comprometidos em proteger sua privacidade. Se tiver dúvidas ou preocupações,
+            entre em contato conosco através de contato@geoconectar.com.
+          </p>
+          <p>
+            Esta Política de Privacidade foi atualizada em janeiro de 2024. Agradecemos por confiar na
+            Geoconectar para impulsionar sua carreira em geociências!
           </p>
         </BottomContainer>
       </Background>

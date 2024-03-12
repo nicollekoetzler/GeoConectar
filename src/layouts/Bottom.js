@@ -3,6 +3,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import icon from "../../public/imgs/svglogo.svg";
+import { IoMdMail } from "react-icons/io";
 
 export default function BottomLayout() {
   return (
@@ -11,9 +12,6 @@ export default function BottomLayout() {
       <BottomLinks>
         <Link href="/about-us">
           <p>Sobre nós</p>
-        </Link>
-        <Link href="/contact">
-          <p>Contato</p>
         </Link>
         <Link href="/faq">
           <p>Perguntas frequentes</p>
@@ -25,6 +23,10 @@ export default function BottomLayout() {
           <p>Privacidade</p>
         </Link>
       </BottomLinks>
+      <MailContainer>
+        <IoMdMail style={{color: '#754c24', marginRight: '8px', fontSize: '1.4rem'}} />
+        <a href="mailto:contato@geoconectar.com">contato@geoconectar.com</a>
+      </MailContainer>
     </Bottom>
   );
 }
@@ -67,7 +69,7 @@ const BottomLinks = styled.div`
     color: #000000;
   }
 
-  a:nth-child(5) {
+  a:last-child > p {
     margin-right: 0;
   }
 
@@ -83,5 +85,16 @@ const BottomLinks = styled.div`
       margin: 0;
       padding-top: 8px;
     }
+  }
+`;
+
+const MailContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  a {
+    color: #754c24;
+    text-decoration: none;
   }
 `;

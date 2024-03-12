@@ -2,11 +2,13 @@ import styled from "@emotion/styled";
 import HeaderLayout from "@/layouts/Header";
 import BottomLayout from "@/layouts/Bottom";
 import { ViewContainer, Background } from "@/shared/ViewGenericStyles";
+import NotLoggedNavBar from "@/components/NotLoggedNavBar";
 
 export default function AboutUs() {
 
   return (
     <ViewContainer>
+      <NotLoggedNavBar />
       <HeaderLayout />
       <Background>
         <TopContainer>
