@@ -1,6 +1,5 @@
 import React from "react";
 import Head from "next/head";
-import Script from "next/script";
 import "../assets/styles/reset.css";
 import "../assets/styles/style.css";
 import { AppWrapper } from "../../contexts/chatContext";
@@ -12,16 +11,6 @@ export default function App({ Component, pageProps }) {
     <>
       <Head>
         <title>GEOCONECTAR</title>
-        <Script
-          id="Adsense-id"
-          async
-          onError={(e) => {
-            console.error("Script failed to load", e);
-          }}
-          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_GOOGLE_ADS_CLIENT_ID}`}
-          strategy="lazyOnload"
-          crossOrigin="anonymous"
-        />
       </Head>
       <AppWrapper>
         <NotLoggedMessage />
