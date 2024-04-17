@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
 import BottomLayout from "@/layouts/Bottom";
 import Image from "next/image";
-import bannergeoconectar from "../../public/imgs/shoutingperson.svg";
+// import bannergeoconectar from "../../public/imgs/shoutingperson.svg";
+import bannergeoconectar from "../../public/imgs/banner-geo.png";
 import discovergeoconectar from "../../public/imgs/discovergeoconectar.jpg";
 import banner from "../../public/imgs/findprofessionals.png";
 import { ViewContainer, Background } from "@/shared/ViewGenericStyles";
@@ -204,7 +205,7 @@ const Discover = styled.div`
 
 const ImageContainer = styled.div`
   height: 100%;
-  width: 50%;
+  width: 100%;
   border-radius: 12px;
   background-color: black;
   background: center/cover url(${(props) => props.bgImg.src}) no-repeat;
