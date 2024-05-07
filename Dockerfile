@@ -1,10 +1,10 @@
-FROM node:16
+FROM node:16-alpine
 
 WORKDIR /app
 
 COPY package.json package-lock.json ./
 
-RUN npm ci
+RUN npm ci --only=production
 
 COPY . .
 
